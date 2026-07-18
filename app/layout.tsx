@@ -13,6 +13,7 @@ const libre = Libre_Franklin({
 const sourceSerif = Source_Serif_4({
   variable: "--font-source-serif",
   subsets: ["latin"],
+  weight: "400",
   display: "swap",
 });
 
