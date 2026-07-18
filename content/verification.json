@@ -1,0 +1,35 @@
+{
+  "verifiedAt": "2026-07-18T21:40:58.205Z",
+  "results": [
+    {
+      "url": "https://chronoiq.dev",
+      "host": "chronoiq.dev",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://solaspace.app",
+      "host": "solaspace.app",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://everdeck.app",
+      "host": "everdeck.app",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://www.congressionalappchallenge.us/25-nj07/",
+      "host": "congressionalappchallenge.us",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://wrnjradio.com/kean-honors-7th-district-winners-of-congressional-app-challenge/",
+      "host": "wrnjradio.com",
+      "status": 200,
+      "ok": true
+    }
+  ]
+}

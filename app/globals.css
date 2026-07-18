@@ -1,0 +1,291 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-paper: #fafaf8;
+  --color-ink: #101014;
+  --color-ink-soft: #55555c;
+  --color-hairline: #e4e3dc;
+  --color-accent: #1e32c8;
+  --color-void: #0b0b0e;
+
+  --color-cream: #f3ece2; /* ChronoIQ zone ground */
+  --color-sola-void: #0a0b0d; /* Solaspace zone ground */
+  --color-carbon: #101013; /* Everdeck zone ground */
+  --color-gold: #e6b877;
+  --color-ev-pink: #ffc2d4;
+  --color-ev-violet: #c9bbff;
+  --color-ev-blue: #9cd6ff;
+  --color-ev-mint: #b5f5d8;
+
+  --font-display: var(--font-libre), "Libre Franklin", "Franklin Gothic Medium",
+    sans-serif;
+  --font-body: var(--font-source-serif), "Source Serif 4", Georgia, serif;
+  --font-mono: var(--font-jetbrains), "JetBrains Mono", ui-monospace, monospace;
+}
+
+/* ---------------------------------------------------------------------------
+   Zone variables — the takeover engine sets data-zone on <html>; everything
+   in the page flow reads these so text stays legible mid-crossfade.
+--------------------------------------------------------------------------- */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --zone-ground: #fafaf8;
+  --zone-fg: #101014;
+  --zone-fg-soft: #55555c;
+  --zone-mono: #55555c;
+  --zone-link: #1e32c8;
+  --zone-hairline: #e4e3dc;
+}
+
+html[data-zone="chronoiq"] {
+  --zone-ground: #f3ece2;
+  --zone-hairline: #e0d5c2;
+}
+
+html[data-zone="solaspace"] {
+  --zone-ground: #0a0b0d;
+  --zone-fg: rgba(250, 250, 248, 0.92);
+  --zone-fg-soft: rgba(250, 250, 248, 0.6);
+  --zone-mono: #e6b877;
+  --zone-link: #e6b877;
+  --zone-hairline: rgba(250, 250, 248, 0.16);
+}
+
+html[data-zone="everdeck"] {
+  --zone-ground: #101013;
+  --zone-fg: rgba(250, 250, 248, 0.92);
+  --zone-fg-soft: rgba(250, 250, 248, 0.6);
+  --zone-mono: #c9bbff;
+  --zone-link: #c9bbff;
+  --zone-hairline: rgba(250, 250, 248, 0.14);
+}
+
+/* ---------------------------------------------------------------------------
+   Base
+--------------------------------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+  /* Base ground beneath the fixed takeover layer: keeps overscroll edges and
+     non-compositing captures on the active ground. Changes instantly; the
+     fixed layer above it carries the 500ms crossfade. */
+  background-color: var(--zone-ground);
+}
+
+body {
+  background: transparent;
+  color: var(--zone-fg);
+  font-family: var(--font-body);
+  font-size: clamp(1.0625rem, 1.03rem + 0.15vw, 1.125rem);
+  line-height: 1.65;
+  transition: color 500ms var(--ease-out);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* The single fixed background layer behind all content (§5). */
+.takeover-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--zone-ground);
+  transition: background-color 500ms var(--ease-out);
+}
+
+/* Zone-aware color transitions for elements that set their own colors. */
+.tz {
+  transition:
+    color 500ms var(--ease-out),
+    background-color 500ms var(--ease-out),
+    border-color 500ms var(--ease-out),
+    opacity 500ms var(--ease-out);
+}
+
+::selection {
+  background: #1e32c8;
+  color: #fafaf8;
+}
+
+:focus-visible {
+  outline: 2px solid var(--zone-link);
+  outline-offset: 3px;
+}
+
+@layer components {
+  /* ---------------------------------------------------------------------------
+     Type utilities
+  --------------------------------------------------------------------------- */
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--zone-mono);
+  }
+
+  .mono {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+
+  .display {
+    font-family: var(--font-display);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 0.95;
+  }
+
+  /* Underline-expand for links (§3 micro-interactions). */
+  .link-x {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size 300ms var(--ease-out);
+    text-decoration: none;
+    padding-bottom: 1px;
+  }
+
+  .link-x:hover,
+  .link-x:focus-visible {
+    background-size: 100% 1px;
+  }
+
+  /* Persistent-underline variant for body-copy links. */
+  .link-u {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+    transition: text-decoration-color 250ms var(--ease-out);
+  }
+
+  .link-u:hover,
+  .link-u:focus-visible {
+    text-decoration-color: currentColor;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Hero load sequence — one staged reveal, < 1.2s total (§3).
+--------------------------------------------------------------------------- */
+@keyframes hero-mask-up {
+  from {
+    transform: translateY(105%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-fade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-mask {
+  overflow: hidden;
+}
+
+.hero-mask > * {
+  animation: hero-mask-up 700ms var(--ease-out) both;
+}
+
+.hero-stage-2 {
+  animation: hero-fade 550ms var(--ease-out) 280ms both;
+}
+
+.hero-stage-3 {
+  animation: hero-fade 550ms var(--ease-out) 440ms both;
+}
+
+.hero-stage-4 {
+  animation: hero-fade 550ms var(--ease-out) 600ms both;
+}
+
+/* ---------------------------------------------------------------------------
+   Evidence imagery reveal — the only scroll-triggered reveal on the site (§3).
+--------------------------------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 600ms var(--ease-out),
+    transform 600ms var(--ease-out);
+}
+
+.reveal.is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Evidence frames lift on hover with a real shadow (§3). */
+.evidence-lift {
+  transition:
+    transform 300ms var(--ease-out),
+    box-shadow 300ms var(--ease-out);
+}
+
+.evidence-lift:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 12px 32px rgba(11, 11, 14, 0.18),
+    0 4px 12px rgba(11, 11, 14, 0.12);
+}
+
+/* ---------------------------------------------------------------------------
+   ChronoIQ takeover device — faint time-grid hairlines (§5).
+--------------------------------------------------------------------------- */
+.time-grid {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 95px,
+    rgba(16, 16, 20, 0.055) 95px,
+    rgba(16, 16, 20, 0.055) 96px
+  );
+}
+
+/* ---------------------------------------------------------------------------
+   Reduced motion: opacity-only or none; takeover colors change instantly (§3).
+--------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .takeover-layer,
+  body,
+  .tz {
+    transition: none;
+  }
+
+  .hero-mask > *,
+  .hero-stage-2,
+  .hero-stage-3,
+  .hero-stage-4 {
+    animation: none;
+  }
+
+  .reveal {
+    transform: none;
+    transition: opacity 400ms ease;
+  }
+
+  .evidence-lift,
+  .evidence-lift:hover {
+    transform: none;
+    transition: none;
+  }
+
+  .link-x {
+    transition: none;
+  }
+}

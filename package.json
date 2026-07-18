@@ -1,0 +1,33 @@
+{
+  "name": "portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "predev": "node scripts/scan-assets.mjs",
+    "dev": "next dev",
+    "prebuild": "node scripts/scan-assets.mjs && node scripts/verify-links.mjs && node scripts/fetch-github.mjs",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "16.2.10",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  },
+  "devDependencies": {
+    "@fontsource/jetbrains-mono": "^5.2.8",
+    "@fontsource/libre-franklin": "^5.2.8",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.10",
+    "opentype.js": "^2.0.0",
+    "sharp": "^0.35.3",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}

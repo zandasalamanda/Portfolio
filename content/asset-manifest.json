@@ -1,0 +1,99 @@
+{
+  "generatedAt": "2026-07-18T21:40:54.535Z",
+  "assets": {
+    "chronoiq/logo.png": {
+      "exists": true,
+      "optional": false,
+      "width": 1024,
+      "height": 1024
+    },
+    "chronoiq/shot-dashboard.png": {
+      "exists": true,
+      "optional": false,
+      "width": 3456,
+      "height": 2160
+    },
+    "chronoiq/shot-focus.png": {
+      "exists": true,
+      "optional": false,
+      "width": 3456,
+      "height": 2160
+    },
+    "chronoiq/video-poster.jpg": {
+      "exists": true,
+      "optional": false,
+      "width": 1280,
+      "height": 720
+    },
+    "chronoiq/award-photo.jpg": {
+      "exists": false,
+      "optional": true
+    },
+    "solaspace/logo.svg": {
+      "exists": true,
+      "optional": false,
+      "width": 512,
+      "height": 512
+    },
+    "solaspace/shot-map.png": {
+      "exists": true,
+      "optional": false,
+      "width": 2924,
+      "height": 1992
+    },
+    "solaspace/shot-sola.png": {
+      "exists": true,
+      "optional": false,
+      "width": 804,
+      "height": 1182
+    },
+    "solaspace/shot-review.png": {
+      "exists": true,
+      "optional": false,
+      "width": 942,
+      "height": 1544
+    },
+    "solaspace/shot-list.png": {
+      "exists": true,
+      "optional": true,
+      "width": 1100,
+      "height": 1612
+    },
+    "solaspace/shot-focus.png": {
+      "exists": true,
+      "optional": true,
+      "width": 726,
+      "height": 1154
+    },
+    "everdeck/logo.svg": {
+      "exists": true,
+      "optional": false,
+      "width": 256,
+      "height": 256
+    },
+    "everdeck/shot-deck.png": {
+      "exists": true,
+      "optional": false,
+      "width": 3456,
+      "height": 2160
+    },
+    "everdeck/shot-prospect.png": {
+      "exists": true,
+      "optional": false,
+      "width": 3456,
+      "height": 2160
+    },
+    "bandr/shot-home.png": {
+      "exists": false,
+      "optional": true
+    },
+    "headshot.jpg": {
+      "exists": false,
+      "optional": true
+    },
+    "resume-web.pdf": {
+      "exists": false,
+      "optional": true
+    }
+  }
+}

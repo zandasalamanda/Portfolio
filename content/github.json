@@ -1,0 +1,41 @@
+{
+  "verifiedAt": "2026-07-18T21:29:37.862Z",
+  "products": [
+    {
+      "name": "ChronoIQ",
+      "status": "live",
+      "date": "DEC 2025",
+      "source": "award announcement"
+    },
+    {
+      "name": "Solaspace",
+      "status": "live",
+      "date": "JUL 2026",
+      "repo": "zandasalamanda/Aether"
+    },
+    {
+      "name": "Everdeck",
+      "status": "private preview",
+      "date": "JUL 2026"
+    }
+  ],
+  "languages": [
+    {
+      "name": "TypeScript",
+      "pct": 54
+    },
+    {
+      "name": "JavaScript",
+      "pct": 23
+    },
+    {
+      "name": "CSS",
+      "pct": 7
+    },
+    {
+      "name": "HTML",
+      "pct": 5
+    }
+  ],
+  "forkCount": 0
+}
