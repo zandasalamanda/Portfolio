@@ -1,4 +1,6 @@
+import Image from 'next/image';
 import { bandr, everdeckPreview, products } from '@/content/site';
+import { asset } from '@/lib/assets';
 
 /**
  * Compact hairline-ruled rows for work in the lab (§6.2). Also hosts the
@@ -6,6 +8,7 @@ import { bandr, everdeckPreview, products } from '@/content/site';
  */
 export default function LabStrip({ includeEverdeck }: { includeEverdeck: boolean }) {
   const everdeck = products[2];
+  const bandrShot = asset('bandr/shot-home.png');
 
   return (
     <section aria-label="In the lab" className="relative">
@@ -46,6 +49,18 @@ export default function LabStrip({ includeEverdeck }: { includeEverdeck: boolean
           >
             {bandr.repoLabel} <span aria-hidden>↗</span>
           </a>
+          {bandrShot.exists && bandrShot.width && bandrShot.height && (
+            <figure className="evidence-lift tz w-[104px] shrink-0 overflow-hidden rounded-[6px] bg-[var(--frame-bg)] shadow-[0_0_0_1px_var(--frame-ring)]">
+              <Image
+                src={bandrShot.url}
+                alt="Bandr on a phone: ranked earning options, each with a move score and a plain-language reason it fits"
+                width={bandrShot.width}
+                height={bandrShot.height}
+                sizes="104px"
+                className="block h-auto w-full"
+              />
+            </figure>
+          )}
         </div>
       </div>
     </section>

@@ -1,6 +1,6 @@
 import About from '@/components/About';
 import CaseChronoIQ from '@/components/CaseChronoIQ';
-import CaseEverdeck from '@/components/CaseEverdeck';
+import CaseEverdeck, { everdeckShots } from '@/components/CaseEverdeck';
 import CaseSolaspace from '@/components/CaseSolaspace';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
@@ -16,8 +16,9 @@ export default function Home() {
 
   // Demotion rule (§6.2): Everdeck is a full takeover case only when at least
   // one of its screenshots exists at build; otherwise it joins the lab strip.
-  const everdeckPromoted =
-    asset('everdeck/shot-deck.png').exists || asset('everdeck/shot-prospect.png').exists;
+  // Kept in sync with the fan's card list in CaseEverdeck so any single shot
+  // (deck, prospect, or outreach) is enough to promote.
+  const everdeckPromoted = everdeckShots.some((rel) => asset(rel).exists);
 
   const zones: ZoneId[] = everdeckPromoted
     ? ['chronoiq', 'solaspace', 'everdeck']

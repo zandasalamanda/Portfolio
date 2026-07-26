@@ -10,9 +10,11 @@ import { useEffect, useRef, useState } from 'react';
 export default function Reveal({
   children,
   className = '',
+  style,
 }: {
   children: React.ReactNode;
   className?: string;
+  style?: React.CSSProperties;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [seen, setSeen] = useState(false);
@@ -34,7 +36,7 @@ export default function Reveal({
   }, []);
 
   return (
-    <div ref={ref} className={`reveal ${seen ? 'is-in' : ''} ${className}`}>
+    <div ref={ref} className={`reveal ${seen ? 'is-in' : ''} ${className}`} style={style}>
       {children}
     </div>
   );

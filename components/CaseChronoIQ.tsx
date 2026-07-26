@@ -4,14 +4,36 @@ import { award, products } from '@/content/site';
 import { asset } from '@/lib/assets';
 import { AwaitingLogo, Frame } from './Evidence';
 import Reveal from './Reveal';
+import { DecisionsAndStack, ReceiptsRow } from './CaseBlocks';
 import VideoFacade from './VideoFacade';
 
 const chronoiq = products[0];
+
+/** A screenshot dressed as a scheduled entry: mono label on a ruled top edge. */
+function PlannerEntry({
+  label,
+  children,
+}: {
+  label: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div>
+      <p className="mono tz mb-2 flex items-center gap-2 text-[0.6875rem] uppercase tracking-[0.12em] text-[var(--zone-fg-soft)]">
+        {label}
+        <span aria-hidden className="tz h-px flex-1 bg-[var(--zone-hairline)]" />
+      </p>
+      {children}
+    </div>
+  );
+}
 
 export default function CaseChronoIQ() {
   const logo = asset('chronoiq/logo.png');
   const poster = asset('chronoiq/video-poster.jpg');
   const awardPhoto = asset('chronoiq/award-photo.jpg');
+  const calendar = asset('chronoiq/shot-calendar.png');
+  const mobile = asset('chronoiq/shot-mobile.png');
 
   return (
     <section
@@ -63,27 +85,66 @@ export default function CaseChronoIQ() {
         </p>
         <p className="mono tz mt-3 text-[var(--zone-fg-soft)]">{chronoiq.credit}</p>
 
-        {/* Evidence field — dashboard breaks the grid right; focus mode sits low-left,
-            overlapping its bottom edge (§6.2 composition 01). */}
-        <div className="relative mt-16 pb-16 md:pb-24">
-          <Reveal className="md:ml-[16%] md:mr-[calc(50%-50vw+24px)]">
-            <Frame
-              rel="chronoiq/shot-dashboard.png"
-              domain="chronoiq.dev"
-              alt="ChronoIQ dashboard: today's plan with three scheduled study blocks on a timeline, a triage queue of assignments, and progress stats"
-              sizes="(min-width: 768px) 78vw, 100vw"
-              aspect="1728 / 1080"
-            />
+        {/* Evidence field — the shots are laid out like blocks on a schedule:
+            the dashboard runs the width of the day, the rest sit staggered
+            beneath it, each with a spectrum edge like a booked calendar entry. */}
+        <div className="mt-16">
+          <Reveal className="md:mr-[calc(50%-50vw+24px)]">
+            <PlannerEntry label="Dashboard — today's plan">
+              <Frame
+                rel="chronoiq/shot-dashboard.png"
+                domain="chronoiq.dev"
+                alt="ChronoIQ dashboard: today's plan with three scheduled study blocks on a timeline, a triage queue of assignments, and progress stats"
+                sizes="(min-width: 768px) 88vw, 100vw"
+                aspect="1728 / 1080"
+                edge={spectrum.coral}
+              />
+            </PlannerEntry>
           </Reveal>
-          <Reveal className="relative z-10 -mt-10 w-[72%] max-w-[400px] md:absolute md:bottom-0 md:left-0 md:mt-0 md:w-[38%]">
-            <Frame
-              rel="chronoiq/shot-focus.png"
-              domain="chronoiq.dev"
-              alt="ChronoIQ focus mode: a Pomodoro timer running on an essay assignment with the Study Coach panel open"
-              sizes="(min-width: 768px) 34vw, 72vw"
-              aspect="1728 / 1080"
-            />
-          </Reveal>
+
+          <div className="mt-10 flex flex-col gap-10 md:mt-14 md:flex-row md:items-start md:gap-6">
+            <Reveal className="md:w-[42%]">
+              <PlannerEntry label="Focus mode — Study Coach">
+                <Frame
+                  rel="chronoiq/shot-focus.png"
+                  domain="chronoiq.dev"
+                  alt="ChronoIQ focus mode: a Pomodoro timer running on an essay assignment with the Study Coach panel open"
+                  sizes="(min-width: 768px) 40vw, 100vw"
+                  aspect="1728 / 1080"
+                  edge={spectrum.pink}
+                />
+              </PlannerEntry>
+            </Reveal>
+
+            {calendar.exists && (
+              <Reveal className="md:mt-12 md:w-[38%]">
+                <PlannerEntry label="Calendar — real free time">
+                  <Frame
+                    rel="chronoiq/shot-calendar.png"
+                    domain="chronoiq.dev"
+                    alt="ChronoIQ calendar view: study blocks booked around existing commitments across the week"
+                    sizes="(min-width: 768px) 36vw, 100vw"
+                    aspect="1728 / 1080"
+                    edge={spectrum.violet}
+                  />
+                </PlannerEntry>
+              </Reveal>
+            )}
+
+            {mobile.exists && (
+              <Reveal className="md:mt-24 md:w-[20%]">
+                <PlannerEntry label="On a phone">
+                  <Frame
+                    rel="chronoiq/shot-mobile.png"
+                    domain="chronoiq.dev"
+                    alt="ChronoIQ on a phone: the day's study blocks in a single scrolling column"
+                    sizes="(min-width: 768px) 18vw, 60vw"
+                    aspect="390 / 844"
+                  />
+                </PlannerEntry>
+              </Reveal>
+            )}
+          </div>
         </div>
 
         {/* The award case: citation set like a legal citation, not a testimonial (§6.2). */}
@@ -133,29 +194,9 @@ export default function CaseChronoIQ() {
           </div>
         </div>
 
-        <div className="mt-16 max-w-[62ch]">
-          <p className="eyebrow tz">Decisions</p>
-          <p className="mt-4 leading-relaxed">{chronoiq.decisionsNote}</p>
-        </div>
+        <DecisionsAndStack note={chronoiq.decisionsNote} techLine={chronoiq.techLine} />
 
-        <p className="mono tz mt-10 max-w-[72ch] leading-relaxed text-[var(--zone-fg-soft)]">
-          {chronoiq.techLine}
-        </p>
-
-        <div className="tz mt-10 flex flex-wrap items-baseline gap-x-6 gap-y-2 border-t border-[var(--zone-hairline)] pt-5">
-          <span className="eyebrow tz">Receipts</span>
-          {chronoiq.receipts.map((r) => (
-            <a
-              key={r.url}
-              href={r.url}
-              target="_blank"
-              rel="noreferrer"
-              className="mono link-x tz text-[var(--zone-link)]"
-            >
-              {r.label} <span aria-hidden>↗</span>
-            </a>
-          ))}
-        </div>
+        <ReceiptsRow receipts={chronoiq.receipts} />
       </div>
     </section>
   );

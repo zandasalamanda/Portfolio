@@ -29,17 +29,17 @@ export function AwaitingAsset({
 /** §9 placeholder for a missing logo asset — compact hairline box, mono label. */
 export function AwaitingLogo({ rel }: { rel: string }) {
   return (
-    <span
-      className="mono tz flex h-14 items-center border border-[var(--zone-hairline)] px-3 text-[0.625rem] text-[var(--zone-fg-soft)] md:h-[72px]"
-    >
+    <span className="mono tz flex h-14 items-center border border-[var(--zone-hairline)] px-3 text-[0.625rem] text-[var(--zone-fg-soft)] md:h-[72px]">
       awaiting: {rel}
     </span>
   );
 }
 
 /**
- * Evidence frame (§3): screenshots sit in minimal --void browser frames,
- * 6px radius max, with the product's real domain as the frame's title.
+ * Evidence frame: a minimal browser frame with the product's real domain as
+ * its title, 6px radius. The chrome is zone-aware (--frame-* in globals.css)
+ * so a light screenshot on the warm ChronoIQ ground reads as a mounted
+ * document rather than a dark mass punched into the page.
  */
 export function Frame({
   rel,
@@ -49,6 +49,8 @@ export function Frame({
   aspect,
   priority = false,
   className = '',
+  /** Optional calendar-block edge tint (ChronoIQ zone) */
+  edge,
 }: {
   rel: string;
   alt: string;
@@ -58,6 +60,7 @@ export function Frame({
   aspect?: string;
   priority?: boolean;
   className?: string;
+  edge?: string;
 }) {
   const a = asset(rel);
   if (!a.exists || !a.width || !a.height) {
@@ -65,10 +68,11 @@ export function Frame({
   }
   return (
     <figure
-      className={`evidence-lift overflow-hidden rounded-[6px] bg-void ring-1 ring-white/[0.08] ${className}`}
+      className={`evidence-lift tz overflow-hidden rounded-[6px] bg-[var(--frame-bg)] shadow-[0_1px_0_var(--frame-ring)_inset,0_0_0_1px_var(--frame-ring)] ${className}`}
+      style={edge ? { borderLeft: `2px solid ${edge}` } : undefined}
     >
       <div className="flex items-center px-3 py-[7px]">
-        <span className="mono text-[0.6875rem] leading-none text-paper/50">
+        <span className="mono tz text-[0.6875rem] leading-none text-[var(--frame-label)]">
           {domain}
         </span>
       </div>

@@ -3,6 +3,7 @@ import { products } from '@/content/site';
 import { asset } from '@/lib/assets';
 import { AwaitingLogo, Frame } from './Evidence';
 import Reveal from './Reveal';
+import { DecisionsAndStack, ReceiptsRow } from './CaseBlocks';
 
 const solaspace = products[1];
 
@@ -99,9 +100,34 @@ export default function CaseSolaspace() {
           </h3>
         </div>
 
-        <p className="tz mt-5 text-[1.0625rem] text-[var(--zone-fg-soft)]">
-          &ldquo;{solaspace.tagline}&rdquo;
-        </p>
+        {/* The tagline as its own goal map: three waypoints on a charted path. */}
+        <ul
+          aria-label={`Tagline: ${solaspace.tagline}`}
+          className="mt-7 flex max-w-[520px] items-center"
+        >
+          {['Chart it', 'Focus', 'Arrive'].map((step, i) => (
+            <li
+              key={step}
+              className={`flex items-center gap-3 ${i === 0 ? '' : 'flex-1'}`}
+            >
+              {i > 0 && (
+                <span
+                  aria-hidden
+                  className="tz h-px flex-1 bg-gold/30"
+                />
+              )}
+              <span className="flex items-center gap-2.5">
+                <span
+                  aria-hidden
+                  className="h-[7px] w-[7px] rounded-full bg-gold shadow-[0_0_10px_2px_rgba(230,184,119,0.35)]"
+                />
+                <span className="mono text-[0.8125rem] text-[var(--zone-mono)] tz">
+                  {step}
+                </span>
+              </span>
+            </li>
+          ))}
+        </ul>
 
         <p className="mt-5 max-w-[54ch] text-[clamp(1.125rem,1.05rem+0.45vw,1.3125rem)] leading-relaxed">
           {solaspace.description}
@@ -130,7 +156,7 @@ export default function CaseSolaspace() {
               />
             </Reveal>
           </div>
-          <div className="md:sticky md:top-24 md:self-start">
+          <div className="relative md:sticky md:top-24 md:self-start">
             <Reveal>
               <Frame
                 rel="solaspace/shot-map.png"
@@ -143,29 +169,9 @@ export default function CaseSolaspace() {
           </div>
         </div>
 
-        <div className="mt-16 max-w-[62ch]">
-          <p className="eyebrow tz">Decisions</p>
-          <p className="mt-4 leading-relaxed">{solaspace.decisionsNote}</p>
-        </div>
+        <DecisionsAndStack note={solaspace.decisionsNote} techLine={solaspace.techLine} />
 
-        <p className="mono tz mt-10 max-w-[72ch] leading-relaxed text-[var(--zone-fg-soft)]">
-          {solaspace.techLine}
-        </p>
-
-        <div className="tz mt-10 flex flex-wrap items-baseline gap-x-6 gap-y-2 border-t border-[var(--zone-hairline)] pt-5">
-          <span className="eyebrow tz">Receipts</span>
-          {solaspace.receipts.map((r) => (
-            <a
-              key={r.url}
-              href={r.url}
-              target="_blank"
-              rel="noreferrer"
-              className="mono link-x tz text-[var(--zone-link)]"
-            >
-              {r.label} <span aria-hidden>↗</span>
-            </a>
-          ))}
-        </div>
+        <ReceiptsRow receipts={solaspace.receipts} />
       </div>
     </section>
   );

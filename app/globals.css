@@ -35,11 +35,22 @@
   --zone-mono: #55555c;
   --zone-link: #1e32c8;
   --zone-hairline: #e4e3dc;
+
+  /* Evidence-frame chrome. Light grounds mount screenshots like documents;
+     dark grounds keep the --void frame so shots read as framed artifacts. */
+  --frame-bg: #fffdf8;
+  --frame-ring: rgba(16, 16, 20, 0.1);
+  --frame-label: #55555c;
 }
 
 html[data-zone="chronoiq"] {
   --zone-ground: #f3ece2;
-  --zone-hairline: #e0d5c2;
+  --zone-hairline: #ded2bf;
+  --zone-fg-soft: #4f4639;
+  --zone-mono: #4f4639;
+  --frame-bg: #fffdf8;
+  --frame-ring: rgba(63, 48, 28, 0.16);
+  --frame-label: #6c5f4d;
 }
 
 html[data-zone="solaspace"] {
@@ -49,6 +60,9 @@ html[data-zone="solaspace"] {
   --zone-mono: #e6b877;
   --zone-link: #e6b877;
   --zone-hairline: rgba(250, 250, 248, 0.16);
+  --frame-bg: #0b0b0e;
+  --frame-ring: rgba(250, 250, 248, 0.1);
+  --frame-label: rgba(250, 250, 248, 0.5);
 }
 
 html[data-zone="everdeck"] {
@@ -58,6 +72,9 @@ html[data-zone="everdeck"] {
   --zone-mono: #c9bbff;
   --zone-link: #c9bbff;
   --zone-hairline: rgba(250, 250, 248, 0.14);
+  --frame-bg: #0b0b0e;
+  --frame-ring: rgba(250, 250, 248, 0.1);
+  --frame-label: rgba(250, 250, 248, 0.5);
 }
 
 /* ---------------------------------------------------------------------------

@@ -3,40 +3,63 @@ import { everdeckPreview, products } from '@/content/site';
 import { asset } from '@/lib/assets';
 import { AwaitingAsset, AwaitingLogo, Frame } from './Evidence';
 import Reveal from './Reveal';
+import { DecisionsAndStack, ReceiptsRow } from './CaseBlocks';
 
 const everdeck = products[2];
 
-const cards = [
+/** The hand, dealt in the order the product works: find → design → pitch. */
+const allCards = [
   {
     rel: 'everdeck/shot-deck.png',
-    tab: 'shot 01 — deck',
+    tab: 'deck',
     tint: '#ffc2d4',
     alt: 'Everdeck prospect deck: a grid of scored cards, each showing a local business, its current website screenshot, an opportunity score, and audit reasons',
+    /** desktop placement: [left, top, rotation, width] */
+    pos: 'md:left-0 md:top-0 md:w-[52%] md:-rotate-[5deg]',
   },
   {
     rel: 'everdeck/shot-prospect.png',
-    tab: 'shot 02 — prospect',
+    tab: 'prospect',
     tint: '#c9bbff',
     alt: "Everdeck prospect detail: a before/after comparison of a business's current site beside the automatically designed concept, with an opportunity score ring and outreach pipeline",
+    pos: 'md:right-0 md:top-[88px] md:w-[52%] md:rotate-[3.5deg]',
+  },
+  {
+    rel: 'everdeck/shot-outreach.png',
+    tab: 'outreach',
+    tint: '#9cd6ff',
+    alt: 'Everdeck outreach: the drafted pitch message written for a prospect, ready to send',
+    pos: 'md:left-[24%] md:top-[236px] md:w-[52%] md:-rotate-[1deg]',
   },
 ];
 
+/** The relative paths of every dealable Everdeck screenshot (source of truth
+ *  for both the fan below and the promotion gate in app/page.tsx). */
+export const everdeckShots = allCards.map((c) => c.rel);
+
+/** Only deal the cards whose screenshots actually exist. */
+const cards = allCards.filter((c) => asset(c.rel).exists);
+
 function FanCard({
   card,
+  index,
   className,
+  style,
 }: {
-  card: (typeof cards)[number];
+  card: (typeof allCards)[number];
+  index: number;
   className: string;
+  style?: React.CSSProperties;
 }) {
   const a = asset(card.rel);
   return (
-    <Reveal className={className}>
+    <Reveal className={className} style={style}>
       <div className="relative">
         <span
-          className="mono absolute -top-6 left-4 rounded-t-[4px] border border-b-0 px-2.5 py-1 text-[0.625rem] uppercase tracking-[0.14em] text-[var(--zone-mono)] tz"
+          className="mono absolute -top-[26px] left-4 rounded-t-[4px] border border-b-0 px-2.5 py-1 text-[0.625rem] uppercase tracking-[0.14em] text-[var(--zone-mono)] tz"
           style={{ borderColor: `${card.tint}59` }}
         >
-          {card.tab}
+          {String(index + 1).padStart(2, '0')} — {card.tab}
         </span>
         <div
           className="overflow-hidden rounded-[6px]"
@@ -70,10 +93,15 @@ export default function CaseEverdeck() {
       className="relative scroll-mt-14"
     >
       <div className="relative mx-auto w-full max-w-[1200px] px-6 py-20 md:px-10 md:py-36">
-        <div className="tz border-b border-[var(--zone-hairline)] pb-3">
-          <p className="eyebrow tz">
+        {/* The section header is itself an index tab on the top edge of the deck. */}
+        <div className="flex items-end">
+          <p
+            className="eyebrow tz border-x border-t px-3.5 py-2"
+            style={{ borderColor: 'var(--zone-hairline)' }}
+          >
             {everdeck.number} · {everdeck.date} · private preview
           </p>
+          <span aria-hidden className="tz h-px flex-1 bg-[var(--zone-hairline)]" />
         </div>
 
         <div className="mt-10 flex items-center gap-5">
@@ -108,40 +136,25 @@ export default function CaseEverdeck() {
         {/* Evidence field — screenshots dealt as a fanned card stack with mono
             index tabs; the pastel spectrum appears only as per-card edge tints
             (§5 device, §6.2 composition 03). */}
-        <div className="relative mt-24 md:mt-28 md:h-[560px] lg:h-[620px]">
-          <FanCard
-            card={cards[0]}
-            className="relative w-[92%] rotate-[-2.5deg] md:absolute md:left-0 md:top-0 md:w-[58%] md:rotate-[-4.5deg]"
-          />
-          <FanCard
-            card={cards[1]}
-            className="relative z-10 -mt-6 ml-auto w-[92%] rotate-[2deg] md:absolute md:right-0 md:top-28 md:mt-0 md:w-[58%] md:rotate-[3deg]"
-          />
-        </div>
-
-        <div className="mt-16 max-w-[62ch]">
-          <p className="eyebrow tz">Decisions</p>
-          <p className="mt-4 leading-relaxed">{everdeck.decisionsNote}</p>
-        </div>
-
-        <p className="mono tz mt-10 max-w-[72ch] leading-relaxed text-[var(--zone-fg-soft)]">
-          {everdeck.techLine}
-        </p>
-
-        <div className="tz mt-10 flex flex-wrap items-baseline gap-x-6 gap-y-2 border-t border-[var(--zone-hairline)] pt-5">
-          <span className="eyebrow tz">Receipts</span>
-          {everdeck.receipts.map((r) => (
-            <a
-              key={r.url}
-              href={r.url}
-              target="_blank"
-              rel="noreferrer"
-              className="mono link-x tz text-[var(--zone-link)]"
-            >
-              {r.label} <span aria-hidden>↗</span>
-            </a>
+        <div
+          className={`relative mt-20 md:mt-24 ${cards.length > 2 ? 'md:h-[700px] lg:h-[760px]' : 'md:h-[560px] lg:h-[620px]'}`}
+        >
+          {cards.map((card, i) => (
+            <FanCard
+              key={card.rel}
+              card={card}
+              index={i}
+              className={`relative w-[92%] md:absolute md:mt-0 ${card.pos} ${
+                i % 2 === 0 ? 'rotate-[-2.5deg]' : 'ml-auto rotate-[2deg]'
+              } ${i > 0 ? '-mt-4' : ''}`}
+              style={{ zIndex: 10 + i }}
+            />
           ))}
         </div>
+
+        <DecisionsAndStack note={everdeck.decisionsNote} techLine={everdeck.techLine} />
+
+        <ReceiptsRow receipts={everdeck.receipts} />
       </div>
     </section>
   );
