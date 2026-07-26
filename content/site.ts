@@ -32,11 +32,9 @@ export const identity = {
   email: 'zander.leon@gmail.com',
   github: 'https://github.com/zandasalamanda',
   githubHandle: 'github/zandasalamanda',
-  // NOTE: the brief lists linkedin.com/in/zanderleon, but a logged-in manual
-  // check (§10) found that vanity URL belongs to a different Zander Leon
-  // (University of Arizona marketing coordinator). Omitted until the client
-  // supplies the correct profile URL.
-  linkedin: null as string | null,
+  // Real profile confirmed by the client (the bare /in/zanderleon vanity URL
+  // belongs to a different person, so the full handle is required here).
+  linkedin: 'https://www.linkedin.com/in/zander-leon-0b2a412b2/',
 } as const;
 
 export const positioning = {
@@ -66,7 +64,7 @@ export const products: Product[] = [
     description:
       'AI-powered study scheduler — syncs Google Calendar and Classroom, estimates homework time with AI, and books study blocks into real free time.',
     decisionsNote:
-      'Google OAuth tokens never touch the database — they live only in an AES-256-GCM encrypted httpOnly cookie. The whole app runs with zero API keys: deterministic fallback scheduling, a mock Study Coach, and simulated billing keep every feature testable.',
+      "One decision I stand by: your Google sign-in is never saved to a database — it stays in your own browser and nowhere else. And the app still works with the AI switched off, falling back to its own scheduling and a practice study coach, so nothing ever breaks.",
     techLine:
       'Next.js · TypeScript · Cloudflare D1 + edge · Clerk · Google Calendar/Classroom APIs · Gemini (scheduling) · Claude (Study Coach) · Stripe',
     credit: 'Built with Maxwell Brohm.',
@@ -93,7 +91,7 @@ export const products: Product[] = [
     description:
       'An AI goal-execution app — type any goal in plain words and it maps every step, finds every resource, and builds a plan for the time you actually have today.',
     decisionsNote:
-      'The AI layer degrades gracefully: if the model is ever unavailable, deterministic planning keeps the whole app working. Payments run through Stripe Checkout; the app never sees a card number.',
+      'If the AI ever goes down, the app keeps planning on its own instead of just stopping. Payments run through Stripe, so the app never sees or stores your card.',
     techLine:
       'Next.js · TypeScript · Supabase (RLS) · Clerk · Stripe · structured-output AI planning',
     receipts: [
@@ -113,7 +111,7 @@ export const products: Product[] = [
     description:
       'Finds local businesses with weak or missing websites, designs each one a better site automatically, and drafts the outreach — so you pitch with the work already done.',
     decisionsNote:
-      'The web app holds only a public anon key — row-level security is the entire tenant boundary. All privileged work runs in edge functions off a durable Postgres job queue with atomic claims, backoff, and dead-lettering, drained by cron.',
+      'The slow work — scanning for businesses, building each site, writing the outreach — runs in the background on the server, so it keeps going even if you close the tab. And every user only ever sees their own data, locked down at the database itself.',
     techLine:
       'Next.js · TypeScript · Supabase Edge Functions + pg_cron · Clerk · Google Places API · Gemini (structured output)',
     receipts: [

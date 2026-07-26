@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-26T21:46:15.964Z",
+  "generatedAt": "2026-07-26T21:59:35.448Z",
   "assets": {
     "chronoiq/logo.png": {
       "exists": true,
@@ -90,11 +90,13 @@
       "height": 2532
     },
     "headshot.jpg": {
-      "exists": false,
-      "optional": true
+      "exists": true,
+      "optional": true,
+      "width": 800,
+      "height": 800
     },
     "resume-web.pdf": {
-      "exists": false,
+      "exists": true,
       "optional": true
     },
     "bandr/shot-detail.png": {
