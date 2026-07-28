@@ -1,5 +1,5 @@
 {
-  "verifiedAt": "2026-07-26T21:59:41.920Z",
+  "verifiedAt": "2026-07-28T16:46:18.728Z",
   "products": [
     {
       "name": "ChronoIQ",
@@ -16,6 +16,17 @@
     {
       "name": "Everdeck",
       "status": "private preview",
+      "date": "JUL 2026"
+    },
+    {
+      "name": "Bandr",
+      "status": "open source",
+      "date": "JUN 2026",
+      "repo": "zandasalamanda/Bandr"
+    },
+    {
+      "name": "Ya Sabo",
+      "status": "in development",
       "date": "JUL 2026"
     }
   ],

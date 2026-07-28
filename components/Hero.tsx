@@ -1,6 +1,9 @@
+import Image from 'next/image';
 import github from '@/content/github.json';
 import verification from '@/content/verification.json';
 import { positioning, proofLine } from '@/content/site';
+import { asset } from '@/lib/assets';
+import HeroField from './HeroField';
 
 interface VerifyResult {
   url: string;
@@ -15,6 +18,43 @@ function statusFor(host: string): string {
   return hit?.status != null ? String(hit.status) : '—';
 }
 
+/** Real product marks where an asset exists; a mono monogram chip otherwise. */
+const MARKS: Record<string, { rel: string; rounded?: boolean } | { chip: string }> = {
+  ChronoIQ: { rel: 'chronoiq/logo.png', rounded: true },
+  Solaspace: { rel: 'solaspace/logo.svg' },
+  Everdeck: { rel: 'everdeck/logo.svg' },
+  Bandr: { chip: 'B' },
+  'Ya Sabo': { chip: 'YS' },
+};
+
+function ProductMark({ name }: { name: string }) {
+  const mark = MARKS[name];
+  // Always occupy the 16px slot so rows stay aligned even without a mark.
+  if (!mark) return <span aria-hidden className="h-4 w-4 shrink-0" />;
+  if ('chip' in mark) {
+    return (
+      <span
+        aria-hidden
+        className="mono tz flex h-4 w-4 shrink-0 items-center justify-center border border-[var(--zone-hairline)] text-[0.5rem] leading-none text-[var(--zone-fg-soft)]"
+      >
+        {mark.chip}
+      </span>
+    );
+  }
+  const a = asset(mark.rel);
+  if (!a.exists) return <span aria-hidden className="h-4 w-4 shrink-0" />;
+  return (
+    <Image
+      src={a.url}
+      alt=""
+      width={16}
+      height={16}
+      unoptimized
+      className={`h-4 w-4 shrink-0 object-contain ${mark.rounded ? 'rounded-[3px]' : ''}`}
+    />
+  );
+}
+
 export default function Hero() {
   const verifiedAt = (verification as { verifiedAt: string | null }).verifiedAt;
   const productRows = (
@@ -25,7 +65,8 @@ export default function Hero() {
 
   return (
     <section className="relative flex min-h-[100svh] flex-col">
-      <div className="mx-auto flex w-full max-w-[1200px] flex-1 flex-col px-6 pt-[calc(52px+clamp(2.25rem,8svh,5.5rem))] md:px-10">
+      <HeroField />
+      <div className="relative mx-auto flex w-full max-w-[1200px] flex-1 flex-col px-6 pt-[calc(52px+clamp(2.25rem,8svh,5.5rem))] md:px-10">
         <div className="hero-mask">
           <h1 className="display text-[clamp(3rem,9vw,7.5rem)] uppercase text-[var(--zone-fg)] tz">
             {`Zander Leon`}
@@ -72,12 +113,13 @@ export default function Hero() {
           })}
         </ul>
 
-        <div className="hero-stage-4 mt-10 w-full max-w-[640px]">
+        <div className="hero-stage-4 mt-10 w-full max-w-[660px]">
           {productRows.map((p) => (
             <div
               key={p.name}
-              className="tz flex items-baseline gap-2.5 border-t border-[var(--zone-hairline)] py-[0.6875rem] last:border-b min-[401px]:gap-3"
+              className="tz flex items-center gap-2.5 border-t border-[var(--zone-hairline)] py-[0.5625rem] last:border-b min-[401px]:gap-3"
             >
+              <ProductMark name={p.name} />
               <span className="mono tz text-[var(--zone-fg)]">{p.name}</span>
               <span aria-hidden className="mono tz text-[var(--zone-fg-soft)] max-[400px]:hidden">
                 —

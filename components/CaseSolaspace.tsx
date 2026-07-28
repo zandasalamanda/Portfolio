@@ -1,11 +1,11 @@
 import Image from 'next/image';
-import { products } from '@/content/site';
+import { productById } from '@/content/site';
 import { asset } from '@/lib/assets';
 import { AwaitingLogo, Frame } from './Evidence';
 import Reveal from './Reveal';
 import { DecisionsAndStack, ReceiptsRow } from './CaseBlocks';
 
-const solaspace = products[1];
+const solaspace = productById('solaspace');
 
 /** Deterministic PRNG so the starfield is identical on every render. */
 function mulberry32(seed: number) {
@@ -33,7 +33,7 @@ export default function CaseSolaspace() {
   return (
     <section
       id="case-solaspace"
-      aria-label="Case study 02: Solaspace"
+      aria-label="Case study 03: Solaspace"
       className="relative scroll-mt-14"
     >
       {/* Takeover device (§5): sparse, static, near-threshold starfield. */}

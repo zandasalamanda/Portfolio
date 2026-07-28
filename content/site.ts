@@ -1,8 +1,9 @@
 // Single source of truth for every fact on the site.
-// Every value here traces to §12 of the build brief (Facts Appendix).
-// Do not add claims, metrics, or URLs that are not in the brief.
+// Core facts trace to §12 of the build brief (Facts Appendix); additions are
+// sourced from the client's own repos, write-ups, and app captures — each
+// noted inline. Do not add claims, metrics, or URLs without a source.
 
-export type ProductStatus = 'live' | 'private preview';
+export type ProductStatus = 'live' | 'private preview' | 'open source';
 
 export interface Receipt {
   label: string;
@@ -10,11 +11,11 @@ export interface Receipt {
 }
 
 export interface Product {
-  id: 'chronoiq' | 'solaspace' | 'everdeck';
-  number: '01' | '02' | '03';
+  id: 'chronoiq' | 'bandr' | 'solaspace' | 'everdeck';
+  number: '01' | '02' | '03' | '04';
   name: string;
   status: ProductStatus;
-  /** Display date, e.g. "DEC 2025" — from content/github.json */
+  /** Display date, e.g. "DEC 2025" */
   date: string;
   description: string;
   decisionsNote: string;
@@ -42,7 +43,7 @@ export const positioning = {
   line: 'I build software that ships.',
   title: 'Zander Leon — I build software that ships',
   description:
-    'Portfolio of Zander Leon, student developer — ChronoIQ (Congressional App Challenge winner, NJ-07 2025), Solaspace, and Everdeck. Shipped products, live receipts.',
+    'Portfolio of Zander Leon, student developer — ChronoIQ (Congressional App Challenge winner, NJ-07 2025), Bandr, Solaspace, and Everdeck. Shipped products, live receipts.',
 } as const;
 
 export const awardPageUrl = 'https://www.congressionalappchallenge.us/25-nj07/';
@@ -82,8 +83,29 @@ export const products: Product[] = [
     ],
   },
   {
-    id: 'solaspace',
+    // Facts: Bandr repo README + captures of the running app (31 move
+    // templates counted in src/data/moves.ts; no backend, localStorage only;
+    // parent-first safety in every in-person launch kit).
+    id: 'bandr',
     number: '02',
+    name: 'Bandr',
+    status: 'open source',
+    date: 'JUN 2026',
+    description:
+      'A mobile-first app that helps teens find safe, realistic ways to make money — and builds the exact launch plan for each one.',
+    decisionsNote:
+      'Every recommendation comes from a rule engine you can read — all 31 money-moves are scored openly against your skills, your age, and what you already have. No accounts, no servers: the whole app lives on your phone, and every in-person move starts with a parent check.',
+    techLine: 'React · TypeScript · Vite · Tailwind · PWA — no backend, everything on-device',
+    receipts: [
+      {
+        label: 'github/zandasalamanda/Bandr',
+        url: 'https://github.com/zandasalamanda/Bandr',
+      },
+    ],
+  },
+  {
+    id: 'solaspace',
+    number: '03',
     name: 'Solaspace',
     status: 'live',
     date: 'JUL 2026',
@@ -103,15 +125,19 @@ export const products: Product[] = [
     ],
   },
   {
+    // Positioning per the client (Jul 2026): present Everdeck as an AI
+    // business-niche generator organizing moves as a deck of cards; the
+    // product's direction is still being decided. Every clause below is true
+    // of the running app (market scans, 0–100 opportunity scores, card deck).
     id: 'everdeck',
-    number: '03',
+    number: '04',
     name: 'Everdeck',
     status: 'private preview',
     date: 'JUL 2026',
     description:
-      'Finds local businesses with weak or missing websites, designs each one a better site automatically, and drafts the outreach — so you pitch with the work already done.',
+      'A business-strategy deck in the making — point it at a market, let it hunt down every business in a niche, size each one up, and deal your next moves back as a hand of scored cards.',
     decisionsNote:
-      'The slow work — scanning for businesses, building each site, writing the outreach — runs in the background on the server, so it keeps going even if you close the tab. And every user only ever sees their own data, locked down at the database itself.',
+      'The heavy lifting — scanning a market and sizing up every business in it — runs in the background on the server, so it keeps working even when the tab is closed. And every user only ever sees their own deck, locked down at the database itself.',
     techLine:
       'Next.js · TypeScript · Supabase Edge Functions + pg_cron · Clerk · Google Places API · Gemini (structured output)',
     receipts: [
@@ -120,16 +146,20 @@ export const products: Product[] = [
   },
 ];
 
+export function productById(id: Product['id']): Product {
+  const p = products.find((x) => x.id === id);
+  if (!p) throw new Error(`unknown product: ${id}`);
+  return p;
+}
+
 /** §6.2 — the award case, sourced exactly as the brief specifies */
 export const award = {
-  /** Judges' wording as reported by WRNJ Radio, Feb 21 2026 */
   citationSelectedFor: 'the quality of the concept, presentation and technical execution',
   citationNoting: "the app's intuitive interface and overall visual cohesiveness",
   citationAttribution:
     'Congressional App Challenge judges, as reported by WRNJ Radio, Feb 21 2026',
   citationUrl:
     'https://wrnjradio.com/kean-honors-7th-district-winners-of-congressional-app-challenge/',
-  /** Source: official award page */
   scaleLine: 'selected from 4,600+ apps · 13,800+ participants · 394 districts',
   capitolLine: 'Displayed at the U.S. Capitol — House of Code, Washington, D.C.',
   jsonLd: 'Congressional App Challenge, NJ-07, 2025',
@@ -142,14 +172,119 @@ export const everdeckPreview = {
   mailto: `mailto:${identity.email}?subject=${encodeURIComponent('Everdeck preview')}`,
 } as const;
 
-export const bandr = {
-  name: 'Bandr',
-  line: 'A mobile-first PWA that matches teens with legitimate ways to earn, scored by a transparent rule engine.',
-  repo: 'https://github.com/zandasalamanda/Bandr',
-  repoLabel: 'github/zandasalamanda/Bandr',
-} as const;
+/**
+ * In the lab — real, current side projects. Lines derive from each project's
+ * own README/package.json (quoted in the research notes); repo links only
+ * where a public repo with source actually exists.
+ */
+export interface LabItem {
+  name: string;
+  status?: string;
+  line: string;
+  repo?: string;
+  repoLabel?: string;
+  /** §9-style asset paths for phone screenshots, when captured */
+  shots?: string[];
+}
 
-/** §6.3 — proof of work; every line verified in §12 */
+export const labItems: LabItem[] = [
+  {
+    // Source: YaSaboApp README (local project, in active development; its
+    // GitHub repo is empty, so no repo receipt).
+    name: 'Ya Sabo',
+    status: 'in development',
+    line: 'A judgment-free Spanish-comprehension app for “no sabo” heritage speakers — real Colombian voices, slang, and speed. An installable PWA that runs entirely on-device.',
+    shots: ['yasabo/shot-home.png', 'yasabo/shot-loop.png', 'yasabo/shot-third.png'],
+  },
+  {
+    // Source: Libero repo (pinned) — config.py: "Configuration for LIBERO — AI
+    // Ball Tracker"; main.py: YOLOv8n + HSV fusion, overlay, mouse control.
+    name: 'Libero',
+    line: 'A real-time AI ball tracker — YOLOv8 fused with color detection over live screen capture, with an on-screen overlay.',
+    repo: 'https://github.com/zandasalamanda/Libero',
+    repoLabel: 'github/zandasalamanda/Libero',
+  },
+  {
+    // Source: Verbalist repo (pinned) — package.json description.
+    name: 'Verbalist',
+    line: 'An interactive speech coach that flags filler words, brainrot, and jargon as you speak.',
+    repo: 'https://github.com/zandasalamanda/Verbalist',
+    repoLabel: 'github/zandasalamanda/Verbalist',
+  },
+  {
+    // Source: Astrovia-NASA-ADC repo — Ursina solar-system simulation; repo
+    // name records the NASA App Development Challenge affiliation (also a §12
+    // About fact).
+    name: 'Astrovia',
+    line: 'A 3D solar-system simulation built in Python for the NASA App Development Challenge.',
+    repo: 'https://github.com/zandasalamanda/Astrovia-NASA-ADC',
+    repoLabel: 'github/zandasalamanda/Astrovia-NASA-ADC',
+  },
+];
+
+/**
+ * The archive — earlier game work. Titles, context, and lines adapt the
+ * client's own write-ups from his previous portfolio (js/interactables.js);
+ * sprites are the games' real pixel art. Only FLAT-EARTHRZ has public source.
+ */
+export interface ArchiveGame {
+  title: string;
+  context: string;
+  line: string;
+  tags: string;
+  /** asset path under content/assets/ */
+  sprite?: string;
+  spriteAlt?: string;
+  repo?: string;
+  repoLabel?: string;
+}
+
+export const archiveGames: ArchiveGame[] = [
+  {
+    title: 'The Legend of TharThar II',
+    context: 'HACKMCST 2024 — Lost in Cyberspace',
+    line: 'A tile-based tower defense — heroes vs. real cyber threats like Trojans and Worms. All visuals and code from scratch.',
+    tags: 'Java · Processing',
+    sprite: 'artifacts/tharthar-hero.gif',
+    spriteAlt: 'Pixel-art hero character from The Legend of TharThar II',
+  },
+  {
+    title: 'Please Impress The King',
+    context: 'SkillsUSA game development',
+    line: "A retro turn-based comedy RPG — a failed squire's last chance at knighthood, inspired by Stardew Valley and King's Quest.",
+    tags: 'Unity · C# · Aseprite',
+    sprite: 'artifacts/king-knight.png',
+    spriteAlt: 'Pixel-art knight from Please Impress The King',
+  },
+  {
+    title: 'FLAT-EARTHRZ',
+    context: '2-player co-op survival',
+    line: 'Alien workers harvest floating flat islands, leap across the void, and craft to fill construction orders.',
+    tags: 'JavaScript · Canvas',
+    sprite: 'artifacts/flatearthrz-alien.gif',
+    spriteAlt: 'Pixel-art alien worker from FLAT-EARTHRZ',
+    repo: 'https://github.com/zandasalamanda/GJ26',
+    repoLabel: 'source ↗',
+  },
+  {
+    title: 'Volleyball 1',
+    context: 'Java arcade',
+    line: '2D retro volleyball against a smart AI — real ball physics: gravity, elasticity, drag.',
+    tags: 'Java · Processing',
+    sprite: 'artifacts/volleyball-spike.gif',
+    spriteAlt: 'Pixel-art volleyball player mid-spike from Volleyball 1',
+  },
+  {
+    title: 'Pipkin Parade',
+    context: 'Puzzle-strategy',
+    line: 'A Lemmings-inspired puzzler — guide the parade with Builder, Blocker, Digger, and Floater abilities.',
+    tags: 'JavaScript · Canvas',
+    sprite: 'artifacts/pipkin-idle.png',
+    spriteAlt: 'Pixel-art pink Pipkin from Pipkin Parade',
+  },
+];
+
+/** §6.3 — proof of work; every line verified */
 export const proofOfWork = {
   originalityLine: 'Original work — zero forks.',
   profileUrl: identity.github,
@@ -159,18 +294,28 @@ export const proofOfWork = {
 export const aboutParagraph =
   "I studied computer science at Morris County School of Technology (class of '26). The products I ship started as problems I actually had — homework that kept sliding to 11 p.m. became ChronoIQ. Building the tool beats complaining about the problem. Away from the keyboard: varsity soccer, FIRST Robotics, and ecological fieldwork in the Peruvian Amazon.";
 
-/** Mono fact list: §12 verified + resume-sourced facts (confirm against resume-web.pdf before publish) */
+/**
+ * About timeline — dated, verifiable events only.
+ * Sources: §12 facts; GitHub account created 2024-02-09 (profile API);
+ * product dates from content/github.json.
+ */
+export const timeline = [
+  { stamp: 'SEP 2023', text: 'Intern, Raymond James Financial Services' },
+  { stamp: 'FEB 2024', text: 'Joined GitHub — every repo since is original work' },
+  { stamp: '2024', text: 'HACKMCST hackathon · NASA App Development Challenge' },
+  { stamp: 'DEC 2025', text: 'Congressional App Challenge winner, NJ-07 — ChronoIQ' },
+  { stamp: '2026', text: 'Graduated MCST — Academy for Computer & Information Sciences' },
+  { stamp: 'JUL 2026', text: 'Solaspace live · Everdeck in private preview' },
+] as const;
+
+/** Undated facts (§12 verified + resume-sourced) — rendered as chips */
 export const aboutFacts = [
-  'Morris County School of Technology — Academy for Computer & Information Sciences, class of 2026',
   '4.0 unweighted GPA',
-  'Congressional App Challenge winner, NJ-07, 2025',
-  'SkillsUSA — interactive game design competitor',
-  'HACKMCST 2024 · NASA App Development Challenge submission',
+  'Varsity soccer — senior year',
+  'SkillsUSA — interactive game design',
   'FIRST Robotics — programming + outreach',
-  'Varsity soccer, senior year',
-  'Intern, Raymond James Financial Services — since Sept 2023',
-  'Rainforest conservation fieldwork, Peruvian Amazon',
-  'Animal rehabilitation volunteer, Patchwork Pastures',
+  'Rainforest conservation fieldwork — Peruvian Amazon',
+  'Animal rehabilitation volunteer — Patchwork Pastures',
 ] as const;
 
 export const contact = {

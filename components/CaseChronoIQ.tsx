@@ -1,13 +1,13 @@
 import Image from 'next/image';
 import spectrum from '@/content/spectrum.json';
-import { award, products } from '@/content/site';
+import { award, productById } from '@/content/site';
 import { asset } from '@/lib/assets';
 import { AwaitingLogo, Frame } from './Evidence';
 import Reveal from './Reveal';
 import { DecisionsAndStack, ReceiptsRow } from './CaseBlocks';
 import VideoFacade from './VideoFacade';
 
-const chronoiq = products[0];
+const chronoiq = productById('chronoiq');
 
 /** A screenshot dressed as a scheduled entry: mono label on a ruled top edge. */
 function PlannerEntry({
@@ -58,7 +58,7 @@ export default function CaseChronoIQ() {
             {chronoiq.number} · {chronoiq.date} · live
           </p>
           <p className="mono tz hidden text-[0.6875rem] text-[var(--zone-fg-soft)] sm:block">
-            shipping order — earliest first
+            build order — earliest first
           </p>
         </div>
 

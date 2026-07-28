@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 
-export type ZoneId = 'chronoiq' | 'solaspace' | 'everdeck';
+export type ZoneId = 'chronoiq' | 'bandr' | 'solaspace' | 'everdeck';
 
 /**
  * The signature device (§5): a single fixed background layer behind all

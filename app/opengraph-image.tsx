@@ -22,7 +22,7 @@ export default async function OgImage() {
 
   const rows = (
     github as { products: { name: string; status: string; date: string }[] }
-  ).products;
+  ).products.slice(0, 3);
 
   return new ImageResponse(
     (

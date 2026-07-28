@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-26T21:59:35.448Z",
+  "generatedAt": "2026-07-28T16:46:12.258Z",
   "assets": {
     "chronoiq/logo.png": {
       "exists": true,
@@ -74,16 +74,58 @@
     "everdeck/shot-deck.png": {
       "exists": true,
       "optional": false,
-      "width": 3456,
-      "height": 2160
+      "width": 2352,
+      "height": 1826
     },
-    "everdeck/shot-prospect.png": {
+    "everdeck/shot-hunts.png": {
       "exists": true,
       "optional": false,
+      "width": 1584,
+      "height": 1110
+    },
+    "everdeck/shot-landing.png": {
+      "exists": true,
+      "optional": true,
       "width": 3456,
       "height": 2160
     },
     "bandr/shot-home.png": {
+      "exists": true,
+      "optional": false,
+      "width": 1170,
+      "height": 2532
+    },
+    "bandr/shot-detail.png": {
+      "exists": true,
+      "optional": false,
+      "width": 1170,
+      "height": 2532
+    },
+    "bandr/shot-quiz.png": {
+      "exists": true,
+      "optional": false,
+      "width": 1170,
+      "height": 2532
+    },
+    "bandr/shot-kit.png": {
+      "exists": true,
+      "optional": false,
+      "width": 1170,
+      "height": 2532
+    },
+    "yasabo/shot-home.png": {
+      "exists": true,
+      "optional": true,
+      "width": 1170,
+      "height": 2532
+    },
+    "yasabo/shot-loop.png": {
+      "exists": true,
+      "optional": true,
+      "width": 1170,
+      "height": 2532
+    },
+    "yasabo/shot-third.png": {
       "exists": true,
       "optional": true,
       "width": 1170,
@@ -99,7 +141,73 @@
       "exists": true,
       "optional": true
     },
-    "bandr/shot-detail.png": {
+    "artifacts/flatearthrz-alien-still.png": {
+      "exists": true,
+      "optional": true,
+      "width": 1000,
+      "height": 1000
+    },
+    "artifacts/flatearthrz-alien.gif": {
+      "exists": true,
+      "optional": true,
+      "width": 1000,
+      "height": 1000
+    },
+    "artifacts/king-knight.png": {
+      "exists": true,
+      "optional": true,
+      "width": 150,
+      "height": 150
+    },
+    "artifacts/king-wizard.png": {
+      "exists": true,
+      "optional": true,
+      "width": 64,
+      "height": 64
+    },
+    "artifacts/pipkin-idle.png": {
+      "exists": true,
+      "optional": true,
+      "width": 512,
+      "height": 800
+    },
+    "artifacts/tharthar-hero-still.png": {
+      "exists": true,
+      "optional": true,
+      "width": 992,
+      "height": 992
+    },
+    "artifacts/tharthar-hero.gif": {
+      "exists": true,
+      "optional": true,
+      "width": 992,
+      "height": 992
+    },
+    "artifacts/tharthar-virus.png": {
+      "exists": true,
+      "optional": true,
+      "width": 1024,
+      "height": 1024
+    },
+    "artifacts/volleyball-run.gif": {
+      "exists": true,
+      "optional": true,
+      "width": 42,
+      "height": 42
+    },
+    "artifacts/volleyball-spike-still.png": {
+      "exists": true,
+      "optional": true,
+      "width": 42,
+      "height": 42
+    },
+    "artifacts/volleyball-spike.gif": {
+      "exists": true,
+      "optional": true,
+      "width": 42,
+      "height": 42
+    },
+    "bandr/shot-saved.png": {
       "exists": true,
       "optional": true,
       "width": 1170,
@@ -116,12 +224,6 @@
       "optional": true,
       "width": 1170,
       "height": 2532
-    },
-    "everdeck/shot-outreach.png": {
-      "exists": true,
-      "optional": true,
-      "width": 3456,
-      "height": 2160
     }
   }
 }

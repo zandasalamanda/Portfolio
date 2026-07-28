@@ -53,6 +53,17 @@ html[data-zone="chronoiq"] {
   --frame-label: #6c5f4d;
 }
 
+html[data-zone="bandr"] {
+  --zone-ground: #ebefec;
+  --zone-hairline: #d5ded7;
+  --zone-fg-soft: #45524a;
+  --zone-mono: #0b6b3e;
+  --zone-link: #0b6b3e;
+  --frame-bg: #fcfdfc;
+  --frame-ring: rgba(16, 32, 22, 0.14);
+  --frame-label: #45524a;
+}
+
 html[data-zone="solaspace"] {
   --zone-ground: #0a0b0d;
   --zone-fg: rgba(250, 250, 248, 0.92);
@@ -229,18 +240,27 @@ body {
 
 /* ---------------------------------------------------------------------------
    Evidence imagery reveal — the only scroll-triggered reveal on the site (§3).
+   CSS scroll-driven where supported; simply present everywhere else. Zero JS.
 --------------------------------------------------------------------------- */
-.reveal {
-  opacity: 0;
-  transform: translateY(10px);
-  transition:
-    opacity 600ms var(--ease-out),
-    transform 600ms var(--ease-out);
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
-.reveal.is-in {
-  opacity: 1;
-  transform: translateY(0);
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal-v {
+      animation: reveal-in 0.7s var(--ease-out) both;
+      animation-timeline: view();
+      animation-range: entry 5% entry 35%;
+    }
+  }
 }
 
 /* Evidence frames lift on hover with a real shadow (§3). */
@@ -255,6 +275,11 @@ body {
   box-shadow:
     0 12px 32px rgba(11, 11, 14, 0.18),
     0 4px 12px rgba(11, 11, 14, 0.12);
+}
+
+/* Pixel-art artifacts render crisp at any scale. */
+.pixel {
+  image-rendering: pixelated;
 }
 
 /* ---------------------------------------------------------------------------
@@ -289,11 +314,6 @@ body {
   .hero-stage-3,
   .hero-stage-4 {
     animation: none;
-  }
-
-  .reveal {
-    transform: none;
-    transition: opacity 400ms ease;
   }
 
   .evidence-lift,

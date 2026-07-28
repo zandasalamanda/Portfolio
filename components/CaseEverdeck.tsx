@@ -1,35 +1,27 @@
 import Image from 'next/image';
-import { everdeckPreview, products } from '@/content/site';
+import { everdeckPreview, productById } from '@/content/site';
 import { asset } from '@/lib/assets';
 import { AwaitingAsset, AwaitingLogo, Frame } from './Evidence';
 import Reveal from './Reveal';
 import { DecisionsAndStack, ReceiptsRow } from './CaseBlocks';
 
-const everdeck = products[2];
+const everdeck = productById('everdeck');
 
-/** The hand, dealt in the order the product works: find → design → pitch. */
+/** The hand, dealt in the order the product works: hunt a niche → read the deck. */
 const allCards = [
   {
-    rel: 'everdeck/shot-deck.png',
-    tab: 'deck',
-    tint: '#ffc2d4',
-    alt: 'Everdeck prospect deck: a grid of scored cards, each showing a local business, its current website screenshot, an opportunity score, and audit reasons',
-    /** desktop placement: [left, top, rotation, width] */
-    pos: 'md:left-0 md:top-0 md:w-[52%] md:-rotate-[5deg]',
-  },
-  {
-    rel: 'everdeck/shot-prospect.png',
-    tab: 'prospect',
-    tint: '#c9bbff',
-    alt: "Everdeck prospect detail: a before/after comparison of a business's current site beside the automatically designed concept, with an opportunity score ring and outreach pipeline",
-    pos: 'md:right-0 md:top-[88px] md:w-[52%] md:rotate-[3.5deg]',
-  },
-  {
-    rel: 'everdeck/shot-outreach.png',
-    tab: 'outreach',
+    rel: 'everdeck/shot-hunts.png',
+    tab: 'niche hunt',
     tint: '#9cd6ff',
-    alt: 'Everdeck outreach: the drafted pitch message written for a prospect, ready to send',
-    pos: 'md:left-[24%] md:top-[236px] md:w-[52%] md:-rotate-[1deg]',
+    alt: 'Everdeck hunts: pick a business niche and market to scan — popular niche chips, a location field, and recent completed hunts',
+    pos: 'md:left-0 md:top-0 md:w-[54%] md:-rotate-[4.5deg]',
+  },
+  {
+    rel: 'everdeck/shot-deck.png',
+    tab: 'the deck',
+    tint: '#ffc2d4',
+    alt: 'Everdeck prospect deck: a grid of scored cards, each with an opportunity score, a tier badge, and the findings behind the score',
+    pos: 'md:right-0 md:top-[110px] md:w-[56%] md:rotate-[3deg]',
   },
 ];
 
@@ -89,7 +81,7 @@ export default function CaseEverdeck() {
   return (
     <section
       id="case-everdeck"
-      aria-label="Case study 03: Everdeck"
+      aria-label="Case study 04: Everdeck"
       className="relative scroll-mt-14"
     >
       <div className="relative mx-auto w-full max-w-[1200px] px-6 py-20 md:px-10 md:py-36">
