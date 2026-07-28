@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-28T16:46:12.258Z",
+  "generatedAt": "2026-07-28T17:54:16.054Z",
   "assets": {
     "chronoiq/logo.png": {
       "exists": true,
@@ -130,6 +130,22 @@
       "optional": true,
       "width": 1170,
       "height": 2532
+    },
+    "helios/logo.png": {
+      "exists": true,
+      "optional": false,
+      "width": 560,
+      "height": 446
+    },
+    "helios/velocity-plot.png": {
+      "exists": true,
+      "optional": false,
+      "width": 2400,
+      "height": 1800
+    },
+    "helios/team-photo.jpg": {
+      "exists": false,
+      "optional": true
     },
     "headshot.jpg": {
       "exists": true,

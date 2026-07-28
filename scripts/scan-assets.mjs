@@ -39,6 +39,9 @@ const EXPECTED = [
   { key: 'yasabo/shot-home.png', optional: true },
   { key: 'yasabo/shot-loop.png', optional: true },
   { key: 'yasabo/shot-third.png', optional: true },
+  { key: 'helios/logo.png', optional: false },
+  { key: 'helios/velocity-plot.png', optional: false },
+  { key: 'helios/team-photo.jpg', optional: true },
   { key: 'headshot.jpg', optional: true },
   { key: 'resume-web.pdf', optional: true, dimensions: false },
 ];

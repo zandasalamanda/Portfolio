@@ -211,16 +211,31 @@ export const labItems: LabItem[] = [
     repo: 'https://github.com/zandasalamanda/Verbalist',
     repoLabel: 'github/zandasalamanda/Verbalist',
   },
-  {
-    // Source: Astrovia-NASA-ADC repo — Ursina solar-system simulation; repo
-    // name records the NASA App Development Challenge affiliation (also a §12
-    // About fact).
-    name: 'Astrovia',
-    line: 'A 3D solar-system simulation built in Python for the NASA App Development Challenge.',
-    repo: 'https://github.com/zandasalamanda/Astrovia-NASA-ADC',
-    repoLabel: 'github/zandasalamanda/Astrovia-NASA-ADC',
-  },
 ];
+
+/**
+ * Team Helios — the NASA App Development Challenge entry (§12 About fact).
+ * Sources: the Astrovia-NASA-ADC repo (Python/Ursina 3D visualization,
+ * created Nov 2024); client-supplied team logo + mission velocity plot;
+ * instagram.com/@helios.nasa verified live (public team outreach account,
+ * #NextGenSTEM posts).
+ */
+export const helios = {
+  name: 'Team Helios',
+  context: 'NASA App Development Challenge',
+  line: "My team's entry to NASA's App Development Challenge — we built a 3D mission visualization in Python and ran the team's STEM outreach on Instagram.",
+  plotCaption: 'Mission data — velocity over time',
+  receipts: [
+    {
+      label: 'instagram/@helios.nasa',
+      url: 'https://www.instagram.com/helios.nasa/',
+    },
+    {
+      label: 'github/zandasalamanda/Astrovia-NASA-ADC',
+      url: 'https://github.com/zandasalamanda/Astrovia-NASA-ADC',
+    },
+  ],
+} as const;
 
 /**
  * The archive — earlier game work. Titles, context, and lines adapt the

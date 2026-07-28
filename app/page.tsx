@@ -11,6 +11,7 @@ import Hero from '@/components/Hero';
 import Lab from '@/components/Lab';
 import Proof from '@/components/Proof';
 import TakeoverLayer, { type ZoneId } from '@/components/TakeoverLayer';
+import TeamHelios from '@/components/TeamHelios';
 import { asset } from '@/lib/assets';
 
 export default function Home() {
@@ -48,6 +49,7 @@ export default function Home() {
           {everdeckPromoted && <CaseEverdeck />}
           <Lab includeEverdeck={!everdeckPromoted} />
           <Archive />
+          <TeamHelios />
         </div>
 
         <Proof />
