@@ -9,7 +9,7 @@ import { asset } from "@/lib/assets";
 const libre = Libre_Franklin({
   variable: "--font-libre",
   subsets: ["latin"],
-  weight: ["900"],
+  weight: ["400", "500", "600", "700", "900"],
   display: "swap",
 });
 

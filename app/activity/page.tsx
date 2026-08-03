@@ -26,11 +26,11 @@ export default function ActivityPage() {
   return (
     <main id="main" className="flex-1 pt-[128px] md:pt-[168px]">
       <div className="mx-auto w-full max-w-[1200px] px-6 md:px-10">
-        <p className="eyebrow">Activity</p>
-        <h1 className="display mt-4 max-w-[16ch] text-[clamp(2.25rem,5.4vw,4rem)]">
+        <p className="mono uppercase tracking-[0.16em] text-fg-soft">Activity</p>
+        <h1 className="h-display mt-4 max-w-[16ch] text-[clamp(2.25rem,5.4vw,4rem)]">
           The work rate, not the résumé version.
         </h1>
-        <p className="mt-6 max-w-[60ch] leading-relaxed text-fg-soft">
+        <p className="mt-6 max-w-[60ch] prose-soft">
           Counted straight from the public GitHub API when this page was built. No
           badges, no estimates.
         </p>
@@ -40,10 +40,10 @@ export default function ActivityPage() {
         aria-labelledby="graph-h"
         className="mx-auto w-full max-w-[1200px] px-6 pt-14 md:px-10 md:pt-20"
       >
-        <h2 id="graph-h" className="eyebrow border-b border-line pb-3">
+        <h2 id="graph-h" className="mono border-b border-line pb-3 uppercase tracking-[0.16em] text-fg-soft">
           Last 52 weeks
         </h2>
-        <div className="mt-8 rounded-2xl border border-line bg-surface p-6 md:p-8">
+        <div className="mt-8 card p-6 md:p-8">
           <ActivityGraph />
         </div>
         <p className="mono mt-4 text-[0.6875rem] text-fg-faint">
@@ -59,7 +59,7 @@ export default function ActivityPage() {
       >
         <div className="grid gap-12 md:grid-cols-2 md:gap-16">
           <div>
-            <h2 id="repos-h" className="eyebrow border-b border-line pb-3">
+            <h2 id="repos-h" className="mono border-b border-line pb-3 uppercase tracking-[0.16em] text-fg-soft">
               Where the commits went
             </h2>
             <ul className="mt-6">
@@ -72,7 +72,7 @@ export default function ActivityPage() {
                     href={`https://github.com/zandasalamanda/${r.name}`}
                     target="_blank"
                     rel="noreferrer"
-                    className="mono link-x text-link"
+                    className="mono link-x text-teal"
                   >
                     {r.name} ↗
                   </a>
@@ -85,7 +85,7 @@ export default function ActivityPage() {
           </div>
 
           <div>
-            <h2 className="eyebrow border-b border-line pb-3">What it is written in</h2>
+            <h2 className="mono border-b border-line pb-3 uppercase tracking-[0.16em] text-fg-soft">What it is written in</h2>
             <ul className="mt-6 space-y-4">
               {languages.map((l) => (
                 <li key={l.name}>
@@ -98,7 +98,7 @@ export default function ActivityPage() {
                     className="mt-2 h-[3px] w-full overflow-hidden rounded-full bg-[rgba(250,250,248,0.08)]"
                   >
                     <span
-                      className="block h-full rounded-full bg-link"
+                      className="block h-full rounded-full bg-teal"
                       style={{ width: `${l.pct}%` }}
                     />
                   </div>
@@ -112,7 +112,7 @@ export default function ActivityPage() {
               href={identity.github}
               target="_blank"
               rel="noreferrer"
-              className="mono link-x mt-3 inline-block text-[0.75rem] text-link"
+              className="mono link-x mt-3 inline-block text-[0.75rem] text-teal"
             >
               {identity.githubHandle} ↗
             </a>

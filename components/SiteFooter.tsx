@@ -1,7 +1,15 @@
 import Link from 'next/link';
+import SocialRow from '@/components/SocialRow';
 import verification from '@/content/verification.json';
-import { contact, identity } from '@/content/site';
+import { contact } from '@/content/site';
 import { asset } from '@/lib/assets';
+
+const NAV = [
+  { label: 'About', href: '/about' },
+  { label: 'Hire', href: '/hire' },
+  { label: 'Projects', href: '/projects' },
+  { label: 'Activity', href: '/activity' },
+];
 
 export default function SiteFooter() {
   const verifiedAt = (verification as { verifiedAt: string | null }).verifiedAt;
@@ -9,54 +17,36 @@ export default function SiteFooter() {
 
   return (
     <footer className="border-t border-line">
-      <div className="mx-auto w-full max-w-[1200px] px-6 py-14 md:px-10">
+      <div className="mx-auto w-full max-w-[1180px] px-6 py-14 md:px-10">
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
-          <div className="max-w-[36ch]">
-            <p className="display text-3xl md:text-4xl">Let&rsquo;s build something.</p>
-            <p className="mt-4 leading-relaxed text-fg-soft">
-              Web design, full-stack builds, and AI that does real work. Tell me what
-              you need — I reply within a day.
+          <div className="max-w-[34ch]">
+            <p className="h-display text-[1.75rem]">Let&rsquo;s build something.</p>
+            <p className="mt-4 prose-soft">
+              Websites, apps, and AI that does real work. Tell me what you need — I
+              reply within a day.
             </p>
-            <a href={contact.mailto} className="cta mt-6 inline-block">
+            <a href={contact.mailto} className="btn-solid mt-6">
               {contact.email}
             </a>
+            <SocialRow className="mt-7" />
           </div>
 
-          <nav aria-label="Footer" className="mono flex flex-col gap-2 text-fg-soft">
-            <Link href="/work" className="link-x w-fit hover:text-fg">
-              Work
-            </Link>
-            <Link href="/hire" className="link-x w-fit hover:text-fg">
-              Hire
-            </Link>
-            <Link href="/activity" className="link-x w-fit hover:text-fg">
-              Activity
-            </Link>
-            <Link href="/about" className="link-x w-fit hover:text-fg">
-              About
-            </Link>
-            <a
-              href={identity.github}
-              target="_blank"
-              rel="noreferrer"
-              className="link-x w-fit hover:text-fg"
-            >
-              GitHub ↗
-            </a>
-            <a
-              href={contact.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="link-x w-fit hover:text-fg"
-            >
-              LinkedIn ↗
-            </a>
+          <nav aria-label="Footer" className="flex flex-col gap-2.5">
+            {NAV.map((n) => (
+              <Link
+                key={n.href}
+                href={n.href}
+                className="text-[0.9375rem] text-fg-soft transition-colors duration-200 hover:text-fg"
+              >
+                {n.label}
+              </Link>
+            ))}
             {resume.exists && (
               <a
                 href="/assets/resume-web.pdf"
                 target="_blank"
                 rel="noreferrer"
-                className="link-x w-fit hover:text-fg"
+                className="text-[0.9375rem] text-fg-soft transition-colors duration-200 hover:text-fg"
               >
                 Résumé ↗
               </a>
@@ -64,7 +54,7 @@ export default function SiteFooter() {
           </nav>
         </div>
 
-        <p className="mono mt-12 border-t border-line pt-6 text-[0.6875rem] leading-relaxed text-fg-faint">
+        <p className="mono mt-12 border-t border-line pt-6 text-[0.6875rem] text-fg-faint">
           Designed and built by Zander Leon. All links verified at build:{' '}
           {verifiedAt ?? 'pending'}. Next.js on Vercel.
         </p>

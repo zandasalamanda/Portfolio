@@ -3,9 +3,8 @@ export { contact } from './site';
 /**
  * Productized offers. Scope and timelines are commitments the client chooses
  * to make — edit here to change them everywhere. Prices are deliberately not
- * printed: each project is quoted individually within 24 hours (see the Hire
- * page copy), which keeps the promise honest while the client settles on his
- * own rate card.
+ * printed: each project is quoted individually within 24 hours, which keeps
+ * the promise honest while the client settles on his own rate card.
  */
 export interface Service {
   name: string;
@@ -40,7 +39,7 @@ export const services: Service[] = [
       'Live preview link from day one',
       'Repository and credentials handed over',
     ],
-    bestFor: 'founders needing a first version people can actually use',
+    bestFor: 'founders needing a first version people can use',
   },
   {
     name: 'AI integration',
@@ -48,11 +47,82 @@ export const services: Service[] = [
     line: 'An assistant or automation wired into the tools you already use — with fallbacks so nothing breaks when the model is down.',
     includes: [
       'Reads your real documents and spreadsheets',
-      'Plain-English actions your team already does by hand',
+      'Plain-English actions your team does by hand today',
       'Deterministic fallback when the model fails',
       'Your data stays in systems you control',
       'Handover doc so your team can run it',
     ],
-    bestFor: 'small teams drowning in manual document or spreadsheet work',
+    bestFor: 'small teams drowning in manual document work',
+  },
+];
+
+/** Every item here appears in a shipped project — no aspirational tech. */
+export const stack = [
+  {
+    title: 'Frontend',
+    mark: '{ }',
+    items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Vite', 'PWA'],
+  },
+  {
+    title: 'Backend',
+    mark: '</>',
+    items: ['Node.js', 'Supabase', 'Cloudflare D1 + edge', 'Postgres', 'Clerk', 'Stripe'],
+  },
+  {
+    title: 'AI',
+    mark: '✳',
+    items: [
+      'Claude',
+      'Gemini',
+      'Structured output',
+      'Document + spreadsheet parsing',
+      'Deterministic fallbacks',
+    ],
+  },
+  {
+    title: 'Also',
+    mark: '#',
+    items: ['Python', 'Java', 'C#', 'Unity', 'YOLOv8 / OpenCV', 'Classic ASP/VBScript'],
+  },
+];
+
+export const whyMe = [
+  'You can check the work before you pay for it. Four products are live right now, one of them won the Congressional App Challenge across 4,600+ apps, and I have shipped AI into a company that uses it for real operations. Click anything on this site — it opens.',
+  'I have built the boring half too. Part of my day job is fixing bugged legacy web systems in classic ASP/VBScript, so I am comfortable in codebases that are neither new nor pretty.',
+  'I build AI that fails safely. Every AI feature I ship has a deterministic fallback, so the product still works when the model is unavailable — the part most people skip.',
+  'You are not paying for a team you never meet. The person who writes the quote is the person who writes the code.',
+];
+
+export const preferences = [
+  {
+    t: 'Fixed scope, fixed price',
+    d: 'Written scope and one price before any work starts. No hourly surprises, no change-order games.',
+  },
+  {
+    t: 'You see it as it is built',
+    d: 'A live preview link from day one. You watch it come together instead of waiting for a reveal.',
+  },
+  {
+    t: 'You own everything',
+    d: 'Repository, domain, and credentials are yours from the start. If I vanished tomorrow, another developer could pick it up cleanly.',
+  },
+  {
+    t: 'Straight answers',
+    d: 'If I am not the right person for the job, I will tell you that instead of taking the project.',
+  },
+];
+
+export const audiences = [
+  {
+    t: 'Local service businesses',
+    d: 'Trades, clinics, studios, contractors — anyone whose website is costing them calls. Design, build, launch, done in about two weeks.',
+  },
+  {
+    t: 'Small teams with manual work',
+    d: 'If your team retypes documents or spreadsheets by hand every week, that is exactly the problem Atlas Space solves at my internship.',
+  },
+  {
+    t: 'Founders needing a first build',
+    d: 'A real, usable first version with accounts and payments — not a prototype you have to throw away.',
   },
 ];

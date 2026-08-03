@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-03T14:31:50.931Z",
+  "generatedAt": "2026-08-03T15:25:06.967Z",
   "assets": {
     "chronoiq/logo.png": {
       "exists": true,
@@ -146,6 +146,36 @@
     "helios/team-photo.jpg": {
       "exists": false,
       "optional": true
+    },
+    "gallery/01.jpg": {
+      "exists": true,
+      "optional": false,
+      "width": 760,
+      "height": 1000
+    },
+    "gallery/02.jpg": {
+      "exists": true,
+      "optional": false,
+      "width": 760,
+      "height": 1000
+    },
+    "gallery/03.jpg": {
+      "exists": true,
+      "optional": false,
+      "width": 760,
+      "height": 1000
+    },
+    "gallery/04.jpg": {
+      "exists": true,
+      "optional": false,
+      "width": 760,
+      "height": 1000
+    },
+    "gallery/05.jpg": {
+      "exists": true,
+      "optional": false,
+      "width": 760,
+      "height": 1000
     },
     "headshot.jpg": {
       "exists": true,

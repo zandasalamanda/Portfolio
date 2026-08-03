@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { contact, services } from '@/content/services';
+import { services, stack, audiences, preferences, whyMe } from '@/content/services';
+import { contact } from '@/content/site';
 
 export const metadata: Metadata = {
   title: 'Hire',
@@ -10,173 +11,178 @@ export const metadata: Metadata = {
 
 export default function HirePage() {
   return (
-    <main id="main" className="flex-1 pt-[128px] md:pt-[168px]">
-      <div className="mx-auto w-full max-w-[1200px] px-6 md:px-10">
-        <p className="eyebrow">Hire</p>
-        <h1 className="display mt-4 max-w-[17ch] text-[clamp(2.25rem,5.4vw,4rem)]">
-          You talk to the person who builds it.
+    <main id="main" className="flex-1 pt-[128px] md:pt-[152px]">
+      <div className="mx-auto w-full max-w-[1180px] px-6 md:px-10">
+        <h1 className="rise-1 h-display max-w-[16ch] text-[clamp(2.25rem,5.4vw,3.5rem)]">
+          Let&rsquo;s work together
         </h1>
-        <p className="mt-6 max-w-[62ch] leading-relaxed text-fg-soft">
-          No account managers, no handoff, no agency markup. I scope the work, quote a
-          fixed price within a day, and build it myself — the same way I built the
-          products on this site.
+        <p className="rise-2 mt-6 max-w-[62ch] text-[1.0625rem] prose-soft">
+          I take on websites, full-stack apps, and AI integration. You talk to the
+          person who builds it — no account managers, no handoff, no agency markup. I
+          scope the work, quote a fixed price within a day, and build it myself.
         </p>
-        <div className="mt-8 flex flex-wrap gap-3">
-          <a href={contact.mailto} className="cta">
+        <div className="rise-3 mt-8 flex flex-wrap gap-3">
+          <a href={contact.mailto} className="btn-solid">
             Tell me what you need
           </a>
-          <Link href="/work" className="cta-ghost">
+          <Link href="/projects" className="btn-ghost">
             See proof first
           </Link>
         </div>
       </div>
 
-      {/* ------------------------------------------------------------- offers */}
+      {/* -------------------------------------------------------- services */}
       <section
-        aria-labelledby="offers-h"
-        className="mx-auto w-full max-w-[1200px] px-6 pt-20 md:px-10 md:pt-28"
+        aria-labelledby="svc-h"
+        className="mx-auto w-full max-w-[1180px] px-6 pt-24 md:px-10 md:pt-32"
       >
-        <div className="flex items-baseline justify-between border-b border-line pb-3">
-          <h2 id="offers-h" className="eyebrow">
-            What I take on
-          </h2>
-          <p className="mono text-[0.6875rem] text-fg-faint">fixed scope · fixed price</p>
-        </div>
+        <h2 id="svc-h" className="h-display text-[1.75rem]">
+          What I take on
+        </h2>
+        <p className="mt-3 prose-soft">Fixed scope, fixed price, quoted in 24 hours.</p>
 
         <div className="mt-8 grid gap-6 lg:grid-cols-3">
           {services.map((s) => (
-            <article
-              key={s.name}
-              className="card-lift flex flex-col rounded-2xl border border-line bg-surface p-7 hover:border-line-strong"
-            >
-              <div className="flex items-baseline justify-between gap-3">
-                <h3 className="font-display text-xl font-black">{s.name}</h3>
-                <span className="mono text-[0.6875rem] text-fg-faint">{s.timeline}</span>
+            <article key={s.name} className="card flex flex-col p-7">
+              <div className="flex items-baseline justify-between gap-3 border-b border-line pb-4">
+                <h3 className="h-display text-[1.25rem]">{s.name}</h3>
+                <span className="mono text-[0.6875rem] text-teal">{s.timeline}</span>
               </div>
-              <p className="mt-3 text-[0.9375rem] leading-relaxed text-fg-soft">{s.line}</p>
-
-              <p className="eyebrow mt-6 text-[0.625rem]">Includes</p>
-              <ul className="mono mt-3 space-y-2 text-[0.8125rem] text-fg-soft">
+              <p className="mt-4 text-[0.9375rem] prose-soft">{s.line}</p>
+              <ul className="mt-6 space-y-2.5">
                 {s.includes.map((i) => (
-                  <li key={i} className="flex gap-2">
-                    <span aria-hidden className="text-link">
-                      ▸
+                  <li key={i} className="flex gap-2.5 text-[0.875rem] prose-soft">
+                    <span aria-hidden className="mono text-fg-faint">
+                      ⌐
                     </span>
                     {i}
                   </li>
                 ))}
               </ul>
-
-              <p className="mono mt-6 border-t border-line pt-4 text-[0.75rem] text-fg-soft">
-                Best for: <span className="text-fg">{s.bestFor}</span>
+              <p className="mono mt-auto pt-6 text-[0.6875rem] text-fg-faint">
+                Best for: {s.bestFor}
               </p>
             </article>
           ))}
         </div>
-
-        <p className="mono mt-6 text-[0.75rem] text-fg-faint">
-          Every project is quoted as one fixed price before any work starts. No hourly
-          surprises, no change-order games.
-        </p>
       </section>
 
-      {/* ------------------------------------------------------------ process */}
+      {/* ----------------------------------------------------------- stack */}
       <section
-        aria-labelledby="process-h"
-        className="mx-auto w-full max-w-[1200px] px-6 pt-24 md:px-10 md:pt-32"
+        aria-labelledby="stack-h"
+        className="mx-auto w-full max-w-[1180px] px-6 pt-24 md:px-10 md:pt-32"
       >
-        <h2 id="process-h" className="eyebrow border-b border-line pb-3">
-          How it goes
+        <h2 id="stack-h" className="h-display text-[1.75rem]">
+          My tech stack
         </h2>
-        <ol className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-4">
-          {[
-            {
-              n: '01',
-              t: 'You tell me the problem',
-              d: 'An email is enough. What is broken, or what you want to exist.',
-            },
-            {
-              n: '02',
-              t: 'I scope and quote — 24 hours',
-              d: 'Written scope, fixed price, a delivery date. If I am not the right fit, I say so.',
-            },
-            {
-              n: '03',
-              t: 'You see it as it is built',
-              d: 'A live preview link from day one. You watch it come together instead of waiting.',
-            },
-            {
-              n: '04',
-              t: 'Launch, then support',
-              d: 'I ship it, hand over everything, and stay reachable after — not gone the next day.',
-            },
-          ].map((p) => (
-            <li key={p.n} className="bg-surface p-6">
-              <span className="mono text-[0.6875rem] text-link">{p.n}</span>
-              <h3 className="mt-3 font-display text-[1.0625rem] font-black leading-tight">
-                {p.t}
-              </h3>
-              <p className="mt-2 text-[0.875rem] leading-relaxed text-fg-soft">{p.d}</p>
+        <p className="mt-3 prose-soft">
+          What I actually build with — every one of these is in a shipped project.
+        </p>
+
+        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {stack.map((group) => (
+            <article key={group.title} className="card relative overflow-hidden p-6">
+              <h3 className="border-b border-line pb-3 font-semibold">{group.title}</h3>
+              <ul className="relative z-10 mt-4 space-y-2.5">
+                {group.items.map((i) => (
+                  <li key={i} className="text-[0.9375rem] prose-soft">
+                    {i}
+                  </li>
+                ))}
+              </ul>
+              <span
+                aria-hidden
+                className="h-display pointer-events-none absolute -bottom-6 -right-3 text-[5rem] leading-none text-white/[0.03]"
+              >
+                {group.mark}
+              </span>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* --------------------------------------------------------- why me */}
+      <section
+        aria-labelledby="why-h"
+        className="mx-auto w-full max-w-[1180px] px-6 pt-24 md:px-10 md:pt-32"
+      >
+        <h2 id="why-h" className="h-display text-[1.75rem]">
+          Why hire me?
+        </h2>
+        <ul className="mt-7 max-w-[70ch] space-y-5">
+          {whyMe.map((w) => (
+            <li key={w} className="flex gap-3 prose-soft">
+              <span aria-hidden className="mono shrink-0 text-fg-faint">
+                ⌐
+              </span>
+              <span>{w}</span>
             </li>
           ))}
-        </ol>
+        </ul>
       </section>
 
-      {/* ---------------------------------------------------------- objections */}
+      {/* ---------------------------------------------------- preferences */}
       <section
-        aria-labelledby="q-h"
-        className="mx-auto w-full max-w-[1200px] px-6 pt-24 md:px-10 md:pt-32"
+        aria-labelledby="pref-h"
+        className="mx-auto w-full max-w-[1180px] px-6 pt-24 md:px-10 md:pt-32"
       >
-        <h2 id="q-h" className="eyebrow border-b border-line pb-3">
-          The honest answers
+        <h2 id="pref-h" className="h-display text-[1.75rem]">
+          How I work
         </h2>
-        <div className="mt-8 grid gap-8 md:grid-cols-2 md:gap-x-14">
-          {[
-            {
-              q: 'You are 18. Why would I hire you?',
-              a: 'Because you can check the work before you pay for it. Four products are live right now, one of them won a Congressional App Challenge across 4,600+ apps, and I have shipped AI into a company that uses it for real operations. Click anything on this site — it opens.',
-            },
-            {
-              q: 'What if you disappear mid-project?',
-              a: 'You get the repository and every credential from day one, and a live preview link from the first build. If I vanished tomorrow, another developer could pick it up cleanly — that is how I hand off, not a promise I am asking you to take on faith.',
-            },
-            {
-              q: 'Do you actually do AI, or just call an API?',
-              a: 'Both, correctly. I have built assistants that read real documents and spreadsheets and act on them, with deterministic fallbacks so the product still works when the model is unavailable. That fallback design is the part most people skip.',
-            },
-            {
-              q: 'Can you work with what we already have?',
-              a: 'Yes — including old systems. Part of my day job is fixing bugged legacy web code in classic ASP/VBScript. I am comfortable in codebases that are not new or pretty.',
-            },
-          ].map((f) => (
-            <div key={f.q}>
-              <h3 className="font-display text-[1.0625rem] font-black">{f.q}</h3>
-              <p className="mt-3 leading-relaxed text-fg-soft">{f.a}</p>
+        <div className="mt-8 grid gap-x-14 gap-y-9 md:grid-cols-2">
+          {preferences.map((p) => (
+            <div key={p.t} className="flex gap-3">
+              <span aria-hidden className="mono shrink-0 text-fg-faint">
+                ⌐
+              </span>
+              <div>
+                <h3 className="font-semibold">{p.t}</h3>
+                <p className="mt-2 text-[0.9375rem] prose-soft">{p.d}</p>
+              </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* ---------------------------------------------------------------- CTA */}
-      <section className="mx-auto w-full max-w-[1200px] px-6 py-24 md:px-10 md:py-32">
-        <div className="rounded-3xl border border-line bg-surface p-8 md:p-14">
-          <h2 className="display max-w-[18ch] text-[clamp(1.75rem,3.4vw,2.75rem)]">
+      {/* ------------------------------------------------------ audiences */}
+      <section
+        aria-labelledby="aud-h"
+        className="mx-auto w-full max-w-[1180px] px-6 pt-24 md:px-10 md:pt-32"
+      >
+        <h2 id="aud-h" className="h-display text-[1.75rem]">
+          Who I build for
+        </h2>
+        <p className="mt-3 prose-soft">The work I am best positioned to do well.</p>
+        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {audiences.map((a) => (
+            <article key={a.t} className="card p-6">
+              <h3 className="font-semibold">{a.t}</h3>
+              <p className="mt-3 text-[0.9375rem] prose-soft">{a.d}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* ------------------------------------------------------------ CTA */}
+      <section className="mx-auto w-full max-w-[1180px] px-6 py-24 md:px-10 md:py-32">
+        <div className="card p-8 md:p-14">
+          <h2 className="h-display max-w-[18ch] text-[clamp(1.75rem,3.4vw,2.5rem)]">
             Send me the messy version.
           </h2>
-          <p className="mt-5 max-w-[54ch] leading-relaxed text-fg-soft">
-            You do not need a spec. Describe the problem in a paragraph and I will come
-            back with scope, price, and a date — usually the same day, always within
-            one.
+          <p className="mt-5 max-w-[54ch] prose-soft">
+            You don&rsquo;t need a spec. Describe the problem in a paragraph and
+            I&rsquo;ll come back with scope, price, and a date — usually the same day,
+            always within one.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <a href={contact.mailto} className="cta">
+            <a href={contact.mailto} className="btn-solid">
               {contact.email}
             </a>
             <a
               href={contact.linkedin}
               target="_blank"
               rel="noreferrer"
-              className="cta-ghost"
+              className="btn-ghost"
             >
               LinkedIn
             </a>
