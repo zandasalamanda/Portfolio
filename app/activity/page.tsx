@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import ActivityGraph from '@/components/ActivityGraph';
+import TechIcon from '@/components/TechIcon';
 import activity from '@/content/github-activity.json';
 import github from '@/content/github.json';
 import { identity, proofOfWork } from '@/content/site';
@@ -118,7 +119,10 @@ export default function ActivityPage() {
               {languages.map((l) => (
                 <li key={l.name}>
                   <div className="mono flex items-baseline justify-between text-[0.8125rem]">
-                    <span>{l.name}</span>
+                    <span className="flex items-center gap-2">
+                      <TechIcon label={l.name} className="h-4 w-4" />
+                      {l.name}
+                    </span>
                     <span className="text-fg-soft">{l.pct}%</span>
                   </div>
                   <div

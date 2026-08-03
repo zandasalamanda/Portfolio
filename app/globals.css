@@ -359,7 +359,8 @@ body {
   /* bright head on the right = the direction of travel */
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.95));
   border-radius: 999px;
-  animation: shoot var(--dur, 6s) linear var(--delay, 0s) infinite;
+  opacity: 0;
+  animation: shoot var(--dur, 6s) linear var(--delay, 0s) infinite both;
   will-change: transform, opacity;
 }
 
