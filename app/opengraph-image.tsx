@@ -32,8 +32,8 @@ export default async function OgImage() {
           height: '100%',
           display: 'flex',
           flexDirection: 'column',
-          backgroundColor: '#fafaf8',
-          color: '#101014',
+          backgroundColor: '#0b0b0e',
+          color: '#fafaf8',
           padding: '56px 64px',
         }}
       >
@@ -43,7 +43,7 @@ export default async function OgImage() {
             justifyContent: 'space-between',
             fontFamily: 'JetBrains Mono',
             fontSize: 20,
-            color: '#55555c',
+            color: 'rgba(250,250,248,0.6)',
           }}
         >
           <span>student developer</span>
@@ -72,7 +72,7 @@ export default async function OgImage() {
               marginTop: 28,
               fontFamily: 'JetBrains Mono',
               fontSize: 26,
-              color: '#101014',
+              color: 'rgba(250,250,248,0.92)',
             }}
           >
             I build software that ships.
@@ -82,12 +82,12 @@ export default async function OgImage() {
           style={{
             display: 'flex',
             marginTop: 'auto',
-            borderTop: '1px solid #e4e3dc',
+            borderTop: '1px solid rgba(250,250,248,0.14)',
             paddingTop: 24,
             gap: 40,
             fontFamily: 'JetBrains Mono',
             fontSize: 20,
-            color: '#55555c',
+            color: 'rgba(250,250,248,0.6)',
           }}
         >
           {rows.map((p) => (

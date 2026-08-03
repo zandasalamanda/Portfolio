@@ -1,0 +1,126 @@
+import type { Metadata } from 'next';
+import ActivityGraph from '@/components/ActivityGraph';
+import activity from '@/content/github-activity.json';
+import github from '@/content/github.json';
+import { identity, proofOfWork } from '@/content/site';
+
+export const metadata: Metadata = {
+  title: 'Activity',
+  description:
+    "Zander Leon's real GitHub activity — commits, repositories, and language mix, counted from the public API at build time.",
+};
+
+interface Lang {
+  name: string;
+  pct: number;
+}
+
+export default function ActivityPage() {
+  const languages = (github as { languages: Lang[] | null }).languages ?? [];
+  const data = activity as {
+    fetchedAt: string | null;
+    method?: string;
+    topRepos?: { name: string; commits: number }[];
+  };
+
+  return (
+    <main id="main" className="flex-1 pt-[128px] md:pt-[168px]">
+      <div className="mx-auto w-full max-w-[1200px] px-6 md:px-10">
+        <p className="eyebrow">Activity</p>
+        <h1 className="display mt-4 max-w-[16ch] text-[clamp(2.25rem,5.4vw,4rem)]">
+          The work rate, not the résumé version.
+        </h1>
+        <p className="mt-6 max-w-[60ch] leading-relaxed text-fg-soft">
+          Counted straight from the public GitHub API when this page was built. No
+          badges, no estimates.
+        </p>
+      </div>
+
+      <section
+        aria-labelledby="graph-h"
+        className="mx-auto w-full max-w-[1200px] px-6 pt-14 md:px-10 md:pt-20"
+      >
+        <h2 id="graph-h" className="eyebrow border-b border-line pb-3">
+          Last 52 weeks
+        </h2>
+        <div className="mt-8 rounded-2xl border border-line bg-surface p-6 md:p-8">
+          <ActivityGraph />
+        </div>
+        <p className="mono mt-4 text-[0.6875rem] text-fg-faint">
+          Fetched {data.fetchedAt ?? 'pending'}
+          {data.method ? ` · ${data.method}` : ''} · counts commits authored in public
+          repositories.
+        </p>
+      </section>
+
+      <section
+        aria-labelledby="repos-h"
+        className="mx-auto w-full max-w-[1200px] px-6 pt-20 md:px-10 md:pt-28"
+      >
+        <div className="grid gap-12 md:grid-cols-2 md:gap-16">
+          <div>
+            <h2 id="repos-h" className="eyebrow border-b border-line pb-3">
+              Where the commits went
+            </h2>
+            <ul className="mt-6">
+              {(data.topRepos ?? []).map((r) => (
+                <li
+                  key={r.name}
+                  className="flex items-baseline justify-between gap-4 border-b border-line py-3"
+                >
+                  <a
+                    href={`https://github.com/zandasalamanda/${r.name}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mono link-x text-link"
+                  >
+                    {r.name} ↗
+                  </a>
+                  <span className="mono text-[0.75rem] text-fg-soft">
+                    {r.commits} commits
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h2 className="eyebrow border-b border-line pb-3">What it is written in</h2>
+            <ul className="mt-6 space-y-4">
+              {languages.map((l) => (
+                <li key={l.name}>
+                  <div className="mono flex items-baseline justify-between text-[0.8125rem]">
+                    <span>{l.name}</span>
+                    <span className="text-fg-soft">{l.pct}%</span>
+                  </div>
+                  <div
+                    aria-hidden
+                    className="mt-2 h-[3px] w-full overflow-hidden rounded-full bg-[rgba(250,250,248,0.08)]"
+                  >
+                    <span
+                      className="block h-full rounded-full bg-link"
+                      style={{ width: `${l.pct}%` }}
+                    />
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <p className="mono mt-8 text-[0.8125rem] text-fg">
+              {proofOfWork.originalityLine}
+            </p>
+            <a
+              href={identity.github}
+              target="_blank"
+              rel="noreferrer"
+              className="mono link-x mt-3 inline-block text-[0.75rem] text-link"
+            >
+              {identity.githubHandle} ↗
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <div className="pb-24 md:pb-32" />
+    </main>
+  );
+}

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-28T17:54:16.054Z",
+  "generatedAt": "2026-08-03T14:31:50.931Z",
   "assets": {
     "chronoiq/logo.png": {
       "exists": true,
@@ -222,6 +222,18 @@
       "optional": true,
       "width": 42,
       "height": 42
+    },
+    "atlas/atlas-dark.png": {
+      "exists": true,
+      "optional": true,
+      "width": 2560,
+      "height": 1245
+    },
+    "atlas/atlas-light.png": {
+      "exists": true,
+      "optional": true,
+      "width": 2560,
+      "height": 1247
     },
     "bandr/shot-saved.png": {
       "exists": true,

@@ -333,6 +333,42 @@ export const aboutFacts = [
   'Animal rehabilitation volunteer — Patchwork Pastures',
 ] as const;
 
+/**
+ * Experience — §12 (Raymond James, Team Helios) + client-supplied (UTR
+ * Global, Jul 2026): "redesigning bugged web systems in classic ASP/VBScript
+ * files, and implementing AI" — Atlas Space, verified by the client's own
+ * screenshots of the running product. Client names of UTR's customers and
+ * internal roadmap details are deliberately NOT published.
+ */
+export const experience = [
+  {
+    org: 'UTR Global',
+    role: 'Software developer intern — web + AI',
+    period: 'current',
+    line: 'Rebuilding bugged legacy web systems (classic ASP/VBScript) and building Atlas Space — an AI workspace where telecom-expense work happens in plain English: drop in a bill, audit it, reconcile lines, check rates, compare months.',
+  },
+  {
+    org: 'Raymond James Financial Services',
+    role: 'Intern',
+    period: 'Sept 2023 — present',
+    line: 'Research, documents, and day-to-day operations support inside a financial services office.',
+  },
+  {
+    org: 'Team Helios — NASA App Development Challenge',
+    role: 'Developer',
+    period: '2024',
+    line: "Built a 3D mission visualization in Python and ran the team's STEM outreach on Instagram.",
+  },
+] as const;
+
+/** Atlas Space — presented from what the screenshots verifiably show. */
+export const atlas = {
+  name: 'Atlas Space',
+  context: 'Built at UTR Global',
+  line: 'An AI workspace for telecom-expense operations — drop in a bill or spreadsheet and work in plain English: ask questions, audit charges, reconcile lines, check rates, compare months, and fix files. Ships with full light and dark themes.',
+  note: 'Internal product — no public link.',
+} as const;
+
 export const contact = {
   heading: 'Hiring interns? Building something?',
   line: "I'm looking for software internships and interesting collaborations.",

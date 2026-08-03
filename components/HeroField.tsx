@@ -58,7 +58,7 @@ export default function HeroField() {
             glow += band * (1 - age);
           }
           const alpha = Math.min(0.06 + glow * 0.18, 0.3);
-          ctx.fillStyle = `rgba(16, 16, 20, ${alpha})`;
+          ctx.fillStyle = `rgba(250, 250, 248, ${alpha})`;
           ctx.fillRect(gx + dx - 0.75, gy + dy - 0.75, 1.5, 1.5);
         }
       }
