@@ -125,19 +125,18 @@ export const products: Product[] = [
     ],
   },
   {
-    // Positioning per the client (Jul 2026): present Everdeck as an AI
-    // business-niche generator organizing moves as a deck of cards; the
-    // product's direction is still being decided. Every clause below is true
-    // of the running app (market scans, 0–100 opportunity scores, card deck).
+    // Repositioned Aug 2026 to match the shipped product: everdeck.app now
+    // sells white-label website audits to studios/agencies — "The audit that
+    // sells the redesign". Verified against the live landing page and app nav.
     id: 'everdeck',
     number: '04',
     name: 'Everdeck',
     status: 'private preview',
     date: 'JUL 2026',
     description:
-      'A business-strategy deck in the making — point it at a market, let it hunt down every business in a niche, size each one up, and deal your next moves back as a hand of scored cards.',
+      'A white-label audit tool for web studios — name a trade and a city, and it scores the sites those businesses have now, then turns each audit into something you can actually pitch with.',
     decisionsNote:
-      'The heavy lifting — scanning a market and sizing up every business in it — runs in the background on the server, so it keeps working even when the tab is closed. And every user only ever sees their own deck, locked down at the database itself.',
+      'The slow part — scanning a market and scoring every site in it — runs in the background on the server, so it keeps working after you close the tab. Every studio only ever sees its own data, locked down at the database itself, and the whole thing carries their branding rather than mine.',
     techLine:
       'Next.js · TypeScript · Supabase Edge Functions + pg_cron · Clerk · Google Places API · Gemini (structured output)',
     receipts: [

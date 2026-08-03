@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-03T18:44:21.889Z",
+  "generatedAt": "2026-08-03T18:52:43.509Z",
   "assets": {
     "chronoiq/logo.png": {
       "exists": true,
@@ -71,23 +71,17 @@
       "width": 256,
       "height": 256
     },
-    "everdeck/shot-deck.png": {
-      "exists": true,
-      "optional": false,
-      "width": 2352,
-      "height": 1826
-    },
-    "everdeck/shot-hunts.png": {
-      "exists": true,
-      "optional": false,
-      "width": 1584,
-      "height": 1110
-    },
     "everdeck/shot-landing.png": {
       "exists": true,
+      "optional": false,
+      "width": 3024,
+      "height": 1964
+    },
+    "everdeck/shot-landing-2.png": {
+      "exists": true,
       "optional": true,
-      "width": 3456,
-      "height": 2160
+      "width": 3024,
+      "height": 1964
     },
     "bandr/shot-home.png": {
       "exists": true,
