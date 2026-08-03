@@ -2,24 +2,24 @@ import spectrum from './spectrum.json';
 import { awardPageUrl, productById, type Receipt } from './site';
 
 /**
- * The unified project registry for the studio site. Every entry is real and
- * sourced (products from §12 + captures; lab/games from the client's own
- * repos and write-ups). Tiers size the cards; every project is present —
- * the wall itself is the point.
+ * One ordered gallery — best work first, everything present, every entry the
+ * same species of card. Each carries its own logo (real file where one
+ * exists, drawn glyph otherwise) and accent so the wall reads as a set.
  */
-export type CardTier = 'flagship' | 'product' | 'lab' | 'game';
-
 export interface ProjectCard {
   id: string;
   name: string;
-  tier: CardTier;
   status?: string;
   line: string;
-  tags: string;
-  /** per-card identity accent (from the product's real palette) */
+  tags: string[];
   accent: string;
-  /** optional second accent for gradient edges (ChronoIQ spectrum only) */
   accent2?: string;
+  /** real logo file under content/assets */
+  logo?: string;
+  /** logo needs a white tile to read on the dark ground */
+  logoTile?: boolean;
+  /** id of a drawn glyph in components/Marks when there is no logo */
+  drawn?: string;
   image?: { rel: string; alt: string };
   sprite?: { rel: string; alt: string };
   links: Receipt[];
@@ -35,30 +35,30 @@ export const projectCards: ProjectCard[] = [
   {
     id: 'chronoiq',
     name: 'ChronoIQ',
-    tier: 'flagship',
     status: 'live',
     line: chronoiq.description,
-    tags: 'Next.js · TypeScript · Cloudflare D1 · Google APIs · Gemini · Claude · Stripe',
+    tags: ['Next.js', 'TypeScript', 'Cloudflare D1', 'Google APIs', 'Gemini', 'Claude', 'Stripe'],
     accent: spectrum.coral,
     accent2: spectrum.violet,
+    logo: 'chronoiq/logo.png',
     image: {
       rel: 'chronoiq/shot-dashboard.png',
       alt: "ChronoIQ dashboard: today's plan with scheduled study blocks on a timeline",
     },
     links: [
       { label: 'chronoiq.dev', url: 'https://chronoiq.dev' },
-      { label: 'award page', url: awardPageUrl },
+      { label: 'award', url: awardPageUrl },
     ],
     award: 'Congressional App Challenge winner — NJ-07, 2025',
   },
   {
     id: 'solaspace',
     name: 'Solaspace',
-    tier: 'flagship',
     status: 'live',
     line: solaspace.description,
-    tags: 'Next.js · TypeScript · Supabase · Clerk · Stripe · AI planning',
+    tags: ['Next.js', 'TypeScript', 'Supabase', 'Clerk', 'Stripe', 'AI planning'],
     accent: '#e6b877',
+    logo: 'solaspace/logo.svg',
     image: {
       rel: 'solaspace/shot-map.png',
       alt: 'Solaspace living goal map: connected goal nodes on a dark canvas',
@@ -71,39 +71,41 @@ export const projectCards: ProjectCard[] = [
   {
     id: 'atlas',
     name: 'Atlas Space',
-    tier: 'flagship',
     status: 'built at UTR Global',
     line: 'An AI workspace for telecom-expense operations — drop in a bill or spreadsheet and work in plain English: ask, audit, reconcile lines, check rates, compare months, fix files.',
-    tags: 'AI workspace · document + spreadsheet intelligence · light/dark themes',
-    accent: '#5d7cc9',
+    tags: ['AI workspace', 'Document + spreadsheet AI', 'Light + dark themes'],
+    accent: '#8fa6e8',
+    logo: 'logos/utr.png',
+    logoTile: true,
+    drawn: 'atlas',
     image: {
       rel: 'atlas/atlas-light.png',
-      alt: 'Atlas Space: an AI assistant with tools to check bills, audit, reconcile lines, check rates, compare months, and fix spreadsheets',
+      alt: 'Atlas Space: an AI assistant with tools to check bills, audit, reconcile lines, check rates, and fix spreadsheets',
     },
     links: [],
   },
   {
     id: 'everdeck',
     name: 'Everdeck',
-    tier: 'product',
     status: 'private preview',
     line: everdeck.description,
-    tags: 'Next.js · Supabase Edge Functions · Google Places · Gemini',
+    tags: ['Next.js', 'Supabase Edge Functions', 'Google Places', 'Gemini'],
     accent: '#c9bbff',
+    logo: 'everdeck/logo.svg',
     image: {
       rel: 'everdeck/shot-deck.png',
       alt: 'Everdeck: a deck of scored business-opportunity cards',
     },
-    links: [{ label: 'everdeck.app — private preview', url: 'https://everdeck.app' }],
+    links: [{ label: 'everdeck.app', url: 'https://everdeck.app' }],
   },
   {
     id: 'bandr',
     name: 'Bandr',
-    tier: 'product',
     status: 'open source',
     line: bandr.description,
-    tags: 'React · TypeScript · Vite · PWA · rule engine',
-    accent: '#28e07a',
+    tags: ['React', 'TypeScript', 'Vite', 'PWA', 'Rule engine'],
+    accent: '#7ee8a8',
+    drawn: 'bandr',
     image: {
       rel: 'bandr/shot-home.png',
       alt: 'Bandr on a phone: ranked money moves with open scores',
@@ -113,11 +115,11 @@ export const projectCards: ProjectCard[] = [
   {
     id: 'yasabo',
     name: 'Ya Sabo',
-    tier: 'product',
     status: 'in development',
     line: 'A judgment-free Spanish-comprehension app for “no sabo” heritage speakers — real Colombian voices, slang, and speed. Installable PWA, fully on-device.',
-    tags: 'React · Vite · TypeScript · PWA · on-device',
-    accent: '#fb5b3d',
+    tags: ['React', 'Vite', 'TypeScript', 'PWA', 'On-device'],
+    accent: '#fb8a6d',
+    drawn: 'yasabo',
     image: {
       rel: 'yasabo/shot-loop.png',
       alt: 'Ya Sabo: a listening rep with the slang phrase highlighted in the transcript',
@@ -125,42 +127,23 @@ export const projectCards: ProjectCard[] = [
     links: [],
   },
   {
-    id: 'libero',
-    name: 'Libero',
-    tier: 'lab',
-    line: 'A real-time AI ball tracker — YOLOv8 fused with color detection over live screen capture, with an on-screen overlay.',
-    tags: 'Python · YOLOv8 · OpenCV',
-    accent: '#9cd6ff',
-    links: [{ label: 'source', url: 'https://github.com/zandasalamanda/Libero' }],
-  },
-  {
     id: 'verbalist',
     name: 'Verbalist',
-    tier: 'lab',
+    status: 'open source',
     line: 'An interactive speech coach that flags filler words, brainrot, and jargon as you speak.',
-    tags: 'JavaScript · Node',
-    accent: '#b5f5d8',
+    tags: ['JavaScript', 'Node', 'Speech'],
+    accent: '#b3a6ff',
+    logo: 'logos/verbalist.png',
     links: [{ label: 'source', url: 'https://github.com/zandasalamanda/Verbalist' }],
-  },
-  {
-    id: 'astrovia',
-    name: 'Astrovia',
-    tier: 'lab',
-    line: 'A 3D solar-system simulation built in Python for the NASA App Development Challenge.',
-    tags: 'Python · Ursina',
-    accent: '#ffc24b',
-    links: [
-      { label: 'source', url: 'https://github.com/zandasalamanda/Astrovia-NASA-ADC' },
-    ],
   },
   {
     id: 'tharthar',
     name: 'The Legend of TharThar II',
-    tier: 'game',
     status: 'HACKMCST 2024',
-    line: 'A tile-based tower defense — heroes vs. real cyber threats like Trojans and Worms. All visuals and code from scratch.',
-    tags: 'Java · Processing',
+    line: 'A tile-based tower defense — heroes against real cyber threats like Trojans and Worms. Every sprite and system built from scratch.',
+    tags: ['Java', 'Processing', 'Tower defense'],
     accent: '#c77dff',
+    drawn: 'game',
     sprite: {
       rel: 'artifacts/tharthar-hero.gif',
       alt: 'Pixel-art hero from The Legend of TharThar II',
@@ -170,11 +153,11 @@ export const projectCards: ProjectCard[] = [
   {
     id: 'king',
     name: 'Please Impress The King',
-    tier: 'game',
     status: 'SkillsUSA',
-    line: "A retro turn-based comedy RPG — a failed squire's last chance at knighthood.",
-    tags: 'Unity · C# · Aseprite',
-    accent: '#4a8c3f',
+    line: "A retro turn-based comedy RPG — a failed squire's last chance at knighthood, inspired by Stardew Valley and King's Quest.",
+    tags: ['Unity', 'C#', 'Aseprite'],
+    accent: '#8ed17f',
+    drawn: 'game',
     sprite: {
       rel: 'artifacts/king-knight.png',
       alt: 'Pixel-art knight from Please Impress The King',
@@ -184,10 +167,11 @@ export const projectCards: ProjectCard[] = [
   {
     id: 'flatearthrz',
     name: 'FLAT-EARTHRZ',
-    tier: 'game',
-    line: 'A two-player co-op survival game — harvest floating islands, leap the void, craft to fill orders.',
-    tags: 'JavaScript · Canvas',
+    status: 'co-op',
+    line: 'A two-player survival game — harvest floating islands, leap the void, and craft to fill construction orders.',
+    tags: ['JavaScript', 'Canvas', 'Co-op'],
     accent: '#9cd6ff',
+    drawn: 'game',
     sprite: {
       rel: 'artifacts/flatearthrz-alien.gif',
       alt: 'Pixel-art alien worker from FLAT-EARTHRZ',
@@ -197,10 +181,11 @@ export const projectCards: ProjectCard[] = [
   {
     id: 'volleyball',
     name: 'Volleyball 1',
-    tier: 'game',
-    line: '2D retro volleyball against a smart AI — real ball physics: gravity, elasticity, drag.',
-    tags: 'Java · Processing',
+    status: 'arcade',
+    line: '2D retro volleyball against a smart AI opponent — real ball physics: gravity, elasticity, and drag.',
+    tags: ['Java', 'Processing', 'Physics'],
     accent: '#5adcdc',
+    drawn: 'game',
     sprite: {
       rel: 'artifacts/volleyball-spike.gif',
       alt: 'Pixel-art volleyball player mid-spike',
@@ -210,18 +195,29 @@ export const projectCards: ProjectCard[] = [
   {
     id: 'pipkin',
     name: 'Pipkin Parade',
-    tier: 'game',
+    status: 'puzzle',
     line: 'A Lemmings-inspired puzzler — guide the parade with Builder, Blocker, Digger, and Floater abilities.',
-    tags: 'JavaScript · Canvas',
-    accent: '#ff80b0',
+    tags: ['JavaScript', 'Canvas', 'Puzzle'],
+    accent: '#ff9ec4',
+    drawn: 'game',
     sprite: { rel: 'artifacts/pipkin-idle.png', alt: 'Pixel-art pink Pipkin' },
     links: [],
   },
+  {
+    id: 'libero',
+    name: 'Libero',
+    status: 'computer vision',
+    line: 'A real-time AI ball tracker — YOLOv8 fused with colour detection over live screen capture, with an on-screen overlay.',
+    tags: ['Python', 'YOLOv8', 'OpenCV'],
+    accent: '#7fd4ff',
+    drawn: 'libero',
+    links: [{ label: 'source', url: 'https://github.com/zandasalamanda/Libero' }],
+  },
 ];
 
-export const featuredCards = projectCards.filter((c) => c.tier === 'flagship');
+export const featuredCards = projectCards.slice(0, 3);
 
-/** Real captures for the home marquee — every frame is a real product. */
+/** Real captures for the home strip. */
 export const marqueeShots = [
   { rel: 'chronoiq/shot-dashboard.png', alt: 'ChronoIQ dashboard', label: 'chronoiq.dev' },
   { rel: 'solaspace/shot-map.png', alt: 'Solaspace goal map', label: 'solaspace.app' },

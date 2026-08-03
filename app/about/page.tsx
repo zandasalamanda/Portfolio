@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import { aboutFacts, contact, identity, timeline } from '@/content/site';
+import Link from 'next/link';
+import { Circled, Underlined } from '@/components/Annotate';
+import { DrawnMark } from '@/components/Marks';
+import { aboutFacts, contact, experience, identity, timeline } from '@/content/site';
 import { asset } from '@/lib/assets';
 
 export const metadata: Metadata = {
@@ -15,37 +18,38 @@ const FOLLOW = [
 ];
 
 export default function AboutPage() {
-  const headshot = asset('headshot.jpg');
+  const headshot = asset('headshot.png');
   const resume = asset('resume-web.pdf');
 
   return (
-    <main id="main" className="flex-1 pt-[128px] md:pt-[152px]">
-      <div className="mx-auto w-full max-w-[1180px] px-6 md:px-10">
-        <div className="grid gap-14 lg:grid-cols-[minmax(0,1fr)_400px] lg:gap-20">
-          {/* --------------------------------------------------------- copy */}
-          <div className="max-w-[46rem]">
-            <h1 className="rise-1 h-display text-[clamp(2.25rem,5vw,3.25rem)]">
+    <main id="main" className="flex-1 pt-[104px] md:pt-[124px]">
+      <div className="mx-auto w-full max-w-[1120px] px-6 md:px-8">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-16">
+          <div className="max-w-[40rem]">
+            <h1 className="rise-1 h-display text-[clamp(1.75rem,3.6vw,2.5rem)]">
               About me
             </h1>
 
-            <div className="rise-2 mt-8 space-y-5 text-[1.0625rem] prose-soft">
+            <div className="rise-2 mt-6 space-y-4 text-[0.9375rem] prose-soft">
               <p>
-                Hey — I&rsquo;m Zander Leon, a developer who would rather build the
-                thing than talk about building the thing.
+                Hey there <span className="wave">👋</span> I&rsquo;m Zander Leon — a
+                developer who would rather <Underlined>build the thing</Underlined>{' '}
+                than talk about building the thing.
               </p>
               <p>
                 It started with a problem I actually had. Homework kept sliding to 11
                 p.m., so I built ChronoIQ — an AI study scheduler that reads your
-                calendar and books work into the free time you really have. It won the
-                Congressional App Challenge for New Jersey&rsquo;s 7th district,
-                selected from over 4,600 apps, and was displayed at the U.S. Capitol.
+                calendar and books work into the free time you really have. It won the{' '}
+                <Circled>Congressional App Challenge</Circled> for New
+                Jersey&rsquo;s 7th district, selected from over 4,600 apps, and was
+                displayed at the U.S. Capitol.
               </p>
               <p>
                 Since then I&rsquo;ve shipped Solaspace, an AI goal-execution app;
                 Bandr, a rule-engine app that helps teens find safe ways to earn;
                 Everdeck, a business-opportunity deck in private preview; and Ya Sabo,
-                a Spanish comprehension app for heritage speakers. Fourteen projects
-                in total, all original work — zero forks.
+                a Spanish comprehension app for heritage speakers. Thirteen projects in
+                total, all original work — zero forks.
               </p>
               <p>
                 At my internship I do the unglamorous half too: rebuilding bugged
@@ -60,49 +64,52 @@ export default function AboutPage() {
                 keyboard: varsity soccer, FIRST Robotics, and ecological fieldwork in
                 the Peruvian Amazon.
               </p>
-              <p>
-                If you need a site, an app, or AI that actually does the work — I take
-                on projects, and I reply within a day.
-              </p>
             </div>
 
-            <ul className="rise-3 mt-10 flex flex-wrap gap-2">
+            <ul className="rise-3 mt-8 flex flex-wrap gap-2">
               {aboutFacts.map((f) => (
-                <li
-                  key={f}
-                  className="mono rounded-full border border-line px-3 py-1 text-[0.6875rem] text-fg-soft"
-                >
+                <li key={f} className="chip">
                   {f}
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* ------------------------------------------------------ sidebar */}
-          <aside className="lg:pt-4">
+          <aside className="lg:pt-2">
             {headshot.exists && headshot.width && headshot.height && (
-              <figure className="rise-1 overflow-hidden rounded-2xl border border-line bg-surface [transform:rotate(2.5deg)]">
+              <div className="rise-1 relative">
+                <div
+                  aria-hidden
+                  className="absolute inset-0 -z-10 rounded-2xl"
+                  style={{
+                    background:
+                      'radial-gradient(circle at 50% 40%, rgba(179,166,255,0.16), transparent 70%)',
+                  }}
+                />
                 <Image
                   src={headshot.url}
                   alt="Zander Leon"
                   width={headshot.width}
                   height={headshot.height}
-                  sizes="(min-width: 1024px) 380px, 100vw"
+                  sizes="(min-width: 1024px) 320px, 70vw"
                   priority
-                  className="block h-auto w-full"
+                  className="block h-auto w-full max-w-[280px] object-contain lg:max-w-none"
                 />
-              </figure>
+              </div>
             )}
 
-            <ul className="rise-2 mt-12 border-t border-line">
+            <ul className="rise-2 mt-8 border-t border-line">
               {FOLLOW.map((f) => (
                 <li key={f.href} className="border-b border-line">
                   <a
                     href={f.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-3 py-4 text-[0.9375rem] font-semibold transition-colors duration-200 hover:text-teal"
+                    className="flex items-center gap-2.5 py-3 text-[0.875rem] font-semibold transition-colors duration-200 hover:text-accent"
                   >
+                    <span aria-hidden className="text-accent">
+                      ▸
+                    </span>
                     {f.label}
                   </a>
                 </li>
@@ -110,8 +117,11 @@ export default function AboutPage() {
               <li className="border-b border-line">
                 <a
                   href={contact.mailto}
-                  className="flex items-center gap-3 py-4 text-[0.9375rem] font-semibold transition-colors duration-200 hover:text-teal"
+                  className="flex items-center gap-2.5 py-3 text-[0.875rem] font-semibold transition-colors duration-200 hover:text-accent"
                 >
+                  <span aria-hidden className="text-accent">
+                    ▸
+                  </span>
                   {contact.email}
                 </a>
               </li>
@@ -121,9 +131,12 @@ export default function AboutPage() {
                     href="/assets/resume-web.pdf"
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-3 py-4 text-[0.9375rem] font-semibold transition-colors duration-200 hover:text-teal"
+                    className="flex items-center gap-2.5 py-3 text-[0.875rem] font-semibold transition-colors duration-200 hover:text-accent"
                   >
-                    Download résumé ↓
+                    <span aria-hidden className="text-accent">
+                      ▸
+                    </span>
+                    Download résumé
                   </a>
                 </li>
               )}
@@ -131,31 +144,96 @@ export default function AboutPage() {
           </aside>
         </div>
 
-        {/* --------------------------------------------------------- record */}
-        <section aria-labelledby="record-h" className="pt-24 md:pt-32">
-          <h2
-            id="record-h"
-            className="mono border-b border-line pb-3 uppercase tracking-[0.16em] text-fg-soft"
-          >
-            The record
-          </h2>
-          <ol className="mt-6 max-w-[52rem]">
-            {timeline.map((t) => (
-              <li
-                key={t.stamp + t.text}
-                className="flex items-baseline gap-5 border-b border-line py-4"
+        {/* ------------------------------------------------------ record */}
+        <section aria-labelledby="record-h" className="pt-20 md:pt-28">
+          <div className="grid gap-12 md:grid-cols-2 md:gap-16">
+            <div>
+              <h2
+                id="record-h"
+                className="mono border-b border-line pb-3 uppercase tracking-[0.14em] text-fg-soft"
               >
-                <span className="mono w-[76px] shrink-0 text-[0.6875rem] text-violet">
-                  {t.stamp}
-                </span>
-                <span className="text-[0.9375rem] prose-soft">{t.text}</span>
-              </li>
-            ))}
-          </ol>
+                The record
+              </h2>
+              <ol className="mt-5">
+                {timeline.map((t) => (
+                  <li
+                    key={t.stamp + t.text}
+                    className="group flex items-baseline gap-4 border-b border-line py-3"
+                  >
+                    <span className="mono w-[70px] shrink-0 text-[0.625rem] text-accent">
+                      {t.stamp}
+                    </span>
+                    <span className="text-[0.875rem] prose-soft transition-colors duration-200 group-hover:text-fg">
+                      {t.text}
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+
+            <div>
+              <h2 className="mono border-b border-line pb-3 uppercase tracking-[0.14em] text-fg-soft">
+                Experience
+              </h2>
+              <ul className="mt-5 space-y-5">
+                {experience.map((e) => {
+                  const logo = e.logo ? asset(e.logo) : null;
+                  return (
+                    <li key={e.org} className="flex items-start gap-3">
+                      {logo?.exists ? (
+                        <span className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-white p-1">
+                          <Image
+                            src={logo.url}
+                            alt=""
+                            width={36}
+                            height={36}
+                            className="h-full w-full object-contain"
+                          />
+                        </span>
+                      ) : (
+                        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-line">
+                          <DrawnMark id="atlas" accent="#b3a6ff" className="h-4 w-4" />
+                        </span>
+                      )}
+                      <div>
+                        <div className="flex flex-wrap items-baseline gap-x-3">
+                          <h3 className="text-[0.9375rem] font-semibold">{e.org}</h3>
+                          <span className="mono text-[0.625rem] text-fg-faint">
+                            {e.period}
+                          </span>
+                        </div>
+                        <p className="mono mt-0.5 text-[0.6875rem] text-fg-soft">
+                          {e.role}
+                        </p>
+                        <p className="mt-2 text-[0.875rem] prose-soft">{e.line}</p>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-20 md:py-28">
+          <div className="card p-7 md:p-10">
+            <h2 className="h-display max-w-[20ch] text-[clamp(1.375rem,2.6vw,1.875rem)]">
+              Want something built?
+            </h2>
+            <p className="mt-3.5 max-w-[52ch] text-[0.9375rem] prose-soft">
+              I take on websites, apps, and AI work — scoped and quoted within a day.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-2.5">
+              <Link href="/hire" className="btn-solid">
+                What I offer
+              </Link>
+              <a href={contact.mailto} className="btn-ghost">
+                {contact.email}
+              </a>
+            </div>
+          </div>
         </section>
       </div>
-
-      <div className="pb-28 md:pb-36" />
     </main>
   );
 }

@@ -17,11 +17,11 @@ export default function SiteFooter() {
 
   return (
     <footer className="border-t border-line">
-      <div className="mx-auto w-full max-w-[1180px] px-6 py-14 md:px-10">
+      <div className="mx-auto w-full max-w-[1120px] px-6 py-12 md:px-8">
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <div className="max-w-[34ch]">
-            <p className="h-display text-[1.75rem]">Let&rsquo;s build something.</p>
-            <p className="mt-4 prose-soft">
+            <p className="h-display text-[1.375rem]">Let&rsquo;s build something.</p>
+            <p className="mt-3 text-[0.875rem] prose-soft">
               Websites, apps, and AI that does real work. Tell me what you need — I
               reply within a day.
             </p>
@@ -36,7 +36,7 @@ export default function SiteFooter() {
               <Link
                 key={n.href}
                 href={n.href}
-                className="text-[0.9375rem] text-fg-soft transition-colors duration-200 hover:text-fg"
+                className="text-[0.8125rem] text-fg-soft transition-colors duration-200 hover:text-fg"
               >
                 {n.label}
               </Link>
@@ -46,7 +46,7 @@ export default function SiteFooter() {
                 href="/assets/resume-web.pdf"
                 target="_blank"
                 rel="noreferrer"
-                className="text-[0.9375rem] text-fg-soft transition-colors duration-200 hover:text-fg"
+                className="text-[0.8125rem] text-fg-soft transition-colors duration-200 hover:text-fg"
               >
                 Résumé ↗
               </a>

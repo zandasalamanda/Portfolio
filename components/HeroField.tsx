@@ -17,7 +17,7 @@ export default function HeroField() {
     if (!ctx) return;
 
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const PITCH = 26;
+    const PITCH = 20;
     let w = 0;
     let h = 0;
     let dpr = 1;
@@ -57,8 +57,8 @@ export default function HeroField() {
             dy += (ddy / dist) * force;
             glow += band * (1 - age);
           }
-          const alpha = Math.min(0.06 + glow * 0.18, 0.3);
-          ctx.fillStyle = `rgba(250, 250, 248, ${alpha})`;
+          const alpha = Math.min(glow * 0.5, 0.75);
+          ctx.fillStyle = `rgba(179, 166, 255, ${alpha})`;
           ctx.fillRect(gx + dx - 0.75, gy + dy - 0.75, 1.5, 1.5);
         }
       }

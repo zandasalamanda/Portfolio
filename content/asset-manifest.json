@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-03T15:25:06.967Z",
+  "generatedAt": "2026-08-03T16:18:29.540Z",
   "assets": {
     "chronoiq/logo.png": {
       "exists": true,
@@ -265,6 +265,12 @@
       "width": 2560,
       "height": 1247
     },
+    "avatar.png": {
+      "exists": true,
+      "optional": true,
+      "width": 256,
+      "height": 256
+    },
     "bandr/shot-saved.png": {
       "exists": true,
       "optional": true,
@@ -282,6 +288,36 @@
       "optional": true,
       "width": 1170,
       "height": 2532
+    },
+    "headshot.png": {
+      "exists": true,
+      "optional": true,
+      "width": 900,
+      "height": 900
+    },
+    "logos/nasa.png": {
+      "exists": true,
+      "optional": true,
+      "width": 256,
+      "height": 256
+    },
+    "logos/raymondjames.png": {
+      "exists": true,
+      "optional": true,
+      "width": 256,
+      "height": 256
+    },
+    "logos/utr.png": {
+      "exists": true,
+      "optional": true,
+      "width": 256,
+      "height": 256
+    },
+    "logos/verbalist.png": {
+      "exists": true,
+      "optional": true,
+      "width": 256,
+      "height": 256
     }
   }
 }

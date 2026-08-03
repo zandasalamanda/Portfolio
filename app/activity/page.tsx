@@ -24,13 +24,13 @@ export default function ActivityPage() {
   };
 
   return (
-    <main id="main" className="flex-1 pt-[128px] md:pt-[168px]">
-      <div className="mx-auto w-full max-w-[1200px] px-6 md:px-10">
+    <main id="main" className="flex-1 pt-[104px] md:pt-[124px]">
+      <div className="mx-auto w-full max-w-[1120px] px-6 md:px-8">
         <p className="mono uppercase tracking-[0.16em] text-fg-soft">Activity</p>
-        <h1 className="h-display mt-4 max-w-[16ch] text-[clamp(2.25rem,5.4vw,4rem)]">
+        <h1 className="h-display mt-4 max-w-[16ch] text-[clamp(1.75rem,3.6vw,2.5rem)]">
           The work rate, not the résumé version.
         </h1>
-        <p className="mt-6 max-w-[60ch] prose-soft">
+        <p className="mt-5 max-w-[56ch] text-[0.9375rem] prose-soft">
           Counted straight from the public GitHub API when this page was built. No
           badges, no estimates.
         </p>
@@ -72,7 +72,7 @@ export default function ActivityPage() {
                     href={`https://github.com/zandasalamanda/${r.name}`}
                     target="_blank"
                     rel="noreferrer"
-                    className="mono link-x text-teal"
+                    className="mono text-accent"
                   >
                     {r.name} ↗
                   </a>
@@ -98,7 +98,7 @@ export default function ActivityPage() {
                     className="mt-2 h-[3px] w-full overflow-hidden rounded-full bg-[rgba(250,250,248,0.08)]"
                   >
                     <span
-                      className="block h-full rounded-full bg-teal"
+                      className="block h-full rounded-full bg-accent"
                       style={{ width: `${l.pct}%` }}
                     />
                   </div>
@@ -112,7 +112,7 @@ export default function ActivityPage() {
               href={identity.github}
               target="_blank"
               rel="noreferrer"
-              className="mono link-x mt-3 inline-block text-[0.75rem] text-teal"
+              className="mono mt-3 inline-block text-[0.75rem] text-accent"
             >
               {identity.githubHandle} ↗
             </a>

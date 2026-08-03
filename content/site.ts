@@ -343,18 +343,21 @@ export const aboutFacts = [
 export const experience = [
   {
     org: 'UTR Global',
+    logo: 'logos/utr.png',
     role: 'Software developer intern — web + AI',
     period: 'current',
     line: 'Rebuilding bugged legacy web systems (classic ASP/VBScript) and building Atlas Space — an AI workspace where telecom-expense work happens in plain English: drop in a bill, audit it, reconcile lines, check rates, compare months.',
   },
   {
     org: 'Raymond James Financial Services',
+    logo: 'logos/raymondjames.png',
     role: 'Intern',
     period: 'Sept 2023 — present',
     line: 'Research, documents, and day-to-day operations support inside a financial services office.',
   },
   {
     org: 'Team Helios — NASA App Development Challenge',
+    logo: 'logos/nasa.png',
     role: 'Developer',
     period: '2024',
     line: "Built a 3D mission visualization in Python and ran the team's STEM outreach on Instagram.",

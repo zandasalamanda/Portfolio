@@ -22,7 +22,7 @@ export default function SiteHeader({
   const home = pathname === '/';
 
   return (
-    <header className="pointer-events-none fixed inset-x-0 top-0 z-50 px-4 pt-5">
+    <header className="pointer-events-none fixed inset-x-0 top-0 z-50 px-4 pt-4">
       <a
         href="#main"
         className="mono pointer-events-auto sr-only focus:not-sr-only focus:absolute focus:left-6 focus:top-6 focus:rounded-full focus:bg-surface focus:px-4 focus:py-2"
@@ -30,14 +30,14 @@ export default function SiteHeader({
         skip to content
       </a>
 
-      <div className="mx-auto flex w-full max-w-[1180px] items-center justify-between gap-4">
+      <div className="mx-auto flex w-full max-w-[1120px] items-center justify-between gap-4">
         {/* avatar sits left on inner pages, as in the template */}
         <div className="flex-1">
           {!home && avatar && (
             <Link
               href="/"
               aria-label="Home"
-              className="pointer-events-auto block h-10 w-10 overflow-hidden rounded-full border border-line bg-surface"
+              className="pointer-events-auto block h-9 w-9 overflow-hidden rounded-full border border-line bg-surface"
             >
               <Image
                 src={avatar.url}
@@ -62,8 +62,8 @@ export default function SiteHeader({
                 key={item.href}
                 href={item.href}
                 aria-current={active ? 'page' : undefined}
-                className={`rounded-full px-4 py-1.5 text-[0.9375rem] font-medium transition-colors duration-200 ${
-                  active ? 'text-teal' : 'text-fg-soft hover:text-fg'
+                className={`rounded-full px-3.5 py-1.5 text-[0.8125rem] font-medium transition-colors duration-200 ${
+                  active ? 'text-accent' : 'text-fg-soft hover:text-fg'
                 }`}
               >
                 {item.label}
@@ -88,7 +88,7 @@ export default function SiteHeader({
       <nav
         id="mobile-nav"
         aria-label="Site"
-        className={`pointer-events-auto mx-auto mt-2 w-full max-w-[1180px] flex-col gap-1 rounded-2xl border border-line bg-surface/95 p-3 backdrop-blur-md md:hidden ${
+        className={`pointer-events-auto mx-auto mt-2 w-full max-w-[1120px] flex-col gap-1 rounded-2xl border border-line bg-surface/95 p-3 backdrop-blur-md md:hidden ${
           open ? 'flex' : 'hidden'
         }`}
       >
