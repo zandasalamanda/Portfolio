@@ -30,6 +30,11 @@ const MAP = {
   Cloudflare: ['cloudflare', 'original'],
   'Cloudflare D1': ['cloudflare', 'original'],
   Git: ['git', 'original'],
+  CSS: ['css3', 'original'],
+  HTML: ['html5', 'original'],
+  'C++': ['cplusplus', 'original'],
+  Docker: ['docker', 'original'],
+  Figma: ['figma', 'original'],
   YOLOv8: ['python', 'original'],
   Processing: ['java', 'original'],
 };

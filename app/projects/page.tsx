@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { DrawnMark, ProjectMark } from '@/components/Marks';
+import { DrawnMark } from '@/components/Marks';
+import ProjectCard from '@/components/ProjectCard';
 import Reveal from '@/components/Reveal';
-import TechIcon from '@/components/TechIcon';
 import Starfield from '@/components/Starfield';
 import VideoFacade from '@/components/VideoFacade';
-import { projectCards, type ProjectCard } from '@/content/cards';
+import { projectCards } from '@/content/cards';
 import { atlas, award, helios, identity } from '@/content/site';
 import { asset } from '@/lib/assets';
 
@@ -15,124 +15,6 @@ export const metadata: Metadata = {
   description:
     'Every project Zander Leon has built — shipped products, AI systems, apps, and tools, with live links and source.',
 };
-
-function Card({ card }: { card: ProjectCard }) {
-  const image = card.image ? asset(card.image.rel) : null;
-  const sprite = card.sprite ? asset(card.sprite.rel) : null;
-
-  return (
-    <Reveal>
-      <article className="card group flex h-full flex-col overflow-hidden">
-        {/* visual */}
-        <div className="relative aspect-[16/10] overflow-hidden border-b border-line bg-bg">
-          {image?.exists && image.width && image.height && card.image ? (
-            <Image
-              src={image.url}
-              alt={card.image.alt}
-              width={image.width}
-              height={image.height}
-              sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 92vw"
-              className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
-            />
-          ) : sprite?.exists && card.sprite ? (
-            <div
-              className="flex h-full w-full items-center justify-center"
-              style={{
-                background: `radial-gradient(circle at 50% 45%, ${card.accent}1f, transparent 68%)`,
-              }}
-            >
-              <Image
-                src={sprite.url}
-                alt={card.sprite.alt}
-                width={sprite.width ?? 64}
-                height={sprite.height ?? 64}
-                unoptimized
-                className="pixel h-16 w-16 object-contain transition-transform duration-500 group-hover:scale-110"
-              />
-            </div>
-          ) : (
-            <div
-              className="flex h-full w-full items-center justify-center"
-              style={{
-                background: `radial-gradient(circle at 50% 45%, ${card.accent}1f, transparent 68%)`,
-              }}
-            >
-              <DrawnMark
-                id={card.drawn ?? 'game'}
-                accent={card.accent}
-                className="h-12 w-12 transition-transform duration-500 group-hover:scale-110"
-              />
-            </div>
-          )}
-          <span
-            aria-hidden
-            className="absolute inset-x-0 top-0 h-[2px]"
-            style={{
-              background: card.accent2
-                ? `linear-gradient(90deg, ${card.accent}, ${card.accent2})`
-                : card.accent,
-            }}
-          />
-        </div>
-
-        {/* body */}
-        <div className="flex flex-1 flex-col gap-3 p-5">
-          <div className="flex items-center gap-2.5">
-            <ProjectMark
-              logo={card.logo}
-              drawn={card.drawn}
-              accent={card.accent}
-              name={card.name}
-              tile={card.logoTile}
-            />
-            <h3 className="h-display text-[1.0625rem] leading-tight">{card.name}</h3>
-            {card.status && (
-              <span className="mono ml-auto flex shrink-0 items-center gap-1.5 whitespace-nowrap text-[0.625rem] text-fg-faint">
-                <span
-                  aria-hidden
-                  className="h-1.5 w-1.5 rounded-full"
-                  style={{ background: card.accent }}
-                />
-                {card.status}
-              </span>
-            )}
-          </div>
-
-          {card.award && (
-            <p className="mono text-[0.625rem] text-accent">★ {card.award}</p>
-          )}
-
-          <p className="text-[0.875rem] prose-soft">{card.line}</p>
-
-          <div className="mt-auto flex flex-wrap gap-1.5 pt-2">
-            {card.tags.map((t) => (
-              <span key={t} className="chip">
-                <TechIcon label={t} />
-                {t}
-              </span>
-            ))}
-          </div>
-
-          {card.links.length > 0 && (
-            <div className="flex flex-wrap gap-2 pt-1">
-              {card.links.map((l) => (
-                <a
-                  key={l.url}
-                  href={l.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn-ghost !px-3 !py-1.5 !text-[0.75rem]"
-                >
-                  {l.label} <span aria-hidden>↗</span>
-                </a>
-              ))}
-            </div>
-          )}
-        </div>
-      </article>
-    </Reveal>
-  );
-}
 
 export default function ProjectsPage() {
   const poster = asset('chronoiq/video-poster.jpg');
@@ -162,7 +44,7 @@ export default function ProjectsPage() {
             Things I&rsquo;ve made trying to put my mark
           </h1>
           <p className="rise-2 mx-auto mt-4 max-w-[56ch] text-[0.9375rem] prose-soft">
-            Eight projects — live products, an AI workspace running inside a real
+            Seven projects — live products, an AI workspace running inside a real
             company, and the tools I build to scratch my own itches. All of it
             mine: designed, built, and shipped, not forked.
           </p>
@@ -182,12 +64,15 @@ export default function ProjectsPage() {
 
       {/* ------------------------------------------ one continuous gallery */}
       <section
-        aria-label="All projects"
+        aria-labelledby="gallery-h"
         className="mx-auto w-full max-w-[1120px] px-6 md:px-8"
       >
+        <h2 id="gallery-h" className="sr-only">
+          All projects
+        </h2>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {projectCards.map((c) => (
-            <Card key={c.id} card={c} />
+          {projectCards.map((c, i) => (
+            <ProjectCard key={c.id} card={c} priority={i === 0} />
           ))}
         </div>
       </section>

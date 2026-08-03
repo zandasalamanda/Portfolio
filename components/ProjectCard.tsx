@@ -1,76 +1,93 @@
 import Image from 'next/image';
+import { DrawnMark, ProjectMark } from '@/components/Marks';
+import TechIcon from '@/components/TechIcon';
 import type { ProjectCard as Card } from '@/content/cards';
 import { asset } from '@/lib/assets';
 import Reveal from './Reveal';
 
 /**
- * One project, themed by its own product palette. The accent appears as a
- * hairline edge + status dot so fourteen cards read as one wall of work
- * without turning into a rainbow.
+ * A project card. Wide cards put the screenshot beside the copy; the rest
+ * stack it above — so the gallery reads as a composed wall rather than a
+ * uniform grid, while every card stays the same species.
  */
 export default function ProjectCard({
   card,
-  size = 'md',
+  priority = false,
 }: {
   card: Card;
-  size?: 'lg' | 'md' | 'sm';
+  priority?: boolean;
 }) {
   const image = card.image ? asset(card.image.rel) : null;
-  const sprite = card.sprite ? asset(card.sprite.rel) : null;
-  const edge = card.accent2
-    ? `linear-gradient(90deg, ${card.accent}, ${card.accent2})`
-    : card.accent;
+  const hasImage = Boolean(image?.exists && image.width && image.height && card.image);
+  const wide = card.size === 'wide';
 
   return (
-    <Reveal>
+    <Reveal className={wide ? 'sm:col-span-2' : ''}>
       <article
-        className="card-lift group relative flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface hover:border-line-strong"
-        style={{ boxShadow: '0 1px 0 rgba(250,250,248,0.04) inset' }}
+        className={`card group flex h-full overflow-hidden ${
+          wide ? 'flex-col md:grid md:grid-cols-2' : 'flex-col'
+        }`}
       >
-        <span
-          aria-hidden
-          className="absolute inset-x-0 top-0 h-[2px]"
-          style={{ background: edge }}
-        />
-
-        {image?.exists && image.width && image.height && card.image && (
-          <div
-            className={`overflow-hidden border-b border-line bg-ground ${
-              size === 'lg' ? 'aspect-[16/10]' : 'aspect-[16/10]'
-            }`}
-          >
+        <div
+          className={`relative overflow-hidden bg-bg ${
+            wide
+              ? 'aspect-[16/10] border-b border-line md:aspect-auto md:h-full md:border-b-0 md:border-r'
+              : 'aspect-[16/10] border-b border-line'
+          }`}
+        >
+          {hasImage && card.image && image ? (
             <Image
               src={image.url}
               alt={card.image.alt}
-              width={image.width}
-              height={image.height}
-              sizes={size === 'lg' ? '(min-width: 768px) 60vw, 100vw' : '(min-width: 768px) 32vw, 92vw'}
-              className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+              width={image.width ?? 1600}
+              height={image.height ?? 1000}
+              sizes={
+                wide ? '(min-width: 768px) 46vw, 92vw' : '(min-width: 1024px) 30vw, 92vw'
+              }
+              priority={priority}
+              className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
             />
-          </div>
-        )}
-
-        <div className={`flex flex-1 flex-col ${size === 'sm' ? 'gap-2 p-5' : 'gap-3 p-6'}`}>
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
-            {sprite?.exists && card.sprite && (
-              <Image
-                src={sprite.url}
-                alt={card.sprite.alt}
-                width={sprite.width ?? 48}
-                height={sprite.height ?? 48}
-                unoptimized
-                className="pixel h-9 w-9 shrink-0 object-contain"
+          ) : (
+            <div
+              className="flex h-full w-full items-center justify-center"
+              style={{
+                background: `radial-gradient(circle at 50% 45%, ${card.accent}1f, transparent 68%)`,
+              }}
+            >
+              <DrawnMark
+                id={card.drawn ?? 'code'}
+                accent={card.accent}
+                className="h-12 w-12 transition-transform duration-500 group-hover:scale-110"
               />
-            )}
+            </div>
+          )}
+          <span
+            aria-hidden
+            className="absolute inset-x-0 top-0 h-[2px]"
+            style={{
+              background: card.accent2
+                ? `linear-gradient(90deg, ${card.accent}, ${card.accent2})`
+                : card.accent,
+            }}
+          />
+        </div>
+
+        <div className={`flex flex-1 flex-col gap-3 p-5 ${wide ? "md:justify-center" : ""}`}>
+          <div className="flex items-center gap-2.5">
+            <ProjectMark
+              logo={card.logo}
+              drawn={card.drawn}
+              accent={card.accent}
+              name={card.name}
+              tile={card.logoTile}
+            />
             <h3
-              className={`font-display font-black leading-tight ${
-                size === 'lg' ? 'text-2xl md:text-[1.75rem]' : 'text-lg'
-              }`}
+              className={`h-display leading-tight ${wide ? 'text-[1.25rem]' : 'text-[1.0625rem]'}`}
             >
               {card.name}
             </h3>
             {card.status && (
-              <span className="mono ml-auto flex shrink-0 items-center gap-1.5 whitespace-nowrap text-[0.6875rem] text-fg-soft">
+              <span className="mono ml-auto flex shrink-0 items-center gap-1.5 whitespace-nowrap text-[0.625rem] text-fg-faint">
                 <span
                   aria-hidden
                   className="h-1.5 w-1.5 rounded-full"
@@ -81,31 +98,37 @@ export default function ProjectCard({
             )}
           </div>
 
-          {card.award && (
-            <p className="mono text-[0.6875rem] text-gold">★ {card.award}</p>
+          {card.hook && (
+            <p
+              className="border-l-2 pl-3 text-[0.8125rem] font-medium"
+              style={{ borderColor: card.accent, color: card.accent }}
+            >
+              {card.hook}
+            </p>
           )}
 
-          <p
-            className={`leading-relaxed text-fg-soft ${
-              size === 'sm' ? 'text-[0.875rem]' : 'text-[0.9375rem]'
-            }`}
-          >
-            {card.line}
-          </p>
+          {card.award && <p className="mono text-[0.625rem] text-accent">★ {card.award}</p>}
 
-          <p className="mono mt-auto pt-2 text-[0.6875rem] leading-relaxed text-fg-faint">
-            {card.tags}
-          </p>
+          <p className="text-[0.875rem] prose-soft">{card.line}</p>
+
+          <div className={`flex flex-wrap gap-1.5 pt-2 ${wide ? "" : "mt-auto"}`}>
+            {card.tags.map((t) => (
+              <span key={t} className="chip">
+                <TechIcon label={t} />
+                {t}
+              </span>
+            ))}
+          </div>
 
           {card.links.length > 0 && (
-            <div className="mono flex flex-wrap gap-x-4 gap-y-1 pt-1">
+            <div className="flex flex-wrap gap-2 pt-1">
               {card.links.map((l) => (
                 <a
                   key={l.url}
                   href={l.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="link-x text-[0.75rem] text-link"
+                  className="btn-ghost !px-3 !py-1.5 !text-[0.75rem]"
                 >
                   {l.label} <span aria-hidden>↗</span>
                 </a>

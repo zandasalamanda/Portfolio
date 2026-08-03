@@ -100,7 +100,7 @@ export default function Home() {
               </article>
             ))}
             <Link href="/projects" className="link-accent">
-              All 8 projects <span aria-hidden>›</span>
+              All 7 projects <span aria-hidden>›</span>
             </Link>
           </div>
 
@@ -193,20 +193,20 @@ export default function Home() {
               <div className="mt-3.5">
                 <ActivityGraph compact />
               </div>
-              <ul className="mt-4 space-y-1.5">
+              <ul className="mt-3">
                 {topRepos.slice(0, 3).map((r) => (
-                  <li key={r.name} className="flex items-baseline justify-between gap-3">
+                  <li key={r.name}>
                     <a
                       href={`https://github.com/zandasalamanda/${r.name}`}
                       target="_blank"
                       rel="noreferrer"
-                      className="mono text-[0.6875rem] text-accent"
+                      className="-mx-2 flex items-baseline justify-between gap-3 rounded-lg px-2 py-2 transition-colors duration-200 hover:bg-white/[0.04]"
                     >
-                      {r.name}
+                      <span className="mono text-[0.6875rem] text-accent">{r.name}</span>
+                      <span className="mono text-[0.625rem] text-fg-faint">
+                        {r.commits} commits
+                      </span>
                     </a>
-                    <span className="mono text-[0.625rem] text-fg-faint">
-                      {r.commits} commits
-                    </span>
                   </li>
                 ))}
               </ul>

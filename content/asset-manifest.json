@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-03T18:52:43.509Z",
+  "generatedAt": "2026-08-03T20:16:59.733Z",
   "assets": {
     "chronoiq/logo.png": {
       "exists": true,
@@ -265,12 +265,6 @@
       "width": 256,
       "height": 256
     },
-    "bandr/shot-saved.png": {
-      "exists": true,
-      "optional": true,
-      "width": 1170,
-      "height": 2532
-    },
     "chronoiq/shot-calendar.png": {
       "exists": true,
       "optional": true,
@@ -331,7 +325,31 @@
       "width": 128,
       "height": 128
     },
+    "tech/css.svg": {
+      "exists": true,
+      "optional": true,
+      "width": 128,
+      "height": 128
+    },
+    "tech/docker.svg": {
+      "exists": true,
+      "optional": true,
+      "width": 128,
+      "height": 128
+    },
+    "tech/figma.svg": {
+      "exists": true,
+      "optional": true,
+      "width": 128,
+      "height": 128
+    },
     "tech/git.svg": {
+      "exists": true,
+      "optional": true,
+      "width": 128,
+      "height": 128
+    },
+    "tech/html.svg": {
       "exists": true,
       "optional": true,
       "width": 128,

@@ -24,6 +24,10 @@ export interface ProjectCard {
   sprite?: { rel: string; alt: string };
   links: Receipt[];
   award?: string;
+  /** how much room the card takes in the gallery */
+  size?: 'wide' | 'tall' | 'std';
+  /** the single most interesting thing about it */
+  hook?: string;
 }
 
 const chronoiq = productById('chronoiq');
@@ -34,6 +38,8 @@ const everdeck = productById('everdeck');
 export const projectCards: ProjectCard[] = [
   {
     id: 'chronoiq',
+    size: 'wide',
+    hook: 'Won across 4,600+ apps and shown at the U.S. Capitol.',
     name: 'ChronoIQ',
     status: 'live',
     line: chronoiq.description,
@@ -53,6 +59,8 @@ export const projectCards: ProjectCard[] = [
   },
   {
     id: 'solaspace',
+    size: 'tall',
+    hook: 'Keeps planning even when the AI is unavailable.',
     name: 'Solaspace',
     status: 'live',
     line: solaspace.description,
@@ -70,6 +78,8 @@ export const projectCards: ProjectCard[] = [
   },
   {
     id: 'atlas',
+    size: 'wide',
+    hook: 'Runs inside a real company, on real invoices.',
     name: 'Atlas Space',
     status: 'built at UTR Global',
     line: 'An AI workspace for telecom-expense operations — drop in a bill or spreadsheet and work in plain English: ask, audit, reconcile lines, check rates, compare months, fix files.',
@@ -100,6 +110,8 @@ id: 'everdeck',
   },
   {
     id: 'bandr',
+    size: 'std',
+    hook: 'Every score is a rule you can read — no black box.',
     name: 'Bandr',
     status: 'open source',
     line: bandr.description,
@@ -114,6 +126,8 @@ id: 'everdeck',
   },
   {
     id: 'yasabo',
+    size: 'std',
+    hook: 'Real Colombian voices, entirely on-device.',
     name: 'Ya Sabo',
     status: 'in development',
     line: 'A judgment-free Spanish-comprehension app for “no sabo” heritage speakers — real Colombian voices, slang, and speed. Installable PWA, fully on-device.',
@@ -128,6 +142,8 @@ id: 'everdeck',
   },
   {
     id: 'verbalist',
+    size: 'std',
+    hook: 'Flags filler words the moment you say them.',
     name: 'Verbalist',
     status: 'open source',
     line: 'An interactive speech coach that flags filler words, brainrot, and jargon as you speak.',
@@ -139,16 +155,6 @@ id: 'everdeck',
       alt: 'Verbalist analysing a spoken passage: filler words and jargon highlighted in the live transcript, with a speech-integrity score and word metrics',
     },
     links: [{ label: 'source', url: 'https://github.com/zandasalamanda/Verbalist' }],
-  },
-  {
-    id: 'libero',
-    name: 'Libero',
-    status: 'computer vision',
-    line: 'A real-time AI ball tracker — YOLOv8 fused with colour detection over live screen capture, with an on-screen overlay.',
-    tags: ['Python', 'YOLOv8', 'OpenCV'],
-    accent: '#7fd4ff',
-    drawn: 'libero',
-    links: [{ label: 'source', url: 'https://github.com/zandasalamanda/Libero' }],
   },
 ];
 

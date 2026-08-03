@@ -34,6 +34,16 @@ export default function ActivityPage() {
     (m, w) => Math.max(m, w.days.reduce((a, b) => a + b, 0)),
     0,
   );
+  const allDays = weeks.flatMap((w) => w.days);
+  const activeDays = allDays.filter((d) => d > 0).length;
+  const longestStreak = allDays.reduce(
+    (acc, d) => {
+      const run = d > 0 ? acc.run + 1 : 0;
+      return { run, best: Math.max(acc.best, run) };
+    },
+    { run: 0, best: 0 },
+  ).best;
+  const topRepo = (data.topRepos ?? [])[0];
 
   return (
     <main id="main" className="flex-1 pt-[104px] md:pt-[124px]">
@@ -47,12 +57,14 @@ export default function ActivityPage() {
           badges, no estimates.
         </p>
 
-        <dl className="rise-3 mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <dl className="rise-3 mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
           {[
             { k: 'Commits', v: String(totalCommits), s: 'last 52 weeks' },
-            { k: 'Repositories', v: String(repoCount), s: 'public, original' },
-            { k: 'Forks', v: '0', s: 'all my own work' },
+            { k: 'Repositories', v: String(repoCount), s: 'public, all original' },
+            { k: 'Days shipped', v: String(activeDays), s: 'days with a commit' },
+            { k: 'Longest streak', v: String(longestStreak), s: 'days in a row' },
             { k: 'Busiest week', v: String(busiest), s: 'commits in 7 days' },
+            { k: 'Forks', v: '0', s: 'nothing copied' },
           ].map((t) => (
             <div key={t.k} className="card p-4">
               <dt className="mono text-[0.625rem] uppercase tracking-[0.14em] text-fg-faint">
@@ -67,7 +79,7 @@ export default function ActivityPage() {
 
       <section
         aria-labelledby="graph-h"
-        className="mx-auto w-full max-w-[1200px] px-6 pt-14 md:px-10 md:pt-20"
+        className="mx-auto w-full max-w-[1120px] px-6 pt-16 md:px-8 md:pt-20"
       >
         <h2 id="graph-h" className="mono border-b border-line pb-3 uppercase tracking-[0.16em] text-fg-soft">
           Last 52 weeks
@@ -75,7 +87,21 @@ export default function ActivityPage() {
         <div className="mt-8 card p-6 md:p-8">
           <ActivityGraph />
         </div>
-        <p className="mono mt-4 text-[0.6875rem] text-fg-faint">
+        {topRepo && (
+          <p className="mono mt-4 text-[0.6875rem] text-fg-soft">
+            Busiest repository:{' '}
+            <a
+              href={`https://github.com/zandasalamanda/${topRepo.name}`}
+              target="_blank"
+              rel="noreferrer"
+              className="text-accent"
+            >
+              {topRepo.name}
+            </a>{' '}
+            — {topRepo.commits} commits.
+          </p>
+        )}
+        <p className="mono mt-1.5 text-[0.6875rem] text-fg-faint">
           Fetched {data.fetchedAt ?? 'pending'}
           {data.method ? ` · ${data.method}` : ''} · counts commits authored in public
           repositories.
@@ -84,7 +110,7 @@ export default function ActivityPage() {
 
       <section
         aria-labelledby="repos-h"
-        className="mx-auto w-full max-w-[1200px] px-6 pt-20 md:px-10 md:pt-28"
+        className="mx-auto w-full max-w-[1120px] px-6 pt-16 md:px-8 md:pt-20"
       >
         <div className="grid gap-12 md:grid-cols-2 md:gap-16">
           <div>

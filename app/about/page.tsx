@@ -48,7 +48,7 @@ export default function AboutPage() {
                 Since then I&rsquo;ve shipped Solaspace, an AI goal-execution app;
                 Bandr, a rule-engine app that helps teens find safe ways to earn;
                 Everdeck, a business-opportunity deck in private preview; and Ya Sabo,
-                a Spanish comprehension app for heritage speakers. Eight projects in total,
+                a Spanish comprehension app for heritage speakers. Seven projects in total,
                 all original work — zero forks.
               </p>
               <p>
@@ -93,7 +93,7 @@ export default function AboutPage() {
                   height={headshot.height}
                   sizes="(min-width: 1024px) 320px, 70vw"
                   priority
-                  className="block h-auto w-full max-w-[280px] object-contain lg:max-w-none"
+                  className="block h-auto w-full max-w-[280px] object-contain grayscale lg:max-w-none"
                 />
               </div>
             )}
