@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# zanderleon.dev
 
-## Getting Started
+My portfolio — the work, the services I offer, and the receipts behind both.
+Live at **[zanderleon.dev](https://zanderleon.dev)**.
 
-First, run the development server:
+Built with Next.js (App Router) and TypeScript, statically generated, deployed
+on Vercel.
+
+## What's interesting in here
+
+- **Every claim is checked at build time.** `scripts/verify-links.mjs` hits each
+  external receipt and records the status; the footer prints the timestamp.
+- **Real activity, not badges.** `scripts/fetch-activity.mjs` counts commits from
+  the public GitHub API and feeds the contribution graph on `/activity`.
+- **One source of truth for facts.** Everything a visitor reads lives in
+  `content/site.ts` and `content/cards.ts` — nothing is hard-coded into a page.
+- **Assets are declared, not assumed.** `scripts/scan-assets.mjs` builds a
+  manifest of `content/assets/`; anything missing renders a labelled placeholder
+  rather than a broken image.
+- **Self-hosted tech icons.** `scripts/build-tech-icons.mjs` copies only the
+  devicon SVGs actually used, so there is no CDN request.
+
+## Running it
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+`npm run build` runs the asset scan, link check, and activity fetch first. All
+three fail safe: if the network is unavailable they keep the committed data
+rather than writing empty results.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Checks
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run typecheck
+npm run lint
+npm run build
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+My earlier game-development portfolio — an explorable pixel-art gallery walk —
+now lives at
+**[github.com/zandasalamanda/game-dev-portfolio](https://github.com/zandasalamanda/game-dev-portfolio)**.
