@@ -31,12 +31,12 @@ export default function Home() {
                 height={headshot.height}
                 sizes="52px"
                 priority
-                className="rise-1 mb-6 h-14 w-14 rounded-full border border-line bg-white/[0.04] object-cover"
+                className="rise-1 mb-6 h-14 w-14 rounded-full border border-line bg-white/[0.04] object-cover grayscale"
               />
             )}
 
             <h1 className="rise-1 h-display text-[clamp(1.75rem,3.6vw,2.5rem)]">
-              Software developer, freelancer, and Congressional App Challenge winner.
+              Web designer, software developer, and freelancer.
             </h1>
 
             <div className="rise-2 mt-6 space-y-3.5 text-[0.9375rem] prose-soft">
@@ -100,7 +100,7 @@ export default function Home() {
               </article>
             ))}
             <Link href="/projects" className="link-accent">
-              All 13 projects <span aria-hidden>›</span>
+              All 8 projects <span aria-hidden>›</span>
             </Link>
           </div>
 

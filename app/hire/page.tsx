@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { services, stack, audiences, preferences, whyMe } from '@/content/services';
+import TechIcon from '@/components/TechIcon';
 import { contact } from '@/content/site';
 
 export const metadata: Metadata = {
@@ -42,10 +43,18 @@ export default function HirePage() {
         <p className="mt-2.5 text-[0.875rem] prose-soft">Fixed scope, fixed price, quoted in 24 hours.</p>
 
         <div className="mt-6 grid gap-5 lg:grid-cols-3">
-          {services.map((s) => (
-            <article key={s.name} className="card flex flex-col p-6">
-              <div className="flex items-baseline justify-between gap-3 border-b border-line pb-4">
-                <h3 className="h-display text-[1.0625rem]">{s.name}</h3>
+          {services.map((s, i) => (
+            <article key={s.name} className="card group flex flex-col p-6">
+              <div className="flex items-center justify-between gap-3 border-b border-line pb-4">
+                <div className="flex items-center gap-2.5">
+                  <span
+                    aria-hidden
+                    className="mono flex h-7 w-7 items-center justify-center rounded-lg border border-line text-[0.625rem] text-accent transition-colors duration-300 group-hover:border-accent/50"
+                  >
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <h3 className="h-display text-[1.0625rem]">{s.name}</h3>
+                </div>
                 <span className="mono text-[0.6875rem] text-accent">{s.timeline}</span>
               </div>
               <p className="mt-4 text-[0.875rem] prose-soft">{s.line}</p>
@@ -86,7 +95,10 @@ export default function HirePage() {
               <ul className="relative z-10 mt-4 flex flex-wrap gap-1.5">
                 {group.items.map((i) => (
                   <li key={i}>
-                    <span className="chip">{i}</span>
+                    <span className="chip">
+                      <TechIcon label={i} />
+                      {i}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -161,6 +173,33 @@ export default function HirePage() {
             </article>
           ))}
         </div>
+      </section>
+
+      {/* -------------------------------------------------------- process */}
+      <section
+        aria-labelledby="proc-h"
+        className="mx-auto w-full max-w-[1120px] px-6 pt-20 md:px-8 md:pt-24"
+      >
+        <h2 id="proc-h" className="h-display text-[1.375rem]">
+          How a project runs
+        </h2>
+        <p className="mt-2.5 text-[0.875rem] prose-soft">
+          Four steps, no mystery. You always know where it stands.
+        </p>
+        <ol className="mt-6 grid gap-px overflow-hidden rounded-xl border border-line bg-line md:grid-cols-4">
+          {[
+            { n: '01', t: 'You describe it', d: 'An email is enough — what is broken, or what you want to exist.' },
+            { n: '02', t: 'I scope and quote', d: 'Written scope, fixed price, a delivery date. Within 24 hours.' },
+            { n: '03', t: 'You watch it build', d: 'A live preview link from day one, updated as I go.' },
+            { n: '04', t: 'Launch and hand over', d: 'Repo, domain, credentials — yours. I stay reachable after.' },
+          ].map((p) => (
+            <li key={p.n} className="bg-bg p-5">
+              <span className="mono text-[0.625rem] text-accent">{p.n}</span>
+              <h3 className="mt-2 text-[0.9375rem] font-semibold">{p.t}</h3>
+              <p className="mt-1.5 text-[0.8125rem] prose-soft">{p.d}</p>
+            </li>
+          ))}
+        </ol>
       </section>
 
       {/* ------------------------------------------------------------ CTA */}

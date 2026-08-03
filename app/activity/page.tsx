@@ -20,20 +20,48 @@ export default function ActivityPage() {
   const data = activity as {
     fetchedAt: string | null;
     method?: string;
+    totalCommits?: number;
+    repoCount?: number;
+    weeks?: { start: string; days: number[] }[];
     topRepos?: { name: string; commits: number }[];
   };
+  const weeks = data.weeks ?? [];
+  const totalCommits =
+    data.totalCommits ?? weeks.flatMap((w) => w.days).reduce((a, b) => a + b, 0);
+  const repoCount = data.repoCount ?? 0;
+  const busiest = weeks.reduce(
+    (m, w) => Math.max(m, w.days.reduce((a, b) => a + b, 0)),
+    0,
+  );
 
   return (
     <main id="main" className="flex-1 pt-[104px] md:pt-[124px]">
       <div className="mx-auto w-full max-w-[1120px] px-6 md:px-8">
-        <p className="mono uppercase tracking-[0.16em] text-fg-soft">Activity</p>
-        <h1 className="h-display mt-4 max-w-[16ch] text-[clamp(1.75rem,3.6vw,2.5rem)]">
+        <p className="rise-1 mono uppercase tracking-[0.16em] text-fg-soft">Activity</p>
+        <h1 className="rise-1 h-display mt-4 max-w-[16ch] text-[clamp(1.75rem,3.6vw,2.5rem)]">
           The work rate, not the résumé version.
         </h1>
-        <p className="mt-5 max-w-[56ch] text-[0.9375rem] prose-soft">
+        <p className="rise-2 mt-5 max-w-[56ch] text-[0.9375rem] prose-soft">
           Counted straight from the public GitHub API when this page was built. No
           badges, no estimates.
         </p>
+
+        <dl className="rise-3 mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
+          {[
+            { k: 'Commits', v: String(totalCommits), s: 'last 52 weeks' },
+            { k: 'Repositories', v: String(repoCount), s: 'public, original' },
+            { k: 'Forks', v: '0', s: 'all my own work' },
+            { k: 'Busiest week', v: String(busiest), s: 'commits in 7 days' },
+          ].map((t) => (
+            <div key={t.k} className="card p-4">
+              <dt className="mono text-[0.625rem] uppercase tracking-[0.14em] text-fg-faint">
+                {t.k}
+              </dt>
+              <dd className="h-display mt-1.5 text-[1.5rem] text-accent">{t.v}</dd>
+              <p className="mono mt-0.5 text-[0.625rem] text-fg-faint">{t.s}</p>
+            </div>
+          ))}
+        </dl>
       </div>
 
       <section

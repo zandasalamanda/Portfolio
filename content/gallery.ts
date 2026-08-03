@@ -21,7 +21,7 @@ export const galleryPhotos: GalleryPhoto[] = [
   {
     rel: 'gallery/02.jpg',
     alt: 'A purple and pink sunset seen through an open window',
-    word: 'PATIENCE',
+    word: 'PERSIST',
     caption: 'Good software is mostly the hours nobody sees.',
     rotate: 1.8,
   },
@@ -35,8 +35,8 @@ export const galleryPhotos: GalleryPhoto[] = [
   {
     rel: 'gallery/04.jpg',
     alt: 'A cat resting on a backlit keyboard beside a monitor',
-    word: 'PATIENCE',
-    caption: 'Debugging is the job. The rest is typing.',
+    word: 'DEBUG',
+    caption: 'Finding the bug is the job. The rest is typing.',
     rotate: 2.4,
   },
   {

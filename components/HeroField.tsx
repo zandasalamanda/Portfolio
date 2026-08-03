@@ -39,6 +39,8 @@ export default function HeroField() {
 
     const draw = (now: number) => {
       ctx.clearRect(0, 0, w, h);
+      // ambient breathing wave so the field is visibly alive before any input
+      const t = now / 1000;
       ripples = ripples.filter((r) => now - r.born < 1400);
       for (let gy = PITCH; gy < h; gy += PITCH) {
         for (let gx = PITCH; gx < w + PITCH; gx += PITCH) {
@@ -57,7 +59,12 @@ export default function HeroField() {
             dy += (ddy / dist) * force;
             glow += band * (1 - age);
           }
-          const alpha = Math.min(glow * 0.5, 0.75);
+          const ambient =
+            0.1 +
+            0.09 *
+              Math.sin(gx / 120 + t * 0.55) *
+              Math.cos(gy / 140 - t * 0.42);
+          const alpha = Math.min(ambient + glow * 0.55, 0.85);
           ctx.fillStyle = `rgba(179, 166, 255, ${alpha})`;
           ctx.fillRect(gx + dx - 0.75, gy + dy - 0.75, 1.5, 1.5);
         }
@@ -66,8 +73,7 @@ export default function HeroField() {
 
     const tick = () => {
       draw(performance.now());
-      if (ripples.length > 0) raf = requestAnimationFrame(tick);
-      else raf = 0;
+      raf = requestAnimationFrame(tick);
     };
 
     const onPointer = (e: PointerEvent) => {
@@ -86,7 +92,10 @@ export default function HeroField() {
     size();
     const ro = new ResizeObserver(size);
     ro.observe(canvas);
-    if (!reduced) window.addEventListener('pointermove', onPointer, { passive: true });
+    if (!reduced) {
+      window.addEventListener('pointermove', onPointer, { passive: true });
+      raf = requestAnimationFrame(tick);
+    }
 
     return () => {
       ro.disconnect();

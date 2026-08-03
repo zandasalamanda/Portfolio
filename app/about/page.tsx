@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Circled, Underlined } from '@/components/Annotate';
+import { Underlined } from '@/components/Annotate';
 import { DrawnMark } from '@/components/Marks';
 import { aboutFacts, contact, experience, identity, timeline } from '@/content/site';
 import { asset } from '@/lib/assets';
@@ -40,7 +40,7 @@ export default function AboutPage() {
                 It started with a problem I actually had. Homework kept sliding to 11
                 p.m., so I built ChronoIQ — an AI study scheduler that reads your
                 calendar and books work into the free time you really have. It won the{' '}
-                <Circled>Congressional App Challenge</Circled> for New
+                <Underlined>Congressional App Challenge</Underlined> for New
                 Jersey&rsquo;s 7th district, selected from over 4,600 apps, and was
                 displayed at the U.S. Capitol.
               </p>
@@ -48,8 +48,8 @@ export default function AboutPage() {
                 Since then I&rsquo;ve shipped Solaspace, an AI goal-execution app;
                 Bandr, a rule-engine app that helps teens find safe ways to earn;
                 Everdeck, a business-opportunity deck in private preview; and Ya Sabo,
-                a Spanish comprehension app for heritage speakers. Thirteen projects in
-                total, all original work — zero forks.
+                a Spanish comprehension app for heritage speakers. Eight projects in total,
+                all original work — zero forks.
               </p>
               <p>
                 At my internship I do the unglamorous half too: rebuilding bugged

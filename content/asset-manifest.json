@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-03T16:18:29.540Z",
+  "generatedAt": "2026-08-03T16:42:10.659Z",
   "assets": {
     "chronoiq/logo.png": {
       "exists": true,
@@ -318,6 +318,132 @@
       "optional": true,
       "width": 256,
       "height": 256
+    },
+    "tech/c-.svg": {
+      "exists": true,
+      "optional": true,
+      "width": 128,
+      "height": 128
+    },
+    "tech/cloudflare-d1.svg": {
+      "exists": true,
+      "optional": true,
+      "width": 128,
+      "height": 128
+    },
+    "tech/cloudflare.svg": {
+      "exists": true,
+      "optional": true,
+      "width": 128,
+      "height": 128
+    },
+    "tech/git.svg": {
+      "exists": true,
+      "optional": true,
+      "width": 128,
+      "height": 128
+    },
+    "tech/java.svg": {
+      "exists": true,
+      "optional": true,
+      "width": 128,
+      "height": 128
+    },
+    "tech/javascript.svg": {
+      "exists": true,
+      "optional": true,
+      "width": 128,
+      "height": 128
+    },
+    "tech/next-js.svg": {
+      "exists": true,
+      "optional": true,
+      "width": 128,
+      "height": 128
+    },
+    "tech/node-js.svg": {
+      "exists": true,
+      "optional": true,
+      "width": 128,
+      "height": 128
+    },
+    "tech/node.svg": {
+      "exists": true,
+      "optional": true,
+      "width": 128,
+      "height": 128
+    },
+    "tech/opencv.svg": {
+      "exists": true,
+      "optional": true,
+      "width": 128,
+      "height": 128
+    },
+    "tech/postgres.svg": {
+      "exists": true,
+      "optional": true,
+      "width": 128,
+      "height": 128
+    },
+    "tech/processing.svg": {
+      "exists": true,
+      "optional": true,
+      "width": 128,
+      "height": 128
+    },
+    "tech/python.svg": {
+      "exists": true,
+      "optional": true,
+      "width": 128,
+      "height": 128
+    },
+    "tech/react.svg": {
+      "exists": true,
+      "optional": true,
+      "width": 128,
+      "height": 128
+    },
+    "tech/supabase.svg": {
+      "exists": true,
+      "optional": true,
+      "width": 128,
+      "height": 128
+    },
+    "tech/tailwind.svg": {
+      "exists": true,
+      "optional": true,
+      "width": 128,
+      "height": 128
+    },
+    "tech/typescript.svg": {
+      "exists": true,
+      "optional": true,
+      "width": 128,
+      "height": 128
+    },
+    "tech/unity.svg": {
+      "exists": true,
+      "optional": true,
+      "width": 128,
+      "height": 128
+    },
+    "tech/vite.svg": {
+      "exists": true,
+      "optional": true,
+      "width": 128,
+      "height": 128
+    },
+    "tech/yolov8.svg": {
+      "exists": true,
+      "optional": true,
+      "width": 128,
+      "height": 128
+    },
+    "verbalist/shot-app.png": {
+      "exists": true,
+      "optional": true,
+      "width": 2880,
+      "height": 1800
     }
   }
 }

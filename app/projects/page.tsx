@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { DrawnMark, ProjectMark } from '@/components/Marks';
 import Reveal from '@/components/Reveal';
+import TechIcon from '@/components/TechIcon';
 import Starfield from '@/components/Starfield';
 import VideoFacade from '@/components/VideoFacade';
 import { projectCards, type ProjectCard } from '@/content/cards';
@@ -12,7 +13,7 @@ import { asset } from '@/lib/assets';
 export const metadata: Metadata = {
   title: 'Projects',
   description:
-    'Every project Zander Leon has built — shipped products, AI systems, apps, tools, and games, with live links and source.',
+    'Every project Zander Leon has built — shipped products, AI systems, apps, and tools, with live links and source.',
 };
 
 function Card({ card }: { card: ProjectCard }) {
@@ -106,6 +107,7 @@ function Card({ card }: { card: ProjectCard }) {
           <div className="mt-auto flex flex-wrap gap-1.5 pt-2">
             {card.tags.map((t) => (
               <span key={t} className="chip">
+                <TechIcon label={t} />
                 {t}
               </span>
             ))}
@@ -160,9 +162,9 @@ export default function ProjectsPage() {
             Things I&rsquo;ve made trying to put my mark
           </h1>
           <p className="rise-2 mx-auto mt-4 max-w-[56ch] text-[0.9375rem] prose-soft">
-            Thirteen projects — live products, an AI workspace running inside a real
-            company, apps, tools, and the games I cut my teeth on. All of it mine:
-            designed, built, and shipped, not forked.
+            Eight projects — live products, an AI workspace running inside a real
+            company, and the tools I build to scratch my own itches. All of it
+            mine: designed, built, and shipped, not forked.
           </p>
           <div className="rise-3 mt-7 flex flex-wrap justify-center gap-2.5">
             <Link href="/hire" className="btn-solid">

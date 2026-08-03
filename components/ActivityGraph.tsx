@@ -15,11 +15,11 @@ interface Activity {
 }
 
 const LEVELS = [
-  'rgba(255,255,255,0.06)',
-  'rgba(45,212,191,0.3)',
-  'rgba(45,212,191,0.52)',
-  'rgba(45,212,191,0.74)',
-  'rgba(45,212,191,0.96)',
+  'rgba(255,255,255,0.07)',
+  'rgba(179,166,255,0.3)',
+  'rgba(179,166,255,0.52)',
+  'rgba(179,166,255,0.76)',
+  'rgba(179,166,255,0.98)',
 ];
 
 function level(n: number, max: number): number {
@@ -31,27 +31,46 @@ function level(n: number, max: number): number {
   return 1;
 }
 
-/** Real commit activity — 52 weeks, counted from the public GitHub API. */
+/**
+ * Real commit activity from the public GitHub API. The compact variant shows
+ * the most recent half-year so it fits a sidebar card without scrolling —
+ * the full 52 weeks live on /activity.
+ */
 export default function ActivityGraph({ compact = false }: { compact?: boolean }) {
   const data = activity as Activity;
-  const weeks = data.weeks ?? [];
-  if (weeks.length === 0) return null;
+  const all = data.weeks ?? [];
+  if (all.length === 0) return null;
 
-  const max = Math.max(...weeks.flatMap((w) => w.days));
-  const total = data.totalCommits ?? weeks.flatMap((w) => w.days).reduce((a, b) => a + b, 0);
+  const weeks = compact ? all.slice(-24) : all;
+  const cell = compact ? 8 : 10;
+  const gap = compact ? 2 : 3;
+  const max = Math.max(...all.flatMap((w) => w.days), 1);
+  const total = compact
+    ? weeks.flatMap((w) => w.days).reduce((a, b) => a + b, 0)
+    : (data.totalCommits ?? all.flatMap((w) => w.days).reduce((a, b) => a + b, 0));
 
   return (
     <div>
-      <div className="overflow-x-auto pb-1">
-        <div className="flex gap-[3px]" style={{ minWidth: weeks.length * 13 }}>
+      <div className={compact ? '' : 'overflow-x-auto pb-1'}>
+        <div
+          className={compact ? 'flex w-full justify-between' : 'flex'}
+          style={{
+            gap,
+            ...(compact ? {} : { minWidth: weeks.length * (cell + gap) }),
+          }}
+        >
           {weeks.map((w) => (
-            <div key={w.start} className="flex flex-col gap-[3px]">
+            <div key={w.start} className="flex flex-col" style={{ gap }}>
               {w.days.map((d, di) => (
                 <span
                   key={di}
                   title={`${d} commit${d === 1 ? '' : 's'} — week of ${w.start}`}
-                  className="block h-[10px] w-[10px] rounded-[2px]"
-                  style={{ background: LEVELS[level(d, max)] }}
+                  className="block rounded-[2px]"
+                  style={{
+                    width: cell,
+                    height: cell,
+                    background: LEVELS[level(d, max)],
+                  }}
                 />
               ))}
             </div>
@@ -59,11 +78,16 @@ export default function ActivityGraph({ compact = false }: { compact?: boolean }
         </div>
       </div>
 
-      <div className="mono mt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-[0.6875rem] text-fg-soft">
+      <div
+        className={`mono mt-3 flex flex-wrap items-center gap-x-4 gap-y-1.5 ${
+          compact ? 'text-[0.625rem]' : 'text-[0.6875rem]'
+        } text-fg-soft`}
+      >
         <span>
-          <span className="text-fg">{total}</span> commits · last 52 weeks
+          <span className="text-fg">{total}</span> commits ·{' '}
+          {compact ? 'last 24 weeks' : 'last 52 weeks'}
         </span>
-        {data.repoCount != null && (
+        {!compact && data.repoCount != null && (
           <span>
             across <span className="text-fg">{data.repoCount}</span> repositories
           </span>
