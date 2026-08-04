@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import HeroField from '@/components/HeroField';
 import { ProjectMark } from '@/components/Marks';
-import Marquee from '@/components/Marquee';
+import PhotoStrip from '@/components/PhotoStrip';
 import SocialRow from '@/components/SocialRow';
 import { featuredCards } from '@/content/cards';
 import { clientJobs } from '@/content/clients';
@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <main id="main" className="flex-1">
       {/* --------------------------------------------------------- hero */}
-      <section className="corner-glow relative overflow-hidden pt-[104px] md:pt-[124px]">
+      <section className="corner-glow relative overflow-hidden pt-[136px] md:pt-[168px]">
         <HeroField />
         <div className="relative mx-auto w-full max-w-[var(--shell)] px-6 md:px-8">
           <div className="max-w-[40rem]">
@@ -64,7 +64,7 @@ export default function Home() {
         </div>
 
         <div className="rise-4 mt-12 md:mt-16">
-          <Marquee />
+          <PhotoStrip />
         </div>
       </section>
 
