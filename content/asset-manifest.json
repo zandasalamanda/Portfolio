@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-04T15:57:16.491Z",
+  "generatedAt": "2026-08-04T16:00:20.081Z",
   "assets": {
     "chronoiq/logo.png": {
       "exists": true,
@@ -313,6 +313,18 @@
       "width": 3420,
       "height": 1900
     },
+    "clients/terminal-alerts.png": {
+      "exists": true,
+      "optional": true,
+      "width": 1688,
+      "height": 920
+    },
+    "clients/terminal-analyst.png": {
+      "exists": true,
+      "optional": true,
+      "width": 1488,
+      "height": 862
+    },
     "headshot.png": {
       "exists": true,
       "optional": true,
@@ -492,6 +504,12 @@
       "optional": true,
       "width": 2880,
       "height": 1800
+    },
+    "yasabo/logo.png": {
+      "exists": true,
+      "optional": true,
+      "width": 256,
+      "height": 256
     }
   }
 }

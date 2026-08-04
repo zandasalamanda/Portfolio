@@ -69,8 +69,13 @@ export const clientJobs: ClientJob[] = [
     client: 'Private financial group',
     kind: 'AI market terminal',
     status: 'delivered',
-    line: 'A Bloomberg-terminal-style AI market tracker sold to a small financial group — live market data in a dense terminal layout, with AI-generated calls on what to watch.',
-    outcome: 'Delivered to the group for internal use. Screens available on request.',
+    line: 'A Bloomberg-terminal-style AI market tracker sold to a small financial group — an AI analyst that breaks a ticker down on demand, and live alerts that turn material events into concrete calls.',
+    outcome: 'Delivered to the group for internal use.',
     accent: '#e6b877',
+    image: {
+      rel: 'clients/terminal-analyst.png',
+      alt: 'The terminal’s Ask the Analyst view: the AI returning a full stock breakdown — pricing data, key metrics, bull case, and bear case',
+    },
+    cycle: ['clients/terminal-alerts.png'],
   },
 ];

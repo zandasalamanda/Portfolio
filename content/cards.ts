@@ -132,6 +132,7 @@ id: 'everdeck',
     line: 'A judgment-free Spanish-comprehension app for “no sabo” heritage speakers — real Colombian voices, slang, and speed. Installable PWA, fully on-device.',
     tags: ['React', 'Vite', 'TypeScript', 'PWA', 'On-device'],
     accent: '#fb8a6d',
+    logo: 'yasabo/logo.png',
     drawn: 'yasabo',
     image: {
       rel: 'yasabo/shot-loop.png',
