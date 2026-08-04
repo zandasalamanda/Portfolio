@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-04T14:56:25.553Z",
+  "generatedAt": "2026-08-04T15:21:44.646Z",
   "assets": {
     "chronoiq/logo.png": {
       "exists": true,
@@ -262,8 +262,8 @@
     "avatar.png": {
       "exists": true,
       "optional": true,
-      "width": 256,
-      "height": 256
+      "width": 512,
+      "height": 512
     },
     "chronoiq/shot-calendar.png": {
       "exists": true,

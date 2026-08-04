@@ -2,12 +2,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import HeroField from '@/components/HeroField';
 import { ProjectMark } from '@/components/Marks';
-import PhotoStrip from '@/components/PhotoStrip';
+import Marquee from '@/components/Marquee';
 import SocialRow from '@/components/SocialRow';
 import { featuredCards } from '@/content/cards';
 import { clientJobs } from '@/content/clients';
 import { steps } from '@/content/process';
-import { contact, experience } from '@/content/site';
+import { contact } from '@/content/site';
 import { asset } from '@/lib/assets';
 
 export default function Home() {
@@ -33,20 +33,16 @@ export default function Home() {
             )}
 
             <h1 className="rise-1 h-display text-[clamp(1.5rem,2.9vw,2rem)]">
-              I build software that ships.
+              I build websites, apps, and AI that ship.
             </h1>
 
             <div className="rise-2 mt-6 space-y-3.5 text-[1rem] prose-soft">
               <p>
-                Websites, web apps, and AI tools for small businesses, nonprofits, and
-                founders — built by one person, start to finish, and live in
-                someone&rsquo;s hands rather than stuck in revisions.
-              </p>
-              <p>
-                I&rsquo;m Zander. Companies run software I built for them — an AI
-                workspace at UTR Global, a market terminal for a financial group, a
-                nonprofit&rsquo;s website — and my own products include a Congressional
-                App Challenge winner selected across 4,600+ apps.
+                I&rsquo;m Zander. Landing pages, full products, and AI tools for small
+                businesses, nonprofits, and founders — built by one person, start to
+                finish. Companies already run my work: an AI workspace at UTR Global,
+                a market terminal for a financial group, a nonprofit&rsquo;s site. My
+                own ChronoIQ won the Congressional App Challenge across 4,600+ apps.
               </p>
               <p>
                 If you need something built properly — or fixed properly — tell me
@@ -68,7 +64,7 @@ export default function Home() {
         </div>
 
         <div className="rise-4 mt-12 md:mt-16">
-          <PhotoStrip />
+          <Marquee />
         </div>
       </section>
 
@@ -98,7 +94,7 @@ export default function Home() {
               </article>
             ))}
             <Link href="/projects" className="link-accent">
-              All 7 projects <span aria-hidden>›</span>
+              All 8 projects <span aria-hidden>›</span>
             </Link>
 
             <div className="mt-14 border-t border-line pt-8">
@@ -135,7 +131,7 @@ export default function Home() {
             </div>
           </div>
 
-          <aside className="space-y-5">
+          <aside className="lg:sticky lg:top-24 lg:self-start">
             <div className="card p-5">
               <div className="flex items-center gap-2">
                 <svg viewBox="0 0 24 24" className="h-4 w-4 text-accent" fill="currentColor">
@@ -147,77 +143,7 @@ export default function Home() {
                 Websites, full-stack apps, and AI integration. Fixed scope, fixed
                 price, quoted within 24 hours.
               </p>
-              <Link href="/hire#contact" className="btn-solid mt-4 w-full justify-center">
-                Tell me what you need
-              </Link>
-              <a
-                href={contact.mailto}
-                className="mt-3 block text-center text-[0.8125rem] text-fg-soft underline underline-offset-4 hover:text-fg"
-              >
-                or email {contact.email}
-              </a>
-            </div>
-
-            <div className="card p-5">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <svg viewBox="0 0 24 24" className="h-4 w-4 text-accent" fill="currentColor">
-                    <path d="M9 3h6a2 2 0 0 1 2 2v1h4v13H3V6h4V5a2 2 0 0 1 2-2Zm0 3h6V5H9v1Z" />
-                  </svg>
-                  <h2 className="text-[0.9375rem] font-semibold">Work</h2>
-                </div>
-                <Link
-                  href="/hire"
-                  className="mono text-[0.625rem] uppercase tracking-[0.14em] text-fg-soft underline underline-offset-4 hover:text-accent"
-                >
-                  Hire me
-                </Link>
-              </div>
-
-              <ul className="mt-4 space-y-3.5">
-                {experience.map((e) => {
-                  const logo = e.logo ? asset(e.logo) : null;
-                  return (
-                    <li key={e.org} className="flex items-start gap-2.5">
-                      {logo?.exists ? (
-                        <span className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-white p-1">
-                          <Image
-                            src={logo.url}
-                            alt=""
-                            width={32}
-                            height={32}
-                            className="h-full w-full object-contain"
-                          />
-                        </span>
-                      ) : (
-                        <span className="mono flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-line text-[0.5625rem] text-fg-soft">
-                          {e.org.slice(0, 2).toUpperCase()}
-                        </span>
-                      )}
-                      <div className="min-w-0 flex-1">
-                        <p className="text-[0.875rem] font-semibold leading-snug">
-                          {e.org}
-                        </p>
-                        <div className="flex flex-wrap items-baseline justify-between gap-x-2">
-                          <p className="text-[0.75rem] text-fg-soft">{e.role}</p>
-                          <p className="mono text-[0.625rem] text-fg-faint">{e.period}</p>
-                        </div>
-                      </div>
-                    </li>
-                  );
-                })}
-              </ul>
-
-            </div>
-
-            <div className="card p-5">
-              <div className="flex items-center gap-2">
-                <svg viewBox="0 0 24 24" className="h-4 w-4 text-accent" fill="currentColor">
-                  <path d="M4 4h16v2H4V4Zm0 5h16v2H4V9Zm0 5h10v2H4v-2Zm0 5h10v2H4v-2Zm12.6-3.3 1.4-1.4 4 4-4 4-1.4-1.4 1.6-1.6h-3.2v-2h3.2l-1.6-1.6Z" />
-                </svg>
-                <h2 className="text-[0.9375rem] font-semibold">How it works</h2>
-              </div>
-              <ol className="mt-4 space-y-3">
+              <ol className="mt-4 space-y-3 border-t border-line pt-4">
                 {steps.map((s) => (
                   <li key={s.n} className="flex gap-3">
                     <span aria-hidden className="mono text-[0.625rem] text-accent">
@@ -230,9 +156,15 @@ export default function Home() {
                   </li>
                 ))}
               </ol>
-              <Link href="/process" className="link-accent mt-5">
-                The whole process <span aria-hidden>›</span>
+              <Link href="/hire#contact" className="btn-solid mt-5 w-full justify-center">
+                Tell me what you need
               </Link>
+              <a
+                href={contact.mailto}
+                className="mt-3 block text-center text-[0.8125rem] text-fg-soft underline underline-offset-4 hover:text-fg"
+              >
+                or email {contact.email}
+              </a>
             </div>
           </aside>
         </div>

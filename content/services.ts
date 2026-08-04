@@ -91,43 +91,16 @@ export const stack = [
   },
 ];
 
+/**
+ * Why me and how I work, merged into one list a buyer can read in twenty
+ * seconds. Every claim is checkable on this site.
+ */
 export const whyMe = [
-  'You can check the work before you pay for it. Four products are live right now, one of them won the Congressional App Challenge across 4,600+ apps, and I have shipped AI into a company that uses it for real operations. Click anything on this site — it opens.',
-  'I have built the boring half too. Part of my day job is fixing bugged legacy web systems in classic ASP/VBScript, so I am comfortable in codebases that are neither new nor pretty.',
-  'I build AI that fails safely. Every AI feature I ship has a deterministic fallback, so the product still works when the model is unavailable — the part most people skip.',
-  'You are not paying for a team you never meet. The person who writes the quote is the person who writes the code.',
+  'Everything on this site is live — click anything and check the work before you pay for it.',
+  'Fixed scope, one written price, and a delivery date before any work starts.',
+  'A live preview link from day one — the person you talk to is the person writing the code.',
+  'You own the domain, code, and credentials from the start. No lock-in, no ransom.',
+  'AI features ship with deterministic fallbacks, so the product still works when the model is down.',
+  'If I am not the right fit for the job, I say so instead of taking it.',
 ];
 
-export const preferences = [
-  {
-    t: 'Fixed scope, fixed price',
-    d: 'Written scope and one price before any work starts. No hourly surprises, no change-order games.',
-  },
-  {
-    t: 'You see it as it is built',
-    d: 'A live preview link from day one. You watch it come together instead of waiting for a reveal.',
-  },
-  {
-    t: 'You own everything',
-    d: 'Repository, domain, and credentials are yours from the start. If I vanished tomorrow, another developer could pick it up cleanly.',
-  },
-  {
-    t: 'Straight answers',
-    d: 'If I am not the right person for the job, I will tell you that instead of taking the project.',
-  },
-];
-
-export const audiences = [
-  {
-    t: 'Local service businesses',
-    d: 'Trades, clinics, studios, contractors — anyone whose website is costing them calls. Design, build, launch, done in about two weeks.',
-  },
-  {
-    t: 'Small teams with manual work',
-    d: 'If your team retypes documents or spreadsheets by hand every week, that is exactly the problem Atlas Space solves at my internship.',
-  },
-  {
-    t: 'Founders needing a first build',
-    d: 'A real, usable first version with accounts and payments — not a prototype you have to throw away.',
-  },
-];

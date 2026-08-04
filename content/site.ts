@@ -40,10 +40,10 @@ export const identity = {
 
 export const positioning = {
   /** §6.1 exact copy; the ¹ renders as a real footnote fed by the build-time link check */
-  line: 'I build software that ships.',
-  title: 'Zander Leon — I build software that ships',
+  line: 'I build websites, apps, and AI that ship.',
+  title: 'Zander Leon — websites, apps, and AI that ship',
   description:
-    'Portfolio of Zander Leon, student developer — ChronoIQ (Congressional App Challenge winner, NJ-07 2025), Bandr, Solaspace, and Everdeck. Shipped products, live receipts.',
+    'Zander Leon builds websites, apps, and AI tools for small businesses, nonprofits, and founders — client work in production at UTR Global, and a Congressional App Challenge win across 4,600+ apps.',
 } as const;
 
 export const awardPageUrl = 'https://www.congressionalappchallenge.us/25-nj07/';
@@ -221,8 +221,8 @@ export const labItems: LabItem[] = [
  */
 export const helios = {
   name: 'Team Helios',
-  context: 'NASA App Development Challenge',
-  line: "My team's entry to NASA's App Development Challenge — we built a 3D mission visualization in Python and ran the team's STEM outreach on Instagram.",
+  context: 'NASA ADC',
+  line: "My team's entry to the NASA ADC — we built a 3D mission visualization in Python and ran the team's STEM outreach on Instagram.",
   plotCaption: 'Mission data — velocity over time',
   receipts: [
     {
@@ -314,11 +314,11 @@ export const aboutParagraph =
  * product dates from content/github.json.
  */
 export const timeline = [
+  { stamp: '2023', text: 'Joined the Academy of Computer & Information Sciences at MCST' },
   { stamp: 'SEP 2023', text: 'Intern, Raymond James Financial Services' },
-  { stamp: 'FEB 2024', text: 'Joined GitHub — every repo since is original work' },
-  { stamp: '2024', text: 'HACKMCST hackathon · NASA App Development Challenge' },
+  { stamp: '2024', text: 'HACKMCST hackathon' },
+  { stamp: '2024', text: 'NASA ADC — Team Helios' },
   { stamp: 'DEC 2025', text: 'Congressional App Challenge winner, NJ-07 — ChronoIQ' },
-  { stamp: '2026', text: 'Graduated MCST — Academy for Computer & Information Sciences' },
   { stamp: 'JUL 2026', text: 'Solaspace live · Everdeck in private preview' },
 ] as const;
 
@@ -359,7 +359,7 @@ export const experience = [
     line: 'Research, documents, and day-to-day operations support inside a financial services office.',
   },
   {
-    org: 'Team Helios — NASA App Development Challenge',
+    org: 'Team Helios — NASA ADC',
     logo: 'logos/nasa.png',
     role: 'Developer',
     period: '2024',

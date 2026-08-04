@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { services, stack, audiences, preferences, whyMe } from '@/content/services';
+import { services, stack, whyMe } from '@/content/services';
 import ClientProof from '@/components/ClientProof';
 import ContactForm from '@/components/ContactForm';
 import TechIcon from '@/components/TechIcon';
@@ -106,35 +106,21 @@ export default function HirePage() {
         className="mx-auto w-full max-w-[var(--shell)] px-6 pt-20 md:px-8 md:pt-24"
       >
         <h2 id="stack-h" className="h-display text-[1.1875rem]">
-          My tech stack
+          Built with
         </h2>
         <p className="mt-2.5 text-[0.875rem] prose-soft">
-          What I actually build with — every one of these is in a shipped project.
+          Every one of these is in a shipped project.
         </p>
-
-        <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {stack.map((group) => (
-            <article key={group.title} className="card relative overflow-hidden p-6">
-              <h3 className="border-b border-line pb-2.5 text-[0.9375rem] font-semibold">{group.title}</h3>
-              <ul className="relative z-10 mt-4 flex flex-wrap gap-1.5">
-                {group.items.map((i) => (
-                  <li key={i}>
-                    <span className="chip">
-                      <TechIcon label={i} />
-                      {i}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-              <span
-                aria-hidden
-                className="h-display pointer-events-none absolute -bottom-6 -right-3 text-[4rem] leading-none text-white/[0.03]"
-              >
-                {group.mark}
+        <ul className="mt-5 flex flex-wrap gap-1.5">
+          {stack.flatMap((g) => g.items).map((i) => (
+            <li key={i}>
+              <span className="chip">
+                <TechIcon label={i} />
+                {i}
               </span>
-            </article>
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
 
       {/* --------------------------------------------------------- why me */}
@@ -143,11 +129,11 @@ export default function HirePage() {
         className="mx-auto w-full max-w-[var(--shell)] px-6 pt-20 md:px-8 md:pt-24"
       >
         <h2 id="why-h" className="h-display text-[1.1875rem]">
-          Why hire me?
+          Why me, and how I work
         </h2>
-        <ul className="mt-6 max-w-[68ch] space-y-4">
+        <ul className="mt-6 grid gap-x-12 gap-y-3.5 md:grid-cols-2">
           {whyMe.map((w) => (
-            <li key={w} className="flex gap-2.5 text-[0.875rem] prose-soft">
+            <li key={w} className="flex gap-2.5 text-[0.9375rem] prose-soft">
               <span aria-hidden className="shrink-0 text-accent">
                 ▸
               </span>
@@ -155,76 +141,7 @@ export default function HirePage() {
             </li>
           ))}
         </ul>
-      </section>
-
-      {/* ---------------------------------------------------- preferences */}
-      <section
-        aria-labelledby="pref-h"
-        className="mx-auto w-full max-w-[var(--shell)] px-6 pt-20 md:px-8 md:pt-24"
-      >
-        <h2 id="pref-h" className="h-display text-[1.1875rem]">
-          How I work
-        </h2>
-        <div className="mt-6 grid gap-x-12 gap-y-7 md:grid-cols-2">
-          {preferences.map((p) => (
-            <div key={p.t} className="flex gap-3">
-              <span aria-hidden className="shrink-0 text-accent">
-                ▸
-              </span>
-              <div>
-                <h3 className="text-[0.9375rem] font-semibold">{p.t}</h3>
-                <p className="mt-1.5 text-[0.875rem] prose-soft">{p.d}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ------------------------------------------------------ audiences */}
-      <section
-        aria-labelledby="aud-h"
-        className="mx-auto w-full max-w-[var(--shell)] px-6 pt-20 md:px-8 md:pt-24"
-      >
-        <h2 id="aud-h" className="h-display text-[1.1875rem]">
-          Who I build for
-        </h2>
-        <p className="mt-2.5 text-[0.875rem] prose-soft">The work I am best positioned to do well.</p>
-        <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {audiences.map((a) => (
-            <article key={a.t} className="card p-6">
-              <h3 className="text-[0.9375rem] font-semibold">{a.t}</h3>
-              <p className="mt-2.5 text-[0.875rem] prose-soft">{a.d}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      {/* -------------------------------------------------------- process */}
-      <section
-        aria-labelledby="proc-h"
-        className="mx-auto w-full max-w-[var(--shell)] px-6 pt-20 md:px-8 md:pt-24"
-      >
-        <h2 id="proc-h" className="h-display text-[1.1875rem]">
-          How a project runs
-        </h2>
-        <p className="mt-2.5 text-[0.875rem] prose-soft">
-          Four steps, no mystery. You always know where it stands.
-        </p>
-        <ol className="mt-6 grid gap-px overflow-hidden rounded-xl border border-line bg-line md:grid-cols-4">
-          {[
-            { n: '01', t: 'You describe it', d: 'An email is enough — what is broken, or what you want to exist.' },
-            { n: '02', t: 'I scope and quote', d: 'Written scope, fixed price, a delivery date. Within 24 hours.' },
-            { n: '03', t: 'You watch it build', d: 'A live preview link from day one, updated as I go.' },
-            { n: '04', t: 'Launch and hand over', d: 'Repo, domain, credentials — yours. I stay reachable after.' },
-          ].map((p) => (
-            <li key={p.n} className="bg-bg p-5">
-              <span className="mono text-[0.625rem] text-accent">{p.n}</span>
-              <h3 className="mt-2 text-[0.9375rem] font-semibold">{p.t}</h3>
-              <p className="mt-1.5 text-[0.8125rem] prose-soft">{p.d}</p>
-            </li>
-          ))}
-        </ol>
-        <Link href="/process" className="link-accent mt-5">
+        <Link href="/process" className="link-accent mt-6">
           The whole process, written down <span aria-hidden>›</span>
         </Link>
       </section>
