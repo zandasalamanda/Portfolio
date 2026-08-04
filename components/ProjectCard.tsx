@@ -23,7 +23,6 @@ export default function ProjectCard({
 }) {
   const image = card.image ? asset(card.image.rel) : null;
   const hasImage = Boolean(image?.exists && image.width && image.height && card.image);
-  const wide = card.size === 'wide';
   const brand = brandFor(card.id);
   const frame = frameFor(image?.width, image?.height);
   const chromeLabel = brand.label ?? card.links[0]?.label ?? card.name;
@@ -104,9 +103,7 @@ export default function ProjectCard({
               alt={card.image.alt}
               width={image.width ?? 1600}
               height={image.height ?? 1000}
-              sizes={
-                wide ? '(min-width: 1024px) 64vw, 92vw' : '(min-width: 1024px) 31vw, 92vw'
-              }
+              sizes="(min-width: 1024px) 31vw, 92vw" 
               priority={priority}
               className={`h-full w-full ${fit} transition-transform duration-500 group-hover:scale-[1.03]`}
             />
@@ -127,7 +124,7 @@ export default function ProjectCard({
   );
 
   return (
-    <Reveal className={wide ? 'sm:col-span-2' : ''}>
+    <Reveal>
       <article
         id={card.id}
         className="app-card group flex h-full scroll-mt-28 flex-col overflow-hidden"
@@ -148,9 +145,7 @@ export default function ProjectCard({
               tile={card.logoTile}
             />
             <h3
-              className={`${brand.fontClass} leading-tight ${
-                wide ? 'text-[1.0625rem]' : 'text-[0.9375rem]'
-              }`}
+              className={`${brand.fontClass} text-[0.9375rem] leading-tight`}
               style={{ fontWeight: brand.weight, letterSpacing: brand.tracking }}
             >
               {card.name}

@@ -1,14 +1,9 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
-import { DrawnMark } from '@/components/Marks';
 import ProjectCard from '@/components/ProjectCard';
-import Reveal from '@/components/Reveal';
 import Starfield from '@/components/Starfield';
-import VideoFacade from '@/components/VideoFacade';
 import { projectCards } from '@/content/cards';
-import { atlas, award, helios, identity } from '@/content/site';
-import { asset } from '@/lib/assets';
+import { award, identity } from '@/content/site';
 
 export const metadata: Metadata = {
   title: 'Projects',
@@ -17,12 +12,6 @@ export const metadata: Metadata = {
 };
 
 export default function ProjectsPage() {
-  const poster = asset('chronoiq/video-poster.jpg');
-  const heliosLogo = asset('helios/logo.png');
-  const heliosPlot = asset('helios/velocity-plot.png');
-  const nasa = asset('logos/nasa.png');
-  const atlasDark = asset('atlas/atlas-dark.png');
-
   return (
     <main id="main" className="flex-1">
       {/* ------------------------------------------------- starfield hero */}
@@ -41,12 +30,12 @@ export default function ProjectsPage() {
             </a>
           </p>
           <h1 className="rise-1 h-display mx-auto mt-4 max-w-[17ch] text-[clamp(1.625rem,3.2vw,2.125rem)]">
-            Things I&rsquo;ve made trying to put my mark
+            Things I&rsquo;ve made trying to make my mark
           </h1>
           <p className="rise-2 mx-auto mt-4 max-w-[56ch] text-[0.9375rem] prose-soft">
-            Seven projects — live products, an AI workspace running inside a real
-            company, and the tools I build to scratch my own itches. All of it
-            mine: designed, built, and shipped, not forked.
+            Eight projects — live products, an AI workspace running inside a real
+            company, and a NASA challenge entry built with my team. Designed,
+            built, and shipped — not forked.
           </p>
           <div className="rise-3 mt-7 flex flex-wrap justify-center gap-2.5">
             <Link href="/hire" className="btn-solid">
@@ -78,147 +67,49 @@ export default function ProjectsPage() {
       </section>
 
       {/* ------------------------------------------------------ the award */}
-      <section className="mx-auto w-full max-w-[var(--shell)] px-6 pt-20 md:px-8 md:pt-28">
-        <h2 className="mono flex items-center gap-2 border-b border-line pb-3 uppercase tracking-[0.14em] text-fg-soft">
+      <section
+        aria-labelledby="award-h"
+        className="mx-auto w-full max-w-[var(--shell)] px-6 py-20 md:px-8 md:py-28"
+      >
+        <h2
+          id="award-h"
+          className="mono flex items-center gap-2 border-b border-line pb-3 uppercase tracking-[0.14em] text-fg-soft"
+        >
           <span aria-hidden className="text-accent">
             ★
           </span>
           The award, in full
         </h2>
         <div className="mt-7 grid gap-8 md:grid-cols-2 md:gap-12">
+          <blockquote className="border-l border-line-strong pl-4">
+            <p className="max-w-[46ch] text-[1rem] prose-soft">
+              Selected for &ldquo;{award.citationSelectedFor},&rdquo; noting &ldquo;
+              {award.citationNoting}.&rdquo;
+            </p>
+            <cite className="mono mt-3 block not-italic text-[0.75rem] text-fg-faint">
+              —{' '}
+              <a
+                href={award.citationUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="text-accent"
+              >
+                {award.citationAttribution} ↗
+              </a>
+            </cite>
+          </blockquote>
           <div>
-            <p className="mono text-accent">Congressional App Challenge — NJ-07, 2025</p>
-            <blockquote className="mt-4 border-l border-line-strong pl-4">
-              <p className="max-w-[46ch] text-[0.9375rem] prose-soft">
-                Selected for &ldquo;{award.citationSelectedFor},&rdquo; noting &ldquo;
-                {award.citationNoting}.&rdquo;
-              </p>
-              <cite className="mono mt-3 block not-italic text-fg-faint">
-                —{' '}
-                <a
-                  href={award.citationUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-accent"
-                >
-                  {award.citationAttribution} ↗
-                </a>
-              </cite>
-            </blockquote>
-            <p className="mono mt-6 text-fg-soft">{award.scaleLine}</p>
-            <p className="mono mt-1.5 text-fg-soft">{award.capitolLine}</p>
+            <p className="mono text-fg-soft">{award.scaleLine}</p>
+            <p className="mono mt-2 text-fg-soft">{award.capitolLine}</p>
+            <a
+              href={award.citationUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="link-accent mt-5"
+            >
+              Read the coverage <span aria-hidden>›</span>
+            </a>
           </div>
-          <VideoFacade videoId={award.videoId} poster={poster} title="ChronoIQ demo video" />
-        </div>
-      </section>
-
-      {/* ----------------------------------------------------- Atlas Space */}
-      <section className="mx-auto w-full max-w-[var(--shell)] px-6 pt-20 md:px-8 md:pt-28">
-        <div className="flex items-baseline justify-between border-b border-line pb-3">
-          <h2 className="mono flex items-center gap-2 uppercase tracking-[0.14em] text-fg-soft">
-            <DrawnMark id="atlas" accent="#8fa6e8" className="h-4 w-4" />
-            AI in production — {atlas.name}
-          </h2>
-          <p className="mono text-[0.625rem] text-fg-faint">{atlas.context}</p>
-        </div>
-        <div className="mt-7 grid gap-8 md:grid-cols-[5fr_7fr] md:gap-12">
-          <div>
-            <p className="text-[0.9375rem] prose-soft">{atlas.line}</p>
-            <p className="mono mt-5 text-[0.6875rem] text-fg-faint">{atlas.note}</p>
-            <ul className="mt-5 space-y-1.5">
-              {[
-                'Ask about a bill in plain English',
-                'Audit charges and check rates',
-                'Reconcile lines, compare months, allocate chargebacks',
-                'Fix spreadsheets by describing the change',
-              ].map((f) => (
-                <li key={f} className="flex gap-2 text-[0.875rem] prose-soft">
-                  <span aria-hidden className="text-accent">
-                    ▸
-                  </span>
-                  {f}
-                </li>
-              ))}
-            </ul>
-          </div>
-          {atlasDark.exists && atlasDark.width && atlasDark.height && (
-            <Reveal>
-              <figure className="overflow-hidden rounded-xl border border-line bg-bg">
-                <Image
-                  src={atlasDark.url}
-                  alt="Atlas Space in dark theme: an AI assistant beside tools for checking bills, auditing, and fixing spreadsheets"
-                  width={atlasDark.width}
-                  height={atlasDark.height}
-                  sizes="(min-width: 768px) 54vw, 100vw"
-                  className="block h-auto w-full"
-                />
-              </figure>
-            </Reveal>
-          )}
-        </div>
-      </section>
-
-      {/* -------------------------------------------------------- Helios */}
-      <section className="mx-auto w-full max-w-[var(--shell)] px-6 py-20 md:px-8 md:py-28">
-        <div className="flex items-baseline justify-between border-b border-line pb-3">
-          <h2 className="mono flex items-center gap-2 uppercase tracking-[0.14em] text-fg-soft">
-            {nasa.exists && (
-              <Image
-                src={nasa.url}
-                alt=""
-                width={16}
-                height={16}
-                className="h-4 w-4 object-contain"
-              />
-            )}
-            {helios.name} — {helios.context}
-          </h2>
-          <p className="mono text-[0.625rem] text-fg-faint">mission log</p>
-        </div>
-        <div className="mt-7 grid gap-8 md:grid-cols-[5fr_7fr] md:gap-12">
-          <div>
-            {heliosLogo.exists && heliosLogo.width && heliosLogo.height && (
-              <Image
-                src={heliosLogo.url}
-                alt="Team Helios logo: a dark red rocket with the team name lettered inside its body"
-                width={heliosLogo.width}
-                height={heliosLogo.height}
-                sizes="120px"
-                className="h-auto w-[110px] md:w-[120px]"
-              />
-            )}
-            <p className="mt-5 max-w-[44ch] text-[0.9375rem] prose-soft">{helios.line}</p>
-            <div className="mono mt-5 flex flex-wrap gap-x-5 gap-y-2">
-              {helios.receipts.map((r) => (
-                <a
-                  key={r.url}
-                  href={r.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-[0.6875rem] text-accent"
-                >
-                  {r.label} ↗
-                </a>
-              ))}
-            </div>
-          </div>
-          {heliosPlot.exists && heliosPlot.width && heliosPlot.height && (
-            <Reveal>
-              <p className="mono mb-2 text-[0.625rem] uppercase tracking-[0.12em] text-fg-faint">
-                {helios.plotCaption}
-              </p>
-              <figure className="overflow-hidden rounded-xl border border-line bg-white">
-                <Image
-                  src={heliosPlot.url}
-                  alt="Velocity-over-time plot from the team's mission data: X, Y, and Z components across the mission timeline"
-                  width={heliosPlot.width}
-                  height={heliosPlot.height}
-                  sizes="(min-width: 768px) 54vw, 100vw"
-                  className="block h-auto w-full"
-                />
-              </figure>
-            </Reveal>
-          )}
         </div>
       </section>
     </main>

@@ -125,6 +125,17 @@ const brands: Record<string, AppBrand> = {
     radius: '1rem',
     label: 'Verbalist',
   },
+  /* Team Helios — NASA ADC entry. The rocket logo's dark red, plot on white. */
+  helios: {
+    primary: '#d95848',
+    ink: '#f0837a',
+    stage: '#f7f5f2',
+    fontClass: 'h-display',
+    weight: 900,
+    tracking: '-0.01em',
+    radius: '0.875rem',
+    label: 'Team Helios',
+  },
 };
 
 export function brandFor(id: string): AppBrand {

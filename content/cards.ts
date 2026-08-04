@@ -24,8 +24,6 @@ export interface ProjectCard {
   sprite?: { rel: string; alt: string };
   links: Receipt[];
   award?: string;
-  /** how much room the card takes in the gallery */
-  size?: 'wide' | 'tall' | 'std';
   /** the single most interesting thing about it */
   hook?: string;
 }
@@ -38,7 +36,6 @@ const everdeck = productById('everdeck');
 export const projectCards: ProjectCard[] = [
   {
     id: 'chronoiq',
-    size: 'wide',
     hook: 'Won across 4,600+ apps and shown at the U.S. Capitol.',
     name: 'ChronoIQ',
     status: 'live',
@@ -59,7 +56,6 @@ export const projectCards: ProjectCard[] = [
   },
   {
     id: 'solaspace',
-    size: 'tall',
     hook: 'Keeps planning even when the AI is unavailable.',
     name: 'Solaspace',
     status: 'live',
@@ -78,7 +74,6 @@ export const projectCards: ProjectCard[] = [
   },
   {
     id: 'atlas',
-    size: 'wide',
     hook: 'Runs inside a real company, on real invoices.',
     name: 'Atlas Space',
     status: 'built at UTR Global',
@@ -110,7 +105,6 @@ id: 'everdeck',
   },
   {
     id: 'bandr',
-    size: 'std',
     hook: 'Every score is a rule you can read — no black box.',
     name: 'Bandr',
     status: 'open source',
@@ -126,7 +120,6 @@ id: 'everdeck',
   },
   {
     id: 'yasabo',
-    size: 'std',
     hook: 'Real Colombian voices, entirely on-device.',
     name: 'Ya Sabo',
     status: 'in development',
@@ -142,7 +135,6 @@ id: 'everdeck',
   },
   {
     id: 'verbalist',
-    size: 'std',
     hook: 'Flags filler words the moment you say them.',
     name: 'Verbalist',
     status: 'open source',
@@ -155,6 +147,24 @@ id: 'everdeck',
       alt: 'Verbalist analysing a spoken passage: filler words and jargon highlighted in the live transcript, with a speech-integrity score and word metrics',
     },
     links: [{ label: 'source', url: 'https://github.com/zandasalamanda/Verbalist' }],
+  },
+  {
+    id: 'helios',
+    hook: 'A 3D flight built from real NASA mission data.',
+    name: 'Team Helios',
+    status: 'NASA App Development Challenge',
+    line: "My team's entry to NASA's App Development Challenge — a 3D mission visualization built in Python from real mission data, plus the team's STEM outreach.",
+    tags: ['Python', '3D visualization', 'Mission data'],
+    accent: '#d95848',
+    logo: 'helios/logo.png',
+    image: {
+      rel: 'helios/velocity-plot.png',
+      alt: "Velocity-over-time plot from the team's mission data: X, Y, and Z components across the mission timeline",
+    },
+    links: [
+      { label: 'instagram', url: 'https://www.instagram.com/helios.nasa/' },
+      { label: 'source', url: 'https://github.com/zandasalamanda/Astrovia-NASA-ADC' },
+    ],
   },
 ];
 

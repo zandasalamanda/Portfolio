@@ -11,19 +11,20 @@ function mulberry32(seed: number) {
 }
 
 const rand = mulberry32(70324);
-const STARS = Array.from({ length: 150 }, () => ({
+const STARS = Array.from({ length: 280 }, () => ({
   x: Math.round(rand() * 1000) / 10,
   y: Math.round(rand() * 1000) / 10,
-  s: Math.round((0.8 + rand() * 1.5) * 10) / 10,
-  o: Math.round((0.18 + rand() * 0.6) * 100) / 100,
+  s: Math.round((0.7 + rand() * 1.6) * 10) / 10,
+  o: Math.round((0.14 + rand() * 0.62) * 100) / 100,
   tw: Math.round((3 + rand() * 5) * 10) / 10,
   twd: Math.round(rand() * 50) / 10,
 }));
 
+/* Long cycles make a streak an event rather than weather — the flight itself
+   is quick, then the sky stays quiet for the rest of the cycle. */
 const SHOOTERS = [
-  { top: '6%', left: '-8%', dx: '1200px', dy: '720px', dur: '6.5s', delay: '1s', a: '31deg' },
-  { top: '-4%', left: '28%', dx: '900px', dy: '540px', dur: '8s', delay: '4.2s', a: '31deg' },
-  { top: '18%', left: '52%', dx: '760px', dy: '460px', dur: '7.2s', delay: '9s', a: '31deg' },
+  { top: '6%', left: '-8%', dx: '1200px', dy: '720px', dur: '38s', delay: '3s', a: '31deg' },
+  { top: '-4%', left: '34%', dx: '900px', dy: '540px', dur: '47s', delay: '21s', a: '31deg' },
 ];
 
 /** Night sky with occasional shooting stars — the Projects hero backdrop. */

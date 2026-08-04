@@ -22,6 +22,14 @@ export default function ProcessPage() {
           you are buying. So here is the whole thing, start to finish, with the
           commitments written down.
         </p>
+        <nav aria-label="The four steps" className="rise-3 mt-7 flex flex-wrap gap-2">
+          {steps.map((s) => (
+            <a key={s.n} href={`#step-${s.n}`} className="chip !gap-2">
+              <span className="mono text-[0.625rem] text-accent">{s.n}</span>
+              {s.title}
+            </a>
+          ))}
+        </nav>
       </div>
 
       {/* ------------------------------------------------------- the steps */}
@@ -48,7 +56,7 @@ export default function ProcessPage() {
             }}
           />
           {steps.map((s) => (
-            <li key={s.n} className="relative pb-12 last:pb-0">
+            <li key={s.n} id={`step-${s.n}`} className="relative scroll-mt-28 pb-12 last:pb-0">
               <div className="flex gap-5 md:gap-7">
                 <span
                   aria-hidden
@@ -91,10 +99,14 @@ export default function ProcessPage() {
         className="mx-auto w-full max-w-[var(--shell)] px-6 pt-16 md:px-8 md:pt-20"
       >
         <div className="card p-6 md:p-7">
-          <h2 id="you-h" className="h-display text-[1.1875rem]">
+          <h2
+            id="you-h"
+            className="mono flex items-center gap-2 uppercase tracking-[0.14em] text-fg-soft"
+          >
+            <span aria-hidden className="text-accent">▸</span>
             What I need from you
           </h2>
-          <p className="mt-2 text-[0.875rem] prose-soft">
+          <p className="mt-2.5 text-[0.9375rem] prose-soft">
             Three things. That is the whole list.
           </p>
           <ul className="mt-5 grid gap-4 md:grid-cols-3">
@@ -118,14 +130,18 @@ export default function ProcessPage() {
         aria-labelledby="faq-h"
         className="mx-auto w-full max-w-[var(--shell)] px-6 pt-16 md:px-8 md:pt-20"
       >
-        <h2 id="faq-h" className="h-display text-[1.1875rem]">
+        <h2
+          id="faq-h"
+          className="mono flex items-center gap-2 border-b border-line pb-3 uppercase tracking-[0.14em] text-fg-soft"
+        >
+          <span aria-hidden className="text-accent">▸</span>
           The questions people actually ask
         </h2>
-        <dl className="mt-6 border-t border-line">
+        <dl className="mt-2 grid md:grid-cols-2 md:gap-x-12">
           {faqs.map((f) => (
             <div key={f.q} className="border-b border-line py-5">
-              <dt className="h-ui text-[0.9375rem]">{f.q}</dt>
-              <dd className="mt-2 max-w-[64ch] text-[0.875rem] prose-soft">{f.a}</dd>
+              <dt className="h-ui text-[1rem]">{f.q}</dt>
+              <dd className="mt-2 max-w-[64ch] text-[0.9375rem] prose-soft">{f.a}</dd>
             </div>
           ))}
         </dl>

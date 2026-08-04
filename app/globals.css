@@ -475,16 +475,23 @@ body {
 /* ---------------------------------------------------------------------------
    Starfield + shooting stars — head leads, tail trails behind.
 --------------------------------------------------------------------------- */
+/* The flight lives in the first ~14% of a long cycle; the rest is quiet sky.
+   Rarity comes from the cycle length, not from slowing the star down. */
 @keyframes shoot {
   0% {
     transform: translate3d(0, 0, 0) rotate(var(--a, 31deg));
     opacity: 0;
   }
-  8% {
+  1.5% {
     opacity: 1;
   }
-  62% {
+  10% {
     opacity: 1;
+  }
+  14% {
+    transform: translate3d(var(--dx, 900px), var(--dy, 540px), 0)
+      rotate(var(--a, 31deg));
+    opacity: 0;
   }
   100% {
     transform: translate3d(var(--dx, 900px), var(--dy, 540px), 0)

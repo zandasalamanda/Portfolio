@@ -24,8 +24,8 @@ export default function AboutPage() {
   return (
     <main id="main" className="flex-1 pt-[104px] md:pt-[124px]">
       <div className="mx-auto w-full max-w-[var(--shell)] px-6 md:px-8">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-16">
-          <div className="max-w-[40rem]">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_260px] lg:gap-12">
+          <div>
             <h1 className="rise-1 h-display text-[clamp(1.5rem,2.9vw,2rem)]">
               About me
             </h1>
@@ -49,7 +49,7 @@ export default function AboutPage() {
               <p>
                 My own products started with a problem I actually had. Homework kept
                 sliding to 11 p.m., so I built ChronoIQ — an AI study scheduler that
-                won the <Underlined>Congressional App Challenge</Underlined> for New
+                won the <Underlined>Congressional App Challenge</Underlined>{' '}for New
                 Jersey&rsquo;s 7th district, selected from over 4,600 apps and
                 displayed at the U.S. Capitol.
               </p>
@@ -58,11 +58,6 @@ export default function AboutPage() {
                 app that helps teens find safe ways to earn; Everdeck, an audit tool
                 for web studios; and Ya Sabo, a Spanish comprehension app for heritage
                 speakers. Seven projects, all original work — zero forks.
-              </p>
-              <p className="text-[0.875rem]">
-                The one-line bio: Morris County School of Technology, class of
-                &rsquo;26 — with varsity soccer, FIRST Robotics, and ecological
-                fieldwork in the Peruvian Amazon on the side.
               </p>
             </div>
 
@@ -91,7 +86,7 @@ export default function AboutPage() {
                   alt="Zander Leon"
                   width={headshot.width}
                   height={headshot.height}
-                  sizes="(min-width: 1024px) 320px, 70vw"
+                  sizes="(min-width: 1024px) 260px, 70vw"
                   priority
                   className="block h-auto w-full max-w-[280px] object-contain grayscale lg:max-w-none"
                 />
