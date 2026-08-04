@@ -19,6 +19,9 @@ export default function VideoFacade({
 }) {
   const [playing, setPlaying] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  // The caption is visible *and* part of the button's accessible name, so someone
+  // driving the page by voice can say the words they can actually see.
+  const hint = 'plays on click';
 
   useEffect(() => {
     if (playing) iframeRef.current?.focus();
@@ -43,7 +46,7 @@ export default function VideoFacade({
     <button
       type="button"
       onClick={() => setPlaying(true)}
-      aria-label={`Play: ${title}`}
+      aria-label={`Play ${title} — ${hint}`}
       className="evidence-lift group relative block w-full overflow-hidden rounded-[6px] bg-void text-left"
     >
       {poster.exists && poster.width && poster.height ? (
@@ -68,7 +71,7 @@ export default function VideoFacade({
         </span>
       </span>
       <span className="mono absolute bottom-3 left-3 text-[0.6875rem] text-paper/70">
-        demo video — plays on click
+        {hint}
       </span>
     </button>
   );
