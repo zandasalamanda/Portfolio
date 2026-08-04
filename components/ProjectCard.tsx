@@ -59,7 +59,7 @@ export default function ProjectCard({
            width and is cut off at the bottom — never squeezed into a strip. */
         <div className="relative h-full w-full">
           <div className="absolute inset-x-0 top-[9%] flex justify-center">
-            <div className="device-phone w-[40%] max-w-[136px] transition-transform duration-500 group-hover:-translate-y-1.5">
+            <div className="device-phone w-[38%] max-w-[190px] transition-transform duration-500 group-hover:-translate-y-1.5">
               <div className={`relative ${fadeClass}`}>
                 {frames.map((f, i) => (
                   <Image
@@ -69,7 +69,7 @@ export default function ProjectCard({
                     aria-hidden={i > 0 || undefined}
                     width={f.width ?? 1170}
                     height={f.height ?? 2532}
-                    sizes="(min-width: 1024px) 140px, 40vw"
+                    sizes="(min-width: 640px) 190px, 40vw"
                     priority={priority && i === 0}
                     loading={i === 0 ? undefined : 'lazy'}
                     className={
@@ -124,7 +124,7 @@ export default function ProjectCard({
                 aria-hidden={i > 0 || undefined}
                 width={f.width ?? 1600}
                 height={f.height ?? 1000}
-                sizes="(min-width: 1024px) 31vw, 92vw"
+                sizes="(min-width: 640px) 46vw, 92vw"
                 priority={priority && i === 0}
                 loading={i === 0 ? undefined : 'lazy'}
                 className={`absolute inset-0 h-full w-full ${fit} transition-transform duration-500 group-hover:scale-[1.03] ${
@@ -171,7 +171,7 @@ export default function ProjectCard({
               tile={card.logoTile}
             />
             <h3
-              className={`${brand.fontClass} text-[0.9375rem] leading-tight`}
+              className={`${brand.fontClass} text-[1.0625rem] leading-tight`}
               style={{ fontWeight: brand.weight, letterSpacing: brand.tracking }}
             >
               {card.name}
@@ -190,7 +190,7 @@ export default function ProjectCard({
 
           {card.hook && (
             <p
-              className="border-l-2 pl-3 text-[0.8125rem] font-medium"
+              className="border-l-2 pl-3 text-[0.875rem] font-medium"
               style={{ borderColor: brand.primary, color: brand.ink }}
             >
               {card.hook}
@@ -203,7 +203,7 @@ export default function ProjectCard({
             </p>
           )}
 
-          <p className="text-[0.875rem] prose-soft">{card.line}</p>
+          <p className="text-[0.9375rem] prose-soft">{card.line}</p>
 
           <div className="flex flex-wrap gap-1.5 pt-2">
             {card.tags.map((t) => (

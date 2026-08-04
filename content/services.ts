@@ -61,20 +61,23 @@ export const services: Service[] = [
   },
 ];
 
-/** Every item here appears in a shipped project — no aspirational tech. */
+/**
+ * Everything here is in shipped work — and picking up a stack that isn't is
+ * part of the job. Grouped the way a buyer thinks about it.
+ */
 export const stack = [
   {
     title: 'Frontend',
     mark: '{ }',
-    items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Vite', 'PWA'],
+    items: ['React', 'Next.js', 'TypeScript', 'JavaScript', 'Tailwind CSS', 'Vite', 'HTML/CSS', 'PWA'],
   },
   {
-    title: 'Backend',
+    title: 'Backend + data',
     mark: '</>',
-    items: ['Node.js', 'Supabase', 'Cloudflare D1 + edge', 'Postgres', 'Clerk', 'Stripe'],
+    items: ['Node.js', 'Supabase', 'Postgres', 'Cloudflare D1 + edge', 'SQL', 'REST APIs', 'Clerk', 'Stripe'],
   },
   {
-    title: 'AI',
+    title: 'AI + ML',
     mark: '✳',
     items: [
       'Claude',
@@ -82,12 +85,14 @@ export const stack = [
       'Structured output',
       'Document + spreadsheet parsing',
       'Deterministic fallbacks',
+      'Speech recognition',
+      'YOLOv8 / OpenCV',
     ],
   },
   {
-    title: 'Also',
+    title: 'Platforms + more',
     mark: '#',
-    items: ['Python', 'Java', 'C#', 'Unity', 'YOLOv8 / OpenCV', 'Classic ASP/VBScript'],
+    items: ['Vercel', 'Cloudflare', 'Git + GitHub', 'Google APIs', 'Python', 'Java', 'C#', 'Unity', 'Classic ASP/VBScript'],
   },
 ];
 

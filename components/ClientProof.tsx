@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { DrawnMark } from '@/components/Marks';
 import { clientJobs } from '@/content/clients';
 import { asset } from '@/lib/assets';
 import Reveal from './Reveal';
@@ -84,7 +85,11 @@ export default function ClientProof() {
                         className="mono flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border text-[0.625rem]"
                         style={{ borderColor: `${job.accent}55`, color: job.accent }}
                       >
-                        {job.mark ?? job.client.slice(0, 2).toUpperCase()}
+                        {job.drawn ? (
+                          <DrawnMark id={job.drawn} accent={job.accent} className="h-4 w-4" />
+                        ) : (
+                          (job.mark ?? job.client.slice(0, 2).toUpperCase())
+                        )}
                       </span>
                     );
                   })()}

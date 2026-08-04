@@ -15,7 +15,7 @@ export default function ProjectsPage() {
   return (
     <main id="main" className="flex-1">
       {/* ------------------------------------------------- starfield hero */}
-      <section className="relative overflow-hidden pb-14 pt-[118px] md:pb-20 md:pt-[150px]">
+      <section className="relative overflow-hidden pb-16 pt-[150px] md:pb-24 md:pt-[190px]">
         <Starfield />
         <div className="relative mx-auto w-full max-w-[760px] px-6 text-center">
           <p className="rise-1 mono text-fg-faint">
@@ -29,7 +29,7 @@ export default function ProjectsPage() {
               View on GitHub <span aria-hidden>→</span>
             </a>
           </p>
-          <h1 className="rise-1 h-display mx-auto mt-4 max-w-[17ch] text-[clamp(1.625rem,3.2vw,2.125rem)]">
+          <h1 className="rise-1 h-display mx-auto mt-4 max-w-[17ch] text-[clamp(1.75rem,3.4vw,2.375rem)]">
             Things I&rsquo;ve made trying to make my mark
           </h1>
           <p className="rise-2 mx-auto mt-4 max-w-[56ch] text-[0.9375rem] prose-soft">
@@ -54,14 +54,14 @@ export default function ProjectsPage() {
       {/* ------------------------------------------ one continuous gallery */}
       <section
         aria-labelledby="gallery-h"
-        className="mx-auto w-full max-w-[var(--shell)] px-6 md:px-8"
+        className="mx-auto w-full max-w-[1200px] px-6 md:px-8"
       >
         <h2 id="gallery-h" className="sr-only">
           All projects
         </h2>
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 md:gap-7">
           {projectCards.map((c, i) => (
-            <ProjectCard key={c.id} card={c} priority={i === 0} />
+            <ProjectCard key={c.id} card={c} priority={i < 2} />
           ))}
         </div>
       </section>
@@ -80,35 +80,73 @@ export default function ProjectsPage() {
           </span>
           The award, in full
         </h2>
-        <div className="mt-7 grid gap-8 md:grid-cols-2 md:gap-12">
-          <blockquote className="border-l border-line-strong pl-4">
-            <p className="max-w-[46ch] text-[1rem] prose-soft">
-              Selected for &ldquo;{award.citationSelectedFor},&rdquo; noting &ldquo;
-              {award.citationNoting}.&rdquo;
-            </p>
-            <cite className="mono mt-3 block not-italic text-[0.75rem] text-fg-faint">
-              —{' '}
-              <a
-                href={award.citationUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="text-accent"
-              >
-                {award.citationAttribution} ↗
-              </a>
-            </cite>
-          </blockquote>
-          <div>
-            <p className="mono text-fg-soft">{award.scaleLine}</p>
-            <p className="mono mt-2 text-fg-soft">{award.capitolLine}</p>
-            <a
-              href={award.citationUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="link-accent mt-5"
-            >
-              Read the coverage <span aria-hidden>›</span>
-            </a>
+        <div className="mt-8 grid items-start gap-10 md:grid-cols-[130px_minmax(0,1fr)] md:gap-12">
+          {/* the medal — drawn like the rest of the site's marks */}
+          <svg
+            aria-hidden
+            viewBox="0 0 120 150"
+            className="mx-auto h-[130px] w-[112px] text-accent md:mx-0"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.6"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path className="sk" pathLength={1} d="M60 10a38 38 0 1 1-.01 0Z" />
+            <path
+              className="sk"
+              pathLength={1}
+              d="M60 27l7.6 15.4 17 2.5-12.3 12 2.9 16.9L60 65.8l-15.2 8 2.9-16.9-12.3-12 17-2.5L60 27Z"
+            />
+            <path className="sk" pathLength={1} d="M42 82L30 140l16-9 8 12 8-26" />
+            <path className="sk" pathLength={1} d="M78 82l12 58-16-9-8 12" />
+          </svg>
+
+          <div className="min-w-0">
+            {/* the scale of it, in numbers */}
+            <dl className="grid grid-cols-3 gap-4 border-b border-line pb-6">
+              {award.scaleLine
+                .replace(/^selected from\s*/i, '')
+                .split('·')
+                .map((seg) => {
+                  const m = seg.trim().match(/([\d,]+\+?)\s*(.*)/);
+                  return (
+                    <div key={seg}>
+                      <dd className="h-display text-[clamp(1.375rem,2.6vw,1.875rem)] text-fg">
+                        {m ? m[1] : seg.trim()}
+                      </dd>
+                      <dt className="mono mt-1 text-[0.6875rem] uppercase tracking-[0.12em] text-fg-soft">
+                        {m ? m[2] : ''}
+                      </dt>
+                    </div>
+                  );
+                })}
+            </dl>
+
+            <blockquote className="mt-6 border-l-2 border-accent pl-4">
+              <p className="max-w-[52ch] text-[1rem] prose-soft">
+                Selected for &ldquo;{award.citationSelectedFor},&rdquo; noting &ldquo;
+                {award.citationNoting}.&rdquo;
+              </p>
+              <cite className="mono mt-3 block not-italic text-[0.75rem] text-fg-faint">
+                —{' '}
+                <a
+                  href={award.citationUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-accent"
+                >
+                  {award.citationAttribution} ↗
+                </a>
+              </cite>
+            </blockquote>
+
+            <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2">
+              <p className="mono text-fg-soft">{award.capitolLine}</p>
+              <Link href="/projects#chronoiq" className="link-accent">
+                The app that won it <span aria-hidden>›</span>
+              </Link>
+            </div>
           </div>
         </div>
       </section>

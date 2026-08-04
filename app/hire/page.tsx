@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { services, stack, whyMe } from '@/content/services';
 import ClientProof from '@/components/ClientProof';
+import Reveal from '@/components/Reveal';
 import ContactForm from '@/components/ContactForm';
 import TechIcon from '@/components/TechIcon';
 import { contact } from '@/content/site';
@@ -106,21 +107,40 @@ export default function HirePage() {
         className="mx-auto w-full max-w-[var(--shell)] px-6 pt-20 md:px-8 md:pt-24"
       >
         <h2 id="stack-h" className="h-display text-[1.1875rem]">
-          Built with
+          My tech stack
         </h2>
         <p className="mt-2.5 text-[0.875rem] prose-soft">
-          Every one of these is in a shipped project.
+          Everything here is in shipped work — and picking up a stack that isn&rsquo;t
+          is part of the job.
         </p>
-        <ul className="mt-5 flex flex-wrap gap-1.5">
-          {stack.flatMap((g) => g.items).map((i) => (
-            <li key={i}>
-              <span className="chip">
-                <TechIcon label={i} />
-                {i}
-              </span>
-            </li>
+
+        <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {stack.map((group) => (
+            <Reveal key={group.title}>
+              <article className="card relative h-full overflow-hidden p-6">
+                <h3 className="border-b border-line pb-2.5 text-[0.9375rem] font-semibold">
+                  {group.title}
+                </h3>
+                <ul className="relative z-10 mt-4 flex flex-wrap gap-1.5">
+                  {group.items.map((i) => (
+                    <li key={i}>
+                      <span className="chip">
+                        <TechIcon label={i} />
+                        {i}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+                <span
+                  aria-hidden
+                  className="h-display pointer-events-none absolute -bottom-6 -right-3 text-[4rem] leading-none text-white/[0.03]"
+                >
+                  {group.mark}
+                </span>
+              </article>
+            </Reveal>
           ))}
-        </ul>
+        </div>
       </section>
 
       {/* --------------------------------------------------------- why me */}

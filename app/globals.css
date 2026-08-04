@@ -34,8 +34,8 @@ html {
 body {
   background-color: #0a0a0c;
   background-image: radial-gradient(
-    rgba(255, 255, 255, 0.05) 1px,
-    transparent 1px
+    rgba(179, 166, 255, 0.13) 1.2px,
+    transparent 1.2px
   );
   background-size: 20px 20px;
   color: #f4f4f5;
@@ -482,13 +482,13 @@ body {
     transform: translate3d(0, 0, 0) rotate(var(--a, 31deg));
     opacity: 0;
   }
-  1.5% {
+  1% {
     opacity: 1;
   }
-  10% {
+  5% {
     opacity: 1;
   }
-  14% {
+  6.5% {
     transform: translate3d(var(--dx, 900px), var(--dy, 540px), 0)
       rotate(var(--a, 31deg));
     opacity: 0;
@@ -831,5 +831,30 @@ body {
   .sketch .sk-type,
   .sketch .sk-sig {
     stroke-dashoffset: 0;
+  }
+}
+
+
+/* ---------------------------------------------------------------------------
+   Page enter — replayed by app/template.tsx on every route change.
+--------------------------------------------------------------------------- */
+.page-enter {
+  animation: page-in 0.55s var(--ease-out) both;
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-enter {
+    animation: none;
   }
 }

@@ -19,6 +19,8 @@ export interface ClientJob {
   logoTile?: boolean;
   /** monogram for clients with no usable logo file */
   mark?: string;
+  /** id of a drawn glyph in components/Marks when there is no logo */
+  drawn?: string;
   image?: { rel: string; alt: string };
   /** further captures — the card fades through them */
   cycle?: string[];
@@ -51,7 +53,7 @@ export const clientJobs: ClientJob[] = [
     line: 'EZTennis — an AI tournament scheduler being built for a client: it assembles a personalized monthly schedule from USTA, UTR, ITF, and WTN events around a player’s rating, location, and calendar, with an AI coach to adjust it.',
     outcome: 'In active development, with the client reviewing builds as it comes together.',
     accent: '#a3d537',
-    mark: 'EZ',
+    logo: 'clients/eztennis-logo.png',
     image: {
       rel: 'clients/eztennis-landing.png',
       alt: 'The EZTennis landing page: "Play the right tournaments" over a personalized tournament scheduler with USTA, UTR, ITF, and WTN coverage',
@@ -82,7 +84,7 @@ export const clientJobs: ClientJob[] = [
     line: 'A Bloomberg-terminal-style AI market tracker sold to a small financial group — an AI analyst that breaks a ticker down on demand, and live alerts that turn material events into concrete calls.',
     outcome: 'Delivered to the group for internal use.',
     accent: '#e6b877',
-    mark: 'FG',
+    drawn: 'terminal',
     image: {
       rel: 'clients/terminal-analyst.png',
       alt: 'The terminal’s Ask the Analyst view: the AI returning a full stock breakdown — pricing data, key metrics, bull case, and bear case',

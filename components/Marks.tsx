@@ -63,6 +63,13 @@ const DRAWN: Record<string, (c: string) => React.ReactNode> = {
     </>
   ),
   // Games — a controller
+  terminal: (c) => (
+    <>
+      <path d="M4 4h16v16H4z" stroke={c} strokeWidth="1.6" fill="none" />
+      <path d="M7 14l3-3 2.5 2L17 8" stroke={c} strokeWidth="1.6" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M17 8h-2.6M17 8v2.6" stroke={c} strokeWidth="1.6" fill="none" strokeLinecap="round" />
+    </>
+  ),
   game: (c) => (
     <>
       <path
