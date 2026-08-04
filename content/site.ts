@@ -323,10 +323,14 @@ export const timeline = [
 ] as const;
 
 /** Undated facts (§12 verified + resume-sourced) — rendered as chips */
+/**
+ * Work facts first, personality after — the credential slot belongs to the
+ * vendor, not the student. GPA and SkillsUSA still live on the résumé.
+ */
 export const aboutFacts = [
-  '4.0 unweighted GPA',
-  'Varsity soccer — senior year',
-  'SkillsUSA — interactive game design',
+  'Sold AI software to UTR Global',
+  'Congressional App Challenge winner — 4,600+ apps',
+  'Four products live right now',
   'FIRST Robotics — programming + outreach',
   'Rainforest conservation fieldwork — Peruvian Amazon',
   'Animal rehabilitation volunteer — Patchwork Pastures',

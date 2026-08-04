@@ -9,6 +9,8 @@ export { contact } from './site';
 export interface Service {
   name: string;
   timeline: string;
+  /** the published starting band — set by Zander, Aug 2026 */
+  from: string;
   line: string;
   includes: string[];
   bestFor: string;
@@ -18,6 +20,7 @@ export const services: Service[] = [
   {
     name: 'Website',
     timeline: '1–2 weeks',
+    from: 'from $750',
     line: 'A fast, sharp, mobile-first site for a business that is losing work to the one it has now.',
     includes: [
       'Design and build, start to finish',
@@ -31,6 +34,7 @@ export const services: Service[] = [
   {
     name: 'App build',
     timeline: '3–6 weeks',
+    from: 'from $3,000',
     line: 'A working product with accounts, payments, and real data — the same stack behind the apps on this site.',
     includes: [
       'Accounts and secure sign-in',
@@ -44,6 +48,7 @@ export const services: Service[] = [
   {
     name: 'AI integration',
     timeline: '1–3 weeks',
+    from: 'from $1,500',
     line: 'An assistant or automation wired into the tools you already use — with fallbacks so nothing breaks when the model is down.',
     includes: [
       'Reads your real documents and spreadsheets',

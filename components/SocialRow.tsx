@@ -28,7 +28,7 @@ export default function SocialRow({ className = '' }: { className?: string }) {
             href={l.href}
             {...(l.href.startsWith('http') ? { target: '_blank', rel: 'noreferrer' } : {})}
             aria-label={l.label}
-            className="block text-fg-soft transition-colors duration-200 hover:text-fg"
+            className="-m-[11px] block p-[11px] text-fg-soft transition-colors duration-200 hover:text-fg"
           >
             <svg viewBox="0 0 24 24" fill="currentColor" className="h-[22px] w-[22px]">
               {ICONS[l.key]}

@@ -5,13 +5,13 @@ import { ProjectMark } from '@/components/Marks';
 import PhotoStrip from '@/components/PhotoStrip';
 import SocialRow from '@/components/SocialRow';
 import { featuredCards } from '@/content/cards';
+import { clientJobs } from '@/content/clients';
 import { steps } from '@/content/process';
 import { contact, experience } from '@/content/site';
 import { asset } from '@/lib/assets';
 
 export default function Home() {
   const headshot = asset('avatar.png');
-  const resume = asset('resume-web.pdf');
 
   return (
     <main id="main" className="flex-1">
@@ -33,23 +33,24 @@ export default function Home() {
             )}
 
             <h1 className="rise-1 h-display text-[clamp(1.5rem,2.9vw,2rem)]">
-              Web designer, software developer, and freelancer.
+              I build software that ships.
             </h1>
 
-            <div className="rise-2 mt-6 space-y-3.5 text-[0.9375rem] prose-soft">
+            <div className="rise-2 mt-6 space-y-3.5 text-[1rem] prose-soft">
               <p>
-                Here&rsquo;s what I&rsquo;ve been up to lately. I&rsquo;m always
-                building something — a new product, a client&rsquo;s site, or an AI
-                system that has to hold up under real work.
+                Websites, web apps, and AI tools for small businesses, nonprofits, and
+                founders — built by one person, start to finish, and live in
+                someone&rsquo;s hands rather than stuck in revisions.
               </p>
               <p>
-                I&rsquo;m Zander. I&rsquo;ve shipped four products to real users, won
-                the Congressional App Challenge across 4,600+ apps, and put AI into a
-                company&rsquo;s daily operations at my internship.
+                I&rsquo;m Zander. Companies run software I built for them — an AI
+                workspace at UTR Global, a market terminal for a financial group, a
+                nonprofit&rsquo;s website — and my own products include a Congressional
+                App Challenge winner selected across 4,600+ apps.
               </p>
               <p>
-                If you need something built properly — or fixed properly — I&rsquo;d
-                like to hear about it. I reply within a day.
+                If you need something built properly — or fixed properly — tell me
+                what is going wrong. I reply within a day.
               </p>
             </div>
 
@@ -91,7 +92,7 @@ export default function Home() {
                   </span>
                 </div>
                 <p className="mt-3 max-w-[52ch] text-[0.875rem] prose-soft">{c.line}</p>
-                <Link href="/projects" className="link-accent mt-3">
+                <Link href={`/projects#${c.id}`} className="link-accent mt-3">
                   View project <span aria-hidden>›</span>
                 </Link>
               </article>
@@ -99,6 +100,39 @@ export default function Home() {
             <Link href="/projects" className="link-accent">
               All 7 projects <span aria-hidden>›</span>
             </Link>
+
+            <div className="mt-14 border-t border-line pt-8">
+              <h2 className="mono uppercase tracking-[0.16em] text-fg-soft">
+                Built for clients
+              </h2>
+              <ul className="mt-4">
+                {clientJobs.map((j) => (
+                  <li key={j.id}>
+                    <Link
+                      href="/hire#work"
+                      className="-mx-2 flex flex-wrap items-baseline gap-x-3 gap-y-0.5 rounded-lg px-2 py-2.5 transition-colors duration-200 hover:bg-white/[0.04]"
+                    >
+                      <span className="text-[0.9375rem] font-semibold">{j.client}</span>
+                      <span className="text-[0.8125rem] text-fg-soft">{j.kind}</span>
+                      <span
+                        className="mono ml-auto flex items-center gap-1.5 whitespace-nowrap text-[0.6875rem]"
+                        style={{ color: j.accent }}
+                      >
+                        <span
+                          aria-hidden
+                          className="h-1.5 w-1.5 rounded-full"
+                          style={{ background: j.accent }}
+                        />
+                        {j.status}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <Link href="/hire#work" className="link-accent mt-3">
+                The client work <span aria-hidden>›</span>
+              </Link>
+            </div>
           </div>
 
           <aside className="space-y-5">
@@ -113,8 +147,14 @@ export default function Home() {
                 Websites, full-stack apps, and AI integration. Fixed scope, fixed
                 price, quoted within 24 hours.
               </p>
-              <a href={contact.mailto} className="btn-solid mt-4 w-full justify-center">
-                Email me
+              <Link href="/hire#contact" className="btn-solid mt-4 w-full justify-center">
+                Tell me what you need
+              </Link>
+              <a
+                href={contact.mailto}
+                className="mt-3 block text-center text-[0.8125rem] text-fg-soft underline underline-offset-4 hover:text-fg"
+              >
+                or email {contact.email}
               </a>
             </div>
 
@@ -168,16 +208,6 @@ export default function Home() {
                 })}
               </ul>
 
-              {resume.exists && (
-                <a
-                  href="/assets/resume-web.pdf"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn-ghost mt-5 w-full justify-center"
-                >
-                  Download résumé <span aria-hidden>↓</span>
-                </a>
-              )}
             </div>
 
             <div className="card p-5">

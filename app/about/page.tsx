@@ -9,7 +9,7 @@ import { asset } from '@/lib/assets';
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Zander Leon — student developer, Congressional App Challenge winner, and the person who builds every project on this site.',
+    'Zander Leon — the developer behind Atlas Space at UTR Global, four live products, and a Congressional App Challenge win. The person who builds every project on this site.',
 };
 
 const FOLLOW = [
@@ -30,39 +30,39 @@ export default function AboutPage() {
               About me
             </h1>
 
-            <div className="rise-2 mt-6 space-y-4 text-[0.9375rem] prose-soft">
+            <div className="rise-2 mt-6 space-y-4 text-[1rem] prose-soft">
               <p>
                 Hey there <span className="wave">👋</span> I&rsquo;m Zander Leon — a
                 developer who would rather <Underlined>build the thing</Underlined>{' '}
                 than talk about building the thing.
               </p>
               <p>
-                It started with a problem I actually had. Homework kept sliding to 11
-                p.m., so I built ChronoIQ — an AI study scheduler that reads your
-                calendar and books work into the free time you really have. It won the{' '}
-                <Underlined>Congressional App Challenge</Underlined> for New
-                Jersey&rsquo;s 7th district, selected from over 4,600 apps, and was
+                The work I&rsquo;m proudest of is Atlas Space — an AI workspace I
+                built and sold to <Underlined>UTR Global</Underlined>, where their
+                team runs real telecom bills through it in plain English: audit,
+                reconcile, fix. It lives inside a company where being wrong costs
+                money. I&rsquo;ve also delivered an AI market terminal to a financial
+                group, put a New Jersey nonprofit&rsquo;s website live, and I&rsquo;m
+                mid-build on an AI tournament scheduler for a client. The unglamorous
+                half too: rebuilding bugged legacy systems in classic ASP/VBScript.
+              </p>
+              <p>
+                My own products started with a problem I actually had. Homework kept
+                sliding to 11 p.m., so I built ChronoIQ — an AI study scheduler that
+                won the <Underlined>Congressional App Challenge</Underlined> for New
+                Jersey&rsquo;s 7th district, selected from over 4,600 apps and
                 displayed at the U.S. Capitol.
               </p>
               <p>
-                Since then I&rsquo;ve shipped Solaspace, an AI goal-execution app;
-                Bandr, a rule-engine app that helps teens find safe ways to earn;
-                Everdeck, a business-opportunity deck in private preview; and Ya Sabo,
-                a Spanish comprehension app for heritage speakers. Seven projects in total,
-                all original work — zero forks.
+                Since then: Solaspace, an AI goal-execution app; Bandr, a rule-engine
+                app that helps teens find safe ways to earn; Everdeck, an audit tool
+                for web studios; and Ya Sabo, a Spanish comprehension app for heritage
+                speakers. Seven projects, all original work — zero forks.
               </p>
-              <p>
-                At my internship I do the unglamorous half too: rebuilding bugged
-                legacy web systems in classic ASP/VBScript, and building Atlas Space —
-                an AI workspace where telecom-expense work happens in plain English.
-                That is the part I am proudest of, because it runs inside a real
-                company where being wrong costs money.
-              </p>
-              <p>
-                I studied at Morris County School of Technology (class of &rsquo;26) in
-                the Academy for Computer &amp; Information Sciences. Away from the
-                keyboard: varsity soccer, FIRST Robotics, and ecological fieldwork in
-                the Peruvian Amazon.
+              <p className="text-[0.875rem]">
+                The one-line bio: Morris County School of Technology, class of
+                &rsquo;26 — with varsity soccer, FIRST Robotics, and ecological
+                fieldwork in the Peruvian Amazon on the side.
               </p>
             </div>
 
@@ -224,12 +224,12 @@ export default function AboutPage() {
               I take on websites, apps, and AI work — scoped and quoted within a day.
             </p>
             <div className="mt-6 flex flex-wrap gap-2.5">
-              <Link href="/hire" className="btn-solid">
+              <Link href="/hire#contact" className="btn-solid">
+                Tell me what you need
+              </Link>
+              <Link href="/hire" className="btn-ghost">
                 What I offer
               </Link>
-              <a href={contact.mailto} className="btn-ghost">
-                {contact.email}
-              </a>
             </div>
           </div>
         </section>

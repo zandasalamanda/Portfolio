@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-04T13:41:28.309Z",
+  "generatedAt": "2026-08-04T14:30:58.955Z",
   "assets": {
     "chronoiq/logo.png": {
       "exists": true,
@@ -276,6 +276,24 @@
       "optional": true,
       "width": 1170,
       "height": 2532
+    },
+    "clients/comics-hero.png": {
+      "exists": true,
+      "optional": true,
+      "width": 3420,
+      "height": 1904
+    },
+    "clients/eztennis-app.png": {
+      "exists": true,
+      "optional": true,
+      "width": 3420,
+      "height": 1902
+    },
+    "clients/eztennis-landing.png": {
+      "exists": true,
+      "optional": true,
+      "width": 3420,
+      "height": 1902
     },
     "headshot.png": {
       "exists": true,

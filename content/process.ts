@@ -10,11 +10,14 @@ export interface Step {
   when: string;
   line: string;
   detail: string[];
+  /** id of the drawn vignette in components/ProcessArt */
+  art: string;
 }
 
 export const steps: Step[] = [
   {
     n: '01',
+    art: 'talk',
     title: 'You tell me what you need',
     when: 'free, no obligation',
     line: 'A short conversation — email or a call, whichever you prefer. You describe the problem in your own words. No technical vocabulary required.',
@@ -26,6 +29,7 @@ export const steps: Step[] = [
   },
   {
     n: '02',
+    art: 'quote',
     title: 'I send a fixed quote',
     when: 'within 24 hours',
     line: 'One written scope and one price, before any work starts. If I am not the right person for the job, I tell you that instead of taking the project.',
@@ -37,6 +41,7 @@ export const steps: Step[] = [
   },
   {
     n: '03',
+    art: 'preview',
     title: 'You watch it get built',
     when: 'live link from day one',
     line: 'You get a preview link the day work starts and it updates as I go. There is no reveal at the end, because you have been looking at it the whole time.',
@@ -48,6 +53,7 @@ export const steps: Step[] = [
   },
   {
     n: '04',
+    art: 'keys',
     title: 'You own everything',
     when: 'from the start, not the end',
     line: 'The domain, the code, the hosting and the logins are in your name throughout. If I disappeared tomorrow, any other developer could pick it up cleanly.',

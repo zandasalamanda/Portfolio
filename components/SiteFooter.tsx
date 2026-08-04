@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import SocialRow from '@/components/SocialRow';
-import verification from '@/content/verification.json';
 import { contact } from '@/content/site';
 import { asset } from '@/lib/assets';
 
@@ -12,7 +11,6 @@ const NAV = [
 ];
 
 export default function SiteFooter() {
-  const verifiedAt = (verification as { verifiedAt: string | null }).verifiedAt;
   const resume = asset('resume-web.pdf');
 
   return (
@@ -25,8 +23,14 @@ export default function SiteFooter() {
               Websites, apps, and AI that does real work. Tell me what you need — I
               reply within a day.
             </p>
-            <a href={contact.mailto} className="btn-solid mt-6">
-              {contact.email}
+            <Link href="/hire#contact" className="btn-solid mt-6">
+              Tell me what you need
+            </Link>
+            <a
+              href={contact.mailto}
+              className="mt-3 block text-[0.8125rem] text-fg-soft underline underline-offset-4 hover:text-fg"
+            >
+              or email {contact.email}
             </a>
             <SocialRow className="mt-7" />
           </div>
@@ -36,7 +40,7 @@ export default function SiteFooter() {
               <Link
                 key={n.href}
                 href={n.href}
-                className="text-[0.8125rem] text-fg-soft transition-colors duration-200 hover:text-fg"
+                className="py-1.5 text-[0.875rem] text-fg-soft transition-colors duration-200 hover:text-fg"
               >
                 {n.label}
               </Link>
@@ -46,7 +50,7 @@ export default function SiteFooter() {
                 href="/assets/resume-web.pdf"
                 target="_blank"
                 rel="noreferrer"
-                className="text-[0.8125rem] text-fg-soft transition-colors duration-200 hover:text-fg"
+                className="py-1.5 text-[0.875rem] text-fg-soft transition-colors duration-200 hover:text-fg"
               >
                 Résumé ↗
               </a>
@@ -54,9 +58,9 @@ export default function SiteFooter() {
           </nav>
         </div>
 
-        <p className="mono mt-12 border-t border-line pt-6 text-[0.6875rem] text-fg-faint">
-          Designed and built by Zander Leon. All links verified at build:{' '}
-          {verifiedAt ?? 'pending'}. Next.js on Vercel.
+        <p className="mono mt-12 border-t border-line pt-6 text-[0.75rem] text-fg-faint">
+          Designed and built by Zander Leon. Every link on this site is checked
+          automatically before each release.
         </p>
       </div>
     </footer>

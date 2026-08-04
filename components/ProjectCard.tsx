@@ -129,7 +129,8 @@ export default function ProjectCard({
   return (
     <Reveal className={wide ? 'sm:col-span-2' : ''}>
       <article
-        className="app-card group flex h-full flex-col overflow-hidden"
+        id={card.id}
+        className="app-card group flex h-full scroll-mt-28 flex-col overflow-hidden"
         style={{
           ['--brand' as string]: brand.primary,
           ['--brand-radius' as string]: brand.radius,
