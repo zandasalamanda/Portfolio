@@ -65,13 +65,6 @@ export const steps: Step[] = [
   },
 ];
 
-/** What the client has to do — kept short on purpose. */
-export const fromYou = [
-  'Your words and pictures — text, photos, prices. If you only have a rough version, that is fine.',
-  'Your logo, if you have one. If you do not, that is fine too.',
-  'Answers when I ask questions, so nothing stalls waiting on a decision.',
-];
-
 export interface Faq {
   q: string;
   a: string;
@@ -85,6 +78,10 @@ export const faqs: Faq[] = [
   {
     q: 'How long does it take?',
     a: 'A website is usually one to two weeks. An app with accounts and payments is three to six. An AI tool wired into what you already use is one to three. The date is in the quote.',
+  },
+  {
+    q: 'What do you need from me?',
+    a: 'Three things: your words and pictures — text, photos, prices, rough versions are fine; your logo if you have one, and it is fine if you do not; and answers when I ask questions, so nothing stalls waiting on a decision. No retainers, no account managers, no lock-in.',
   },
   {
     q: 'I am not technical. Is that a problem?',

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import ProcessArt from '@/components/ProcessArt';
-import { faqs, fromYou, steps } from '@/content/process';
+import { faqs, steps } from '@/content/process';
 
 export const metadata: Metadata = {
   title: 'How it works',
@@ -91,38 +91,6 @@ export default function ProcessPage() {
             </li>
           ))}
         </ol>
-      </section>
-
-      {/* --------------------------------------------------- what you send */}
-      <section
-        aria-labelledby="you-h"
-        className="mx-auto w-full max-w-[var(--shell)] px-6 pt-16 md:px-8 md:pt-20"
-      >
-        <div className="card p-6 md:p-7">
-          <h2
-            id="you-h"
-            className="mono flex items-center gap-2 uppercase tracking-[0.14em] text-fg-soft"
-          >
-            <span aria-hidden className="text-accent">▸</span>
-            What I need from you
-          </h2>
-          <p className="mt-2.5 text-[0.9375rem] prose-soft">
-            Three things. That is the whole list.
-          </p>
-          <ul className="mt-5 grid gap-4 md:grid-cols-3">
-            {fromYou.map((f, i) => (
-              <li key={f} className="border-t border-line pt-3.5">
-                <span aria-hidden className="mono text-[0.625rem] text-accent">
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <p className="mt-1.5 text-[0.875rem] prose-soft">{f}</p>
-              </li>
-            ))}
-          </ul>
-          <p className="mono mt-6 border-t border-line pt-4 text-[0.6875rem] text-fg-soft">
-            No retainers · no account managers · no lock-in
-          </p>
-        </div>
       </section>
 
       {/* ---------------------------------------------------------- the faq */}

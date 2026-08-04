@@ -54,7 +54,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const headshot = asset("avatar.png");
+  const headshot = asset("portrait-round.png");
   const avatar =
     headshot.exists && headshot.width && headshot.height
       ? { url: headshot.url, width: headshot.width, height: headshot.height }

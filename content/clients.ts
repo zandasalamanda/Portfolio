@@ -13,6 +13,12 @@ export interface ClientJob {
   line: string;
   outcome: string;
   accent: string;
+  /** real logo file under content/assets; monogram used when absent */
+  logo?: string;
+  /** logo needs a white tile to read on the dark ground */
+  logoTile?: boolean;
+  /** monogram for clients with no usable logo file */
+  mark?: string;
   image?: { rel: string; alt: string };
   /** further captures — the card fades through them */
   cycle?: string[];
@@ -29,6 +35,8 @@ export const clientJobs: ClientJob[] = [
     line: 'Atlas Space — an AI document-and-spreadsheet workspace sold to UTR Global. Their team drops in real telecom bills and works in plain English: audit charges, check rates, reconcile lines, fix files.',
     outcome: 'Runs inside the company on real invoices, where being wrong costs money.',
     accent: '#8fa6e8',
+    logo: 'logos/utr.png',
+    logoTile: true,
     image: {
       rel: 'atlas/atlas-light.png',
       alt: 'Atlas Space: an AI assistant beside tools for checking bills, auditing, reconciling lines, and fixing spreadsheets',
@@ -43,6 +51,7 @@ export const clientJobs: ClientJob[] = [
     line: 'EZTennis — an AI tournament scheduler being built for a client: it assembles a personalized monthly schedule from USTA, UTR, ITF, and WTN events around a player’s rating, location, and calendar, with an AI coach to adjust it.',
     outcome: 'In active development, with the client reviewing builds as it comes together.',
     accent: '#a3d537',
+    mark: 'EZ',
     image: {
       rel: 'clients/eztennis-landing.png',
       alt: 'The EZTennis landing page: "Play the right tournaments" over a personalized tournament scheduler with USTA, UTR, ITF, and WTN coverage',
@@ -57,6 +66,7 @@ export const clientJobs: ClientJob[] = [
     line: 'A website for Comics for Comfort, a New Jersey nonprofit that collects comics and gets them to kids’ clubs, libraries, children’s hospitals, and troops overseas — built to feel like the comics it moves.',
     outcome: 'Live, with the donation tally and contact routes the organization runs on.',
     accent: '#d9553f',
+    logo: 'clients/comics-logo.png',
     image: {
       rel: 'clients/comics-hero.png',
       alt: 'The Comics for Comfort homepage: "Comfort, one issue at a time" beside the nonprofit’s comic-book crest, in a retro print style',
@@ -72,6 +82,7 @@ export const clientJobs: ClientJob[] = [
     line: 'A Bloomberg-terminal-style AI market tracker sold to a small financial group — an AI analyst that breaks a ticker down on demand, and live alerts that turn material events into concrete calls.',
     outcome: 'Delivered to the group for internal use.',
     accent: '#e6b877',
+    mark: 'FG',
     image: {
       rel: 'clients/terminal-analyst.png',
       alt: 'The terminal’s Ask the Analyst view: the AI returning a full stock breakdown — pricing data, key metrics, bull case, and bear case',

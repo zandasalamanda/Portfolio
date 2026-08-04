@@ -56,6 +56,38 @@ export default function ClientProof() {
 
               <div className="flex flex-1 flex-col gap-3 p-5">
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                  {(() => {
+                    const logo = job.logo ? asset(job.logo) : null;
+                    if (logo?.exists) {
+                      return (
+                        <span
+                          className={`flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-lg ${
+                            job.logoTile
+                              ? 'bg-white p-1'
+                              : 'border border-line bg-white/[0.04]'
+                          }`}
+                        >
+                          <Image
+                            src={logo.url}
+                            alt={`${job.client} logo`}
+                            width={logo.width ?? 32}
+                            height={logo.height ?? 32}
+                            sizes="32px"
+                            className="h-full w-full object-contain"
+                          />
+                        </span>
+                      );
+                    }
+                    return (
+                      <span
+                        aria-hidden
+                        className="mono flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border text-[0.625rem]"
+                        style={{ borderColor: `${job.accent}55`, color: job.accent }}
+                      >
+                        {job.mark ?? job.client.slice(0, 2).toUpperCase()}
+                      </span>
+                    );
+                  })()}
                   <h3 className="h-ui text-[1rem]">{job.client}</h3>
                   <span className="mono text-[0.75rem] text-fg-soft">{job.kind}</span>
                   <span

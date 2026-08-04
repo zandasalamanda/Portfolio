@@ -11,12 +11,12 @@ import { contact } from '@/content/site';
 import { asset } from '@/lib/assets';
 
 export default function Home() {
-  const headshot = asset('avatar.png');
+  const headshot = asset('portrait-round.png');
 
   return (
     <main id="main" className="flex-1">
       {/* --------------------------------------------------------- hero */}
-      <section className="corner-glow relative overflow-hidden pt-[136px] md:pt-[168px]">
+      <section className="corner-glow relative overflow-hidden pt-[168px] md:pt-[208px]">
         <HeroField />
         <div className="relative mx-auto w-full max-w-[var(--shell)] px-6 md:px-8">
           <div className="max-w-[40rem]">
