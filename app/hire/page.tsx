@@ -13,8 +13,8 @@ export const metadata: Metadata = {
 export default function HirePage() {
   return (
     <main id="main" className="flex-1 pt-[104px] md:pt-[124px]">
-      <div className="mx-auto w-full max-w-[1120px] px-6 md:px-8">
-        <h1 className="rise-1 h-display max-w-[16ch] text-[clamp(1.75rem,3.6vw,2.5rem)]">
+      <div className="mx-auto w-full max-w-[var(--shell)] px-6 md:px-8">
+        <h1 className="rise-1 h-display max-w-[16ch] text-[clamp(1.5rem,2.9vw,2rem)]">
           Let&rsquo;s work together
         </h1>
         <p className="rise-2 mt-5 max-w-[58ch] text-[0.9375rem] prose-soft">
@@ -35,27 +35,31 @@ export default function HirePage() {
       {/* -------------------------------------------------------- services */}
       <section
         aria-labelledby="svc-h"
-        className="mx-auto w-full max-w-[1120px] px-6 pt-20 md:px-8 md:pt-24"
+        className="mx-auto w-full max-w-[var(--shell)] px-6 pt-20 md:px-8 md:pt-24"
       >
-        <h2 id="svc-h" className="h-display text-[1.375rem]">
+        <h2 id="svc-h" className="h-display text-[1.1875rem]">
           What I take on
         </h2>
         <p className="mt-2.5 text-[0.875rem] prose-soft">Fixed scope, fixed price, quoted in 24 hours.</p>
 
         <div className="mt-6 grid gap-5 lg:grid-cols-3">
           {services.map((s, i) => (
-            <article key={s.name} className="card group flex flex-col p-6">
-              <div className="flex items-center justify-between gap-3 border-b border-line pb-4">
-                <div className="flex items-center gap-2.5">
+            <article key={s.name} className="card group flex flex-col p-5">
+              {/* number and timeline share the top line so the name always gets
+                  the full width — at three columns it had been colliding */}
+              <div className="border-b border-line pb-3.5">
+                <div className="flex items-center justify-between gap-3">
                   <span
                     aria-hidden
-                    className="mono flex h-7 w-7 items-center justify-center rounded-lg border border-line text-[0.625rem] text-accent transition-colors duration-300 group-hover:border-accent/50"
+                    className="mono flex h-6 w-6 items-center justify-center rounded-md border border-line text-[0.5625rem] text-accent transition-colors duration-300 group-hover:border-accent/50"
                   >
                     {String(i + 1).padStart(2, '0')}
                   </span>
-                  <h3 className="h-display text-[1.0625rem]">{s.name}</h3>
+                  <span className="mono whitespace-nowrap text-[0.625rem] text-accent">
+                    {s.timeline}
+                  </span>
                 </div>
-                <span className="mono text-[0.6875rem] text-accent">{s.timeline}</span>
+                <h3 className="h-ui mt-2.5 text-[0.9375rem]">{s.name}</h3>
               </div>
               <p className="mt-4 text-[0.875rem] prose-soft">{s.line}</p>
               <ul className="mt-5 space-y-2">
@@ -79,9 +83,9 @@ export default function HirePage() {
       {/* ----------------------------------------------------------- stack */}
       <section
         aria-labelledby="stack-h"
-        className="mx-auto w-full max-w-[1120px] px-6 pt-20 md:px-8 md:pt-24"
+        className="mx-auto w-full max-w-[var(--shell)] px-6 pt-20 md:px-8 md:pt-24"
       >
-        <h2 id="stack-h" className="h-display text-[1.375rem]">
+        <h2 id="stack-h" className="h-display text-[1.1875rem]">
           My tech stack
         </h2>
         <p className="mt-2.5 text-[0.875rem] prose-soft">
@@ -116,9 +120,9 @@ export default function HirePage() {
       {/* --------------------------------------------------------- why me */}
       <section
         aria-labelledby="why-h"
-        className="mx-auto w-full max-w-[1120px] px-6 pt-20 md:px-8 md:pt-24"
+        className="mx-auto w-full max-w-[var(--shell)] px-6 pt-20 md:px-8 md:pt-24"
       >
-        <h2 id="why-h" className="h-display text-[1.375rem]">
+        <h2 id="why-h" className="h-display text-[1.1875rem]">
           Why hire me?
         </h2>
         <ul className="mt-6 max-w-[68ch] space-y-4">
@@ -136,9 +140,9 @@ export default function HirePage() {
       {/* ---------------------------------------------------- preferences */}
       <section
         aria-labelledby="pref-h"
-        className="mx-auto w-full max-w-[1120px] px-6 pt-20 md:px-8 md:pt-24"
+        className="mx-auto w-full max-w-[var(--shell)] px-6 pt-20 md:px-8 md:pt-24"
       >
-        <h2 id="pref-h" className="h-display text-[1.375rem]">
+        <h2 id="pref-h" className="h-display text-[1.1875rem]">
           How I work
         </h2>
         <div className="mt-6 grid gap-x-12 gap-y-7 md:grid-cols-2">
@@ -159,9 +163,9 @@ export default function HirePage() {
       {/* ------------------------------------------------------ audiences */}
       <section
         aria-labelledby="aud-h"
-        className="mx-auto w-full max-w-[1120px] px-6 pt-20 md:px-8 md:pt-24"
+        className="mx-auto w-full max-w-[var(--shell)] px-6 pt-20 md:px-8 md:pt-24"
       >
-        <h2 id="aud-h" className="h-display text-[1.375rem]">
+        <h2 id="aud-h" className="h-display text-[1.1875rem]">
           Who I build for
         </h2>
         <p className="mt-2.5 text-[0.875rem] prose-soft">The work I am best positioned to do well.</p>
@@ -178,9 +182,9 @@ export default function HirePage() {
       {/* -------------------------------------------------------- process */}
       <section
         aria-labelledby="proc-h"
-        className="mx-auto w-full max-w-[1120px] px-6 pt-20 md:px-8 md:pt-24"
+        className="mx-auto w-full max-w-[var(--shell)] px-6 pt-20 md:px-8 md:pt-24"
       >
-        <h2 id="proc-h" className="h-display text-[1.375rem]">
+        <h2 id="proc-h" className="h-display text-[1.1875rem]">
           How a project runs
         </h2>
         <p className="mt-2.5 text-[0.875rem] prose-soft">
@@ -203,9 +207,9 @@ export default function HirePage() {
       </section>
 
       {/* ------------------------------------------------------------ CTA */}
-      <section className="mx-auto w-full max-w-[1120px] px-6 py-20 md:px-8 md:py-24">
+      <section className="mx-auto w-full max-w-[var(--shell)] px-6 py-20 md:px-8 md:py-24">
         <div className="card p-7 md:p-10">
-          <h2 className="h-display max-w-[18ch] text-[clamp(1.375rem,2.6vw,1.875rem)]">
+          <h2 className="h-display max-w-[18ch] text-[clamp(1.1875rem,2.1vw,1.5rem)]">
             Send me the messy version.
           </h2>
           <p className="mt-3.5 max-w-[52ch] text-[0.9375rem] prose-soft">

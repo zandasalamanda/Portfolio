@@ -21,7 +21,7 @@ export default function Home() {
       {/* --------------------------------------------------------- hero */}
       <section className="corner-glow relative overflow-hidden pt-[104px] md:pt-[124px]">
         <HeroField />
-        <div className="relative mx-auto w-full max-w-[1120px] px-6 md:px-8">
+        <div className="relative mx-auto w-full max-w-[var(--shell)] px-6 md:px-8">
           <div className="max-w-[40rem]">
             {headshot.exists && headshot.width && headshot.height && (
               <Image
@@ -35,7 +35,7 @@ export default function Home() {
               />
             )}
 
-            <h1 className="rise-1 h-display text-[clamp(1.75rem,3.6vw,2.5rem)]">
+            <h1 className="rise-1 h-display text-[clamp(1.5rem,2.9vw,2rem)]">
               Web designer, software developer, and freelancer.
             </h1>
 
@@ -75,7 +75,7 @@ export default function Home() {
       </section>
 
       {/* ------------------------------------------- feed + sidebar */}
-      <section className="mx-auto w-full max-w-[1120px] px-6 pt-20 md:px-8 md:pt-24">
+      <section className="mx-auto w-full max-w-[var(--shell)] px-6 pt-20 md:px-8 md:pt-24">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-14">
           <div>
             {featuredCards.map((c) => (

@@ -23,10 +23,10 @@ export default function AboutPage() {
 
   return (
     <main id="main" className="flex-1 pt-[104px] md:pt-[124px]">
-      <div className="mx-auto w-full max-w-[1120px] px-6 md:px-8">
+      <div className="mx-auto w-full max-w-[var(--shell)] px-6 md:px-8">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-16">
           <div className="max-w-[40rem]">
-            <h1 className="rise-1 h-display text-[clamp(1.75rem,3.6vw,2.5rem)]">
+            <h1 className="rise-1 h-display text-[clamp(1.5rem,2.9vw,2rem)]">
               About me
             </h1>
 
@@ -217,7 +217,7 @@ export default function AboutPage() {
 
         <section className="py-20 md:py-28">
           <div className="card p-7 md:p-10">
-            <h2 className="h-display max-w-[20ch] text-[clamp(1.375rem,2.6vw,1.875rem)]">
+            <h2 className="h-display max-w-[20ch] text-[clamp(1.1875rem,2.1vw,1.5rem)]">
               Want something built?
             </h2>
             <p className="mt-3.5 max-w-[52ch] text-[0.9375rem] prose-soft">

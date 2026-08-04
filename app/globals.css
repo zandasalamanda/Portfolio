@@ -17,6 +17,10 @@
 
 :root {
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* The one knob for how wide the site reads. Every section measures itself
+     against this, so the whole layout narrows or widens from here. */
+  --shell: 840px;
 }
 
 /* ---------------------------------------------------------------------------
@@ -73,6 +77,15 @@ body {
     font-weight: 900;
     letter-spacing: -0.026em;
     line-height: 1.08;
+  }
+
+  /* Card and panel titles. Black weight belongs to the display headings that
+     open a page; at 15px it just reads heavy, so UI-level titles sit lighter. */
+  .h-ui {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.012em;
+    line-height: 1.25;
   }
 
   .mono {

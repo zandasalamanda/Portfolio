@@ -148,7 +148,7 @@ export default function ProjectCard({
             />
             <h3
               className={`${brand.fontClass} leading-tight ${
-                wide ? 'text-[1.25rem]' : 'text-[1.0625rem]'
+                wide ? 'text-[1.0625rem]' : 'text-[0.9375rem]'
               }`}
               style={{ fontWeight: brand.weight, letterSpacing: brand.tracking }}
             >
@@ -183,7 +183,7 @@ export default function ProjectCard({
 
           <p className="text-[0.875rem] prose-soft">{card.line}</p>
 
-          <div className={`flex flex-wrap gap-1.5 pt-2 ${wide ? '' : 'mt-auto'}`}>
+          <div className="flex flex-wrap gap-1.5 pt-2">
             {card.tags.map((t) => (
               <span key={t} className="chip">
                 <TechIcon label={t} />

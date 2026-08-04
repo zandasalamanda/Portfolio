@@ -47,9 +47,9 @@ export default function ActivityPage() {
 
   return (
     <main id="main" className="flex-1 pt-[104px] md:pt-[124px]">
-      <div className="mx-auto w-full max-w-[1120px] px-6 md:px-8">
+      <div className="mx-auto w-full max-w-[var(--shell)] px-6 md:px-8">
         <p className="rise-1 mono uppercase tracking-[0.16em] text-fg-soft">Activity</p>
-        <h1 className="rise-1 h-display mt-4 max-w-[16ch] text-[clamp(1.75rem,3.6vw,2.5rem)]">
+        <h1 className="rise-1 h-display mt-4 max-w-[16ch] text-[clamp(1.5rem,2.9vw,2rem)]">
           The work rate, not the résumé version.
         </h1>
         <p className="rise-2 mt-5 max-w-[56ch] text-[0.9375rem] prose-soft">
@@ -79,7 +79,7 @@ export default function ActivityPage() {
 
       <section
         aria-labelledby="graph-h"
-        className="mx-auto w-full max-w-[1120px] px-6 pt-16 md:px-8 md:pt-20"
+        className="mx-auto w-full max-w-[var(--shell)] px-6 pt-16 md:px-8 md:pt-20"
       >
         <h2 id="graph-h" className="mono border-b border-line pb-3 uppercase tracking-[0.16em] text-fg-soft">
           Last 52 weeks
@@ -110,7 +110,7 @@ export default function ActivityPage() {
 
       <section
         aria-labelledby="repos-h"
-        className="mx-auto w-full max-w-[1120px] px-6 pt-16 md:px-8 md:pt-20"
+        className="mx-auto w-full max-w-[var(--shell)] px-6 pt-16 md:px-8 md:pt-20"
       >
         <div className="grid gap-12 md:grid-cols-2 md:gap-16">
           <div>

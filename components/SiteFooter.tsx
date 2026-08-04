@@ -17,10 +17,10 @@ export default function SiteFooter() {
 
   return (
     <footer className="border-t border-line">
-      <div className="mx-auto w-full max-w-[1120px] px-6 py-12 md:px-8">
+      <div className="mx-auto w-full max-w-[var(--shell)] px-6 py-12 md:px-8">
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <div className="max-w-[34ch]">
-            <p className="h-display text-[1.375rem]">Let&rsquo;s build something.</p>
+            <p className="h-display text-[1.1875rem]">Let&rsquo;s build something.</p>
             <p className="mt-3 text-[0.875rem] prose-soft">
               Websites, apps, and AI that does real work. Tell me what you need — I
               reply within a day.

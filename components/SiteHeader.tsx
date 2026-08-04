@@ -30,7 +30,7 @@ export default function SiteHeader({
         skip to content
       </a>
 
-      <div className="mx-auto flex w-full max-w-[1120px] items-center justify-between gap-4">
+      <div className="mx-auto flex w-full max-w-[var(--shell)] items-center justify-between gap-4">
         {/* avatar sits left on inner pages, as in the template */}
         <div className="flex-1">
           {!home && avatar && (
@@ -53,7 +53,7 @@ export default function SiteHeader({
 
         <nav
           aria-label="Site"
-          className="pointer-events-auto hidden items-center gap-1 rounded-full border border-line bg-surface/80 px-2 py-2 backdrop-blur-md md:flex"
+          className="pointer-events-auto hidden items-center gap-0.5 rounded-full border border-line bg-surface/80 px-1.5 py-1.5 backdrop-blur-md md:flex"
         >
           {NAV.map((item) => {
             const active = pathname === item.href;
@@ -62,7 +62,7 @@ export default function SiteHeader({
                 key={item.href}
                 href={item.href}
                 aria-current={active ? 'page' : undefined}
-                className={`rounded-full px-3.5 py-1.5 text-[0.8125rem] font-medium transition-colors duration-200 ${
+                className={`rounded-full px-3 py-1.5 text-[0.75rem] font-medium transition-colors duration-200 ${
                   active ? 'text-accent' : 'text-fg-soft hover:text-fg'
                 }`}
               >
@@ -88,7 +88,7 @@ export default function SiteHeader({
       <nav
         id="mobile-nav"
         aria-label="Site"
-        className={`pointer-events-auto mx-auto mt-2 w-full max-w-[1120px] flex-col gap-1 rounded-2xl border border-line bg-surface/95 p-3 backdrop-blur-md md:hidden ${
+        className={`pointer-events-auto mx-auto mt-2 w-full max-w-[var(--shell)] flex-col gap-1 rounded-2xl border border-line bg-surface/95 p-3 backdrop-blur-md md:hidden ${
           open ? 'flex' : 'hidden'
         }`}
       >

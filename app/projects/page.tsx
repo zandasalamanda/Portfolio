@@ -40,7 +40,7 @@ export default function ProjectsPage() {
               View on GitHub <span aria-hidden>→</span>
             </a>
           </p>
-          <h1 className="rise-1 h-display mx-auto mt-4 max-w-[17ch] text-[clamp(1.875rem,4vw,2.75rem)]">
+          <h1 className="rise-1 h-display mx-auto mt-4 max-w-[17ch] text-[clamp(1.625rem,3.2vw,2.125rem)]">
             Things I&rsquo;ve made trying to put my mark
           </h1>
           <p className="rise-2 mx-auto mt-4 max-w-[56ch] text-[0.9375rem] prose-soft">
@@ -65,12 +65,12 @@ export default function ProjectsPage() {
       {/* ------------------------------------------ one continuous gallery */}
       <section
         aria-labelledby="gallery-h"
-        className="mx-auto w-full max-w-[1120px] px-6 md:px-8"
+        className="mx-auto w-full max-w-[var(--shell)] px-6 md:px-8"
       >
         <h2 id="gallery-h" className="sr-only">
           All projects
         </h2>
-        <div className="grid items-start gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {projectCards.map((c, i) => (
             <ProjectCard key={c.id} card={c} priority={i === 0} />
           ))}
@@ -78,7 +78,7 @@ export default function ProjectsPage() {
       </section>
 
       {/* ------------------------------------------------------ the award */}
-      <section className="mx-auto w-full max-w-[1120px] px-6 pt-20 md:px-8 md:pt-28">
+      <section className="mx-auto w-full max-w-[var(--shell)] px-6 pt-20 md:px-8 md:pt-28">
         <h2 className="mono flex items-center gap-2 border-b border-line pb-3 uppercase tracking-[0.14em] text-fg-soft">
           <span aria-hidden className="text-accent">
             ★
@@ -113,7 +113,7 @@ export default function ProjectsPage() {
       </section>
 
       {/* ----------------------------------------------------- Atlas Space */}
-      <section className="mx-auto w-full max-w-[1120px] px-6 pt-20 md:px-8 md:pt-28">
+      <section className="mx-auto w-full max-w-[var(--shell)] px-6 pt-20 md:px-8 md:pt-28">
         <div className="flex items-baseline justify-between border-b border-line pb-3">
           <h2 className="mono flex items-center gap-2 uppercase tracking-[0.14em] text-fg-soft">
             <DrawnMark id="atlas" accent="#8fa6e8" className="h-4 w-4" />
@@ -159,7 +159,7 @@ export default function ProjectsPage() {
       </section>
 
       {/* -------------------------------------------------------- Helios */}
-      <section className="mx-auto w-full max-w-[1120px] px-6 py-20 md:px-8 md:py-28">
+      <section className="mx-auto w-full max-w-[var(--shell)] px-6 py-20 md:px-8 md:py-28">
         <div className="flex items-baseline justify-between border-b border-line pb-3">
           <h2 className="mono flex items-center gap-2 uppercase tracking-[0.14em] text-fg-soft">
             {nasa.exists && (
