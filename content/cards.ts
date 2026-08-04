@@ -166,6 +166,6 @@ export const marqueeShots = [
   { rel: 'solaspace/shot-map.png', alt: 'Solaspace goal map', label: 'solaspace.app' },
   { rel: 'atlas/atlas-dark.png', alt: 'Atlas Space, dark theme', label: 'Atlas Space' },
   { rel: 'bandr/shot-home.png', alt: 'Bandr on a phone', label: 'Bandr' },
-  { rel: 'everdeck/shot-deck.png', alt: 'Everdeck prospect deck', label: 'everdeck.app' },
+  { rel: 'everdeck/shot-landing.png', alt: 'The Everdeck landing page', label: 'everdeck.app' },
   { rel: 'yasabo/shot-home.png', alt: 'Ya Sabo home', label: 'Ya Sabo' },
 ] as const;

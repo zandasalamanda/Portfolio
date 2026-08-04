@@ -9,7 +9,9 @@ import { asset } from "@/lib/assets";
 const libre = Libre_Franklin({
   variable: "--font-libre",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "900"],
+  /* 700 is declared nowhere in app/ or components/ — no font-bold, no <strong>,
+     no 700 rule — so shipping it was ~15 KB of font nobody rendered. */
+  weight: ["400", "500", "600", "900"],
   display: "swap",
 });
 

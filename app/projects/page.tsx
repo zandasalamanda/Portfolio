@@ -2,8 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { DrawnMark } from '@/components/Marks';
-import ProjectPanel from '@/components/ProjectPanel';
-import ScrollRail from '@/components/ScrollRail';
+import ProjectCard from '@/components/ProjectCard';
 import Reveal from '@/components/Reveal';
 import Starfield from '@/components/Starfield';
 import VideoFacade from '@/components/VideoFacade';
@@ -60,23 +59,23 @@ export default function ProjectsPage() {
               GitHub
             </a>
           </div>
-          <p className="rise-4 mono mt-12 text-[0.625rem] uppercase tracking-[0.2em] text-fg-faint">
-            scroll
-            <span aria-hidden className="ml-2 inline-block animate-bounce">↓</span>
-          </p>
         </div>
       </section>
 
-      {/* -------------------------------------------- the themed scroller */}
-      <ScrollRail
-        items={projectCards.map((c) => ({ id: c.id, name: c.name, accent: c.accent }))}
-      />
-      <div>
-        <h2 className="sr-only">All projects</h2>
-        {projectCards.map((c, i) => (
-          <ProjectPanel key={c.id} card={c} index={i} priority={i === 0} />
-        ))}
-      </div>
+      {/* ------------------------------------------ one continuous gallery */}
+      <section
+        aria-labelledby="gallery-h"
+        className="mx-auto w-full max-w-[1120px] px-6 md:px-8"
+      >
+        <h2 id="gallery-h" className="sr-only">
+          All projects
+        </h2>
+        <div className="grid items-start gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {projectCards.map((c, i) => (
+            <ProjectCard key={c.id} card={c} priority={i === 0} />
+          ))}
+        </div>
+      </section>
 
       {/* ------------------------------------------------------ the award */}
       <section className="mx-auto w-full max-w-[1120px] px-6 pt-20 md:px-8 md:pt-28">

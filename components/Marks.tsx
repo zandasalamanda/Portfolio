@@ -125,6 +125,9 @@ export function ProjectMark({
           alt={`${name} logo`}
           width={a.width ?? 32}
           height={a.height ?? 32}
+          /* the mark only ever draws in a 32px box — without this the browser
+             picks the 2048px variant off the srcset and spends 27 KB on it */
+          sizes="32px"
           unoptimized={a.url.endsWith('.svg')}
           className="h-full w-full object-contain"
         />

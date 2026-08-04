@@ -162,6 +162,77 @@ body {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   }
 
+  /* --------------------------------------------------------------------
+     Project gallery. Every card is the same species, but each one wears
+     its own app's colour, typeface and corner radius — so the wall reads
+     as a set of products rather than a set of tiles. `--brand` and friends
+     are set per card from content/brands.ts.
+  -------------------------------------------------------------------- */
+  .app-card {
+    --brand: #b3a6ff;
+    --brand-radius: 0.875rem;
+    position: relative;
+    border: 1px solid color-mix(in oklab, var(--brand) 20%, transparent);
+    background:
+      radial-gradient(
+        130% 80% at 50% 0%,
+        color-mix(in oklab, var(--brand) 8%, transparent),
+        transparent 68%
+      ),
+      rgba(255, 255, 255, 0.022);
+    border-radius: var(--brand-radius);
+    transition:
+      border-color 320ms var(--ease-out),
+      transform 320ms var(--ease-out),
+      box-shadow 320ms var(--ease-out);
+  }
+
+  .app-card:hover {
+    border-color: color-mix(in oklab, var(--brand) 52%, transparent);
+    box-shadow:
+      0 18px 44px -20px color-mix(in oklab, var(--brand) 50%, transparent),
+      0 10px 30px rgba(0, 0, 0, 0.42);
+  }
+
+  /* the screenshot's stage — lit from below in the app's own colour */
+  .app-stage {
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(
+        90% 70% at 50% 108%,
+        color-mix(in oklab, var(--brand) 26%, transparent),
+        transparent 70%
+      ),
+      var(--brand-stage, #0d0d10);
+  }
+
+  /* a phone capture stands on the stage instead of being cropped into a strip */
+  .device-phone {
+    border-radius: 1.15rem 1.15rem 0 0;
+    border: 1.5px solid rgba(255, 255, 255, 0.16);
+    border-bottom: 0;
+    background: #000;
+    padding: 3px 3px 0;
+    box-shadow:
+      0 -1px 0 rgba(255, 255, 255, 0.06) inset,
+      0 20px 40px -18px rgba(0, 0, 0, 0.9);
+  }
+
+  .device-phone img {
+    border-radius: 0.95rem 0.95rem 0 0;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .app-card {
+      will-change: transform;
+    }
+
+    .app-card:hover {
+      transform: translateY(-3px);
+    }
+  }
+
   /* chips — hover lift + accent glow */
   .chip {
     display: inline-flex;
@@ -430,61 +501,5 @@ body {
   .chip:hover {
     transform: none;
     transition: none;
-  }
-}
-
-/* ---------------------------------------------------------------------------
-   Project scroller — each panel lights up and its visual rises as it enters.
---------------------------------------------------------------------------- */
-@keyframes panel-visual-in {
-  from {
-    opacity: 0;
-    transform: translateY(28px) scale(0.97);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@keyframes panel-copy-in {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@keyframes panel-glow-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .panel-visual {
-      animation: panel-visual-in 1s var(--ease-out) both;
-      animation-timeline: view();
-      animation-range: entry 2% entry 42%;
-    }
-
-    .panel-copy {
-      animation: panel-copy-in 1s var(--ease-out) both;
-      animation-timeline: view();
-      animation-range: entry 6% entry 46%;
-    }
-
-    .panel-glow {
-      animation: panel-glow-in 1s linear both;
-      animation-timeline: view();
-      animation-range: entry 0% entry 40%;
-    }
   }
 }
