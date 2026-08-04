@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { JetBrains_Mono, Libre_Franklin, Source_Serif_4 } from "next/font/google";
+import { JetBrains_Mono, Libre_Franklin } from "next/font/google";
 import "./globals.css";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
@@ -12,13 +12,6 @@ const libre = Libre_Franklin({
   /* 700 is declared nowhere in app/ or components/ — no font-bold, no <strong>,
      no 700 rule — so shipping it was ~15 KB of font nobody rendered. */
   weight: ["400", "500", "600", "900"],
-  display: "swap",
-});
-
-const sourceSerif = Source_Serif_4({
-  variable: "--font-source-serif",
-  subsets: ["latin"],
-  weight: "400",
   display: "swap",
 });
 
@@ -70,7 +63,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${libre.variable} ${sourceSerif.variable} ${jetbrains.variable} h-full`}
+      className={`${libre.variable} ${jetbrains.variable} h-full`}
     >
       <body className="flex min-h-full flex-col">
         <script

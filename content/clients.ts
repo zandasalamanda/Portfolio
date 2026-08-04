@@ -14,6 +14,8 @@ export interface ClientJob {
   outcome: string;
   accent: string;
   image?: { rel: string; alt: string };
+  /** further captures — the card fades through them */
+  cycle?: string[];
   link?: { label: string; url: string };
   quote?: { text: string; by: string };
 }
@@ -31,6 +33,7 @@ export const clientJobs: ClientJob[] = [
       rel: 'atlas/atlas-light.png',
       alt: 'Atlas Space: an AI assistant beside tools for checking bills, auditing, reconciling lines, and fixing spreadsheets',
     },
+    cycle: ['atlas/atlas-dark.png'],
   },
   {
     id: 'eztennis',
@@ -44,6 +47,7 @@ export const clientJobs: ClientJob[] = [
       rel: 'clients/eztennis-landing.png',
       alt: 'The EZTennis landing page: "Play the right tournaments" over a personalized tournament scheduler with USTA, UTR, ITF, and WTN coverage',
     },
+    cycle: ['clients/eztennis-app.png', 'clients/eztennis-pricing.png'],
   },
   {
     id: 'comics',
@@ -57,6 +61,7 @@ export const clientJobs: ClientJob[] = [
       rel: 'clients/comics-hero.png',
       alt: 'The Comics for Comfort homepage: "Comfort, one issue at a time" beside the nonprofit’s comic-book crest, in a retro print style',
     },
+    cycle: ['clients/comics-2.png'],
     link: { label: 'visit the site', url: 'https://website-iota-seven-69.vercel.app/' },
   },
   {

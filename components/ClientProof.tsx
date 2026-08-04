@@ -15,6 +15,11 @@ export default function ClientProof() {
       {clientJobs.map((job) => {
         const image = job.image ? asset(job.image.rel) : null;
         const hasImage = Boolean(image?.exists && image.width && image.height && job.image);
+        const cycle = (job.cycle ?? []).map((rel) => asset(rel)).filter((a) => a.exists);
+        const frames = image ? [image, ...cycle] : [];
+        const fadeClass = frames.length > 1 ? `fade-n${Math.min(frames.length, 4)}` : '';
+        /* each fade-N keyframe set runs N×5s, so frames step in at 5s intervals */
+  const per = 5;
         return (
           <Reveal key={job.id}>
             <article
@@ -22,15 +27,25 @@ export default function ClientProof() {
               style={{ borderColor: `${job.accent}2e` }}
             >
               {hasImage && job.image && image && (
-                <div className="relative aspect-[16/9] overflow-hidden border-b border-line bg-bg">
-                  <Image
-                    src={image.url}
-                    alt={job.image.alt}
-                    width={image.width ?? 1600}
-                    height={image.height ?? 900}
-                    sizes="(min-width: 768px) 46vw, 92vw"
-                    className="h-full w-full object-cover object-top"
-                  />
+                <div
+                  className={`relative aspect-[16/9] overflow-hidden border-b border-line bg-bg ${fadeClass}`}
+                >
+                  {frames.map((f, i) => (
+                    <Image
+                      key={f.rel}
+                      src={f.url}
+                      alt={i === 0 ? job.image!.alt : ''}
+                      aria-hidden={i > 0 || undefined}
+                      width={f.width ?? 1600}
+                      height={f.height ?? 900}
+                      sizes="(min-width: 768px) 46vw, 92vw"
+                      loading={i === 0 ? undefined : 'lazy'}
+                      className={`absolute inset-0 h-full w-full object-cover object-top ${
+                        fadeClass ? 'fade-item' : ''
+                      }`}
+                      style={fadeClass ? { animationDelay: `${i * per}s` } : undefined}
+                    />
+                  ))}
                   <span
                     aria-hidden
                     className="absolute inset-x-0 top-0 h-[2px]"

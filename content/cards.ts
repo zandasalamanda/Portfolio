@@ -21,6 +21,8 @@ export interface ProjectCard {
   /** id of a drawn glyph in components/Marks when there is no logo */
   drawn?: string;
   image?: { rel: string; alt: string };
+  /** further captures of the same product — the card fades through them */
+  cycle?: string[];
   sprite?: { rel: string; alt: string };
   links: Receipt[];
   award?: string;
@@ -48,6 +50,7 @@ export const projectCards: ProjectCard[] = [
       rel: 'chronoiq/shot-dashboard.png',
       alt: "ChronoIQ dashboard: today's plan with scheduled study blocks on a timeline",
     },
+    cycle: ['chronoiq/shot-calendar.png', 'chronoiq/shot-focus.png'],
     links: [
       { label: 'chronoiq.dev', url: 'https://chronoiq.dev' },
       { label: 'award', url: awardPageUrl },
@@ -87,6 +90,7 @@ export const projectCards: ProjectCard[] = [
       rel: 'atlas/atlas-light.png',
       alt: 'Atlas Space: an AI assistant with tools to check bills, audit, reconcile lines, check rates, and fix spreadsheets',
     },
+    cycle: ['atlas/atlas-dark.png'],
     links: [],
   },
   {
@@ -101,6 +105,7 @@ id: 'everdeck',
       rel: 'everdeck/shot-landing.png',
       alt: 'The Everdeck landing page: a large headline reading “The audit that sells the redesign”, a trade-and-city search field, and a sample audit report below it',
     },
+    cycle: ['everdeck/shot-landing-2.png'],
     links: [{ label: 'everdeck.app', url: 'https://everdeck.app' }],
   },
   {
@@ -116,6 +121,7 @@ id: 'everdeck',
       rel: 'bandr/shot-home.png',
       alt: 'Bandr on a phone: ranked money moves with open scores',
     },
+    cycle: ['bandr/shot-detail.png', 'bandr/shot-quiz.png', 'bandr/shot-kit.png'],
     links: [{ label: 'source', url: 'https://github.com/zandasalamanda/Bandr' }],
   },
   {
@@ -131,6 +137,7 @@ id: 'everdeck',
       rel: 'yasabo/shot-loop.png',
       alt: 'Ya Sabo: a listening rep with the slang phrase highlighted in the transcript',
     },
+    cycle: ['yasabo/shot-home.png', 'yasabo/shot-third.png'],
     links: [],
   },
   {
@@ -153,7 +160,7 @@ id: 'everdeck',
     hook: 'A 3D flight built from real NASA mission data.',
     name: 'Team Helios',
     status: 'NASA ADC',
-    line: "My team's entry to the NASA ADC — a 3D mission visualization built in Python from real mission data, plus the team's STEM outreach.",
+    line: "My team's work for the NASA ADC Helios Team — a 3D mission visualization built in Python from real mission data, plus the team's STEM outreach.",
     tags: ['Python', '3D visualization', 'Mission data'],
     accent: '#d95848',
     logo: 'helios/logo.png',

@@ -669,3 +669,167 @@ body {
     }
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Screen cycles — a card fades through several real captures of the same
+   product. Pure CSS: every frame runs the same keyframes, offset by its
+   delay; under reduced motion only the first frame shows.
+--------------------------------------------------------------------------- */
+.fade-item {
+  opacity: 0;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+
+.fade-n2 .fade-item {
+  animation-name: fade-2;
+  animation-duration: 10s;
+}
+
+.fade-n3 .fade-item {
+  animation-name: fade-3;
+  animation-duration: 15s;
+}
+
+.fade-n4 .fade-item {
+  animation-name: fade-4;
+  animation-duration: 20s;
+}
+
+@keyframes fade-2 {
+  0% { opacity: 0; }
+  5% { opacity: 1; }
+  45% { opacity: 1; }
+  55% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@keyframes fade-3 {
+  0% { opacity: 0; }
+  3.5% { opacity: 1; }
+  30% { opacity: 1; }
+  37% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@keyframes fade-4 {
+  0% { opacity: 0; }
+  2.5% { opacity: 1; }
+  22.5% { opacity: 1; }
+  28% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-item {
+    animation: none;
+  }
+
+  .fade-item:first-child {
+    opacity: 1;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Process vignettes, alive: the chat types, the quote signs itself, the
+   preview bar fills, the key lowers into the box. Quiet loops, all gone
+   under reduced motion.
+--------------------------------------------------------------------------- */
+.sketch .sk-type,
+.sketch .sk-sig {
+  stroke-dasharray: 1;
+}
+
+.sketch .sk-type {
+  animation: sk-typing 5.2s var(--ease-out) infinite;
+}
+
+.sketch .sk-type2 {
+  animation-delay: 0.9s;
+}
+
+.sketch .sk-sig {
+  animation: sk-signing 4.8s var(--ease-out) infinite;
+}
+
+.sketch .sk-pop {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: sk-popping 5.2s var(--ease-out) infinite;
+}
+
+.sketch .sk-bar {
+  transform-box: fill-box;
+  transform-origin: left center;
+  animation: sk-filling 4.4s ease-in-out infinite;
+}
+
+.sketch .sk-cursor {
+  transform-box: fill-box;
+  animation: sk-tapping 4.4s ease-in-out infinite;
+}
+
+.sketch .sk-key {
+  transform-box: fill-box;
+  animation: sk-lowering 3.6s ease-in-out infinite;
+}
+
+@keyframes sk-typing {
+  0% { stroke-dashoffset: 1; }
+  30% { stroke-dashoffset: 0; }
+  78% { stroke-dashoffset: 0; opacity: 1; }
+  88% { opacity: 0; }
+  92% { stroke-dashoffset: 1; opacity: 0; }
+  100% { stroke-dashoffset: 1; opacity: 1; }
+}
+
+@keyframes sk-signing {
+  0% { stroke-dashoffset: 1; }
+  35% { stroke-dashoffset: 0; }
+  80% { stroke-dashoffset: 0; opacity: 1; }
+  90% { opacity: 0; }
+  94% { stroke-dashoffset: 1; opacity: 0; }
+  100% { stroke-dashoffset: 1; opacity: 1; }
+}
+
+@keyframes sk-popping {
+  0%, 55% { transform: scale(0); opacity: 0; }
+  62% { transform: scale(1.08); opacity: 1; }
+  66%, 88% { transform: scale(1); opacity: 1; }
+  96%, 100% { transform: scale(0); opacity: 0; }
+}
+
+@keyframes sk-filling {
+  0% { transform: scaleX(0.12); }
+  55%, 82% { transform: scaleX(1); }
+  100% { transform: scaleX(0.12); }
+}
+
+@keyframes sk-tapping {
+  0%, 45% { transform: translate(0, 0); }
+  55%, 70% { transform: translate(-5px, -4px); }
+  80%, 100% { transform: translate(0, 0); }
+}
+
+@keyframes sk-lowering {
+  0%, 20% { transform: translateY(-7px); }
+  55%, 75% { transform: translateY(0); }
+  100% { transform: translateY(-7px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sketch .sk-type,
+  .sketch .sk-sig,
+  .sketch .sk-pop,
+  .sketch .sk-bar,
+  .sketch .sk-cursor,
+  .sketch .sk-key {
+    animation: none;
+  }
+
+  .sketch .sk-type,
+  .sketch .sk-sig {
+    stroke-dashoffset: 0;
+  }
+}

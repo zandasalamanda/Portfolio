@@ -23,6 +23,12 @@ export default function ProjectCard({
 }) {
   const image = card.image ? asset(card.image.rel) : null;
   const hasImage = Boolean(image?.exists && image.width && image.height && card.image);
+  /* the card fades through every capture that actually exists */
+  const cycle = (card.cycle ?? []).map((rel) => asset(rel)).filter((a) => a.exists);
+  const frames = image ? [image, ...cycle] : [];
+  const fadeClass = frames.length > 1 ? `fade-n${Math.min(frames.length, 4)}` : '';
+  /* each fade-N keyframe set runs N×5s, so frames step in at 5s intervals */
+  const per = 5;
   const brand = brandFor(card.id);
   const frame = frameFor(image?.width, image?.height);
   const chromeLabel = brand.label ?? card.links[0]?.label ?? card.name;
@@ -54,15 +60,27 @@ export default function ProjectCard({
         <div className="relative h-full w-full">
           <div className="absolute inset-x-0 top-[9%] flex justify-center">
             <div className="device-phone w-[40%] max-w-[136px] transition-transform duration-500 group-hover:-translate-y-1.5">
-              <Image
-                src={image.url}
-                alt={card.image.alt}
-                width={image.width ?? 1170}
-                height={image.height ?? 2532}
-                sizes="(min-width: 1024px) 140px, 40vw"
-                priority={priority}
-                className="block h-auto w-full"
-              />
+              <div className={`relative ${fadeClass}`}>
+                {frames.map((f, i) => (
+                  <Image
+                    key={f.rel}
+                    src={f.url}
+                    alt={i === 0 ? card.image!.alt : ''}
+                    aria-hidden={i > 0 || undefined}
+                    width={f.width ?? 1170}
+                    height={f.height ?? 2532}
+                    sizes="(min-width: 1024px) 140px, 40vw"
+                    priority={priority && i === 0}
+                    loading={i === 0 ? undefined : 'lazy'}
+                    className={
+                      i === 0
+                        ? `block h-auto w-full ${fadeClass ? 'fade-item' : ''}`
+                        : 'fade-item absolute inset-0 h-full w-full'
+                    }
+                    style={fadeClass ? { animationDelay: `${i * per}s` } : undefined}
+                  />
+                ))}
+              </div>
             </div>
           </div>
           <div
@@ -97,16 +115,24 @@ export default function ProjectCard({
               {chromeLabel}
             </span>
           </div>
-          <div className="relative min-h-0 flex-1 overflow-hidden">
-            <Image
-              src={image.url}
-              alt={card.image.alt}
-              width={image.width ?? 1600}
-              height={image.height ?? 1000}
-              sizes="(min-width: 1024px) 31vw, 92vw" 
-              priority={priority}
-              className={`h-full w-full ${fit} transition-transform duration-500 group-hover:scale-[1.03]`}
-            />
+          <div className={`relative min-h-0 flex-1 overflow-hidden ${fadeClass}`}>
+            {frames.map((f, i) => (
+              <Image
+                key={f.rel}
+                src={f.url}
+                alt={i === 0 ? card.image!.alt : ''}
+                aria-hidden={i > 0 || undefined}
+                width={f.width ?? 1600}
+                height={f.height ?? 1000}
+                sizes="(min-width: 1024px) 31vw, 92vw"
+                priority={priority && i === 0}
+                loading={i === 0 ? undefined : 'lazy'}
+                className={`absolute inset-0 h-full w-full ${fit} transition-transform duration-500 group-hover:scale-[1.03] ${
+                  fadeClass ? 'fade-item' : ''
+                }`}
+                style={fadeClass ? { animationDelay: `${i * per}s` } : undefined}
+              />
+            ))}
           </div>
         </>
       )}
