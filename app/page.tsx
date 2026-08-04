@@ -1,20 +1,17 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import ActivityGraph from '@/components/ActivityGraph';
 import HeroField from '@/components/HeroField';
 import { ProjectMark } from '@/components/Marks';
 import PhotoStrip from '@/components/PhotoStrip';
 import SocialRow from '@/components/SocialRow';
-import activity from '@/content/github-activity.json';
 import { featuredCards } from '@/content/cards';
+import { steps } from '@/content/process';
 import { contact, experience } from '@/content/site';
 import { asset } from '@/lib/assets';
 
 export default function Home() {
   const headshot = asset('avatar.png');
   const resume = asset('resume-web.pdf');
-  const topRepos =
-    (activity as { topRepos?: { name: string; commits: number }[] }).topRepos ?? [];
 
   return (
     <main id="main" className="flex-1">
@@ -186,32 +183,25 @@ export default function Home() {
             <div className="card p-5">
               <div className="flex items-center gap-2">
                 <svg viewBox="0 0 24 24" className="h-4 w-4 text-accent" fill="currentColor">
-                  <path d="M3 3h18v18H3V3Zm2 2v14h14V5H5Zm2 9h2v3H7v-3Zm4-5h2v8h-2V9Zm4-3h2v11h-2V6Z" />
+                  <path d="M4 4h16v2H4V4Zm0 5h16v2H4V9Zm0 5h10v2H4v-2Zm0 5h10v2H4v-2Zm12.6-3.3 1.4-1.4 4 4-4 4-1.4-1.4 1.6-1.6h-3.2v-2h3.2l-1.6-1.6Z" />
                 </svg>
-                <h2 className="text-[0.9375rem] font-semibold">Still building</h2>
+                <h2 className="text-[0.9375rem] font-semibold">How it works</h2>
               </div>
-              <div className="mt-3.5">
-                <ActivityGraph compact />
-              </div>
-              <ul className="mt-3">
-                {topRepos.slice(0, 3).map((r) => (
-                  <li key={r.name}>
-                    <a
-                      href={`https://github.com/zandasalamanda/${r.name}`}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="-mx-2 flex items-baseline justify-between gap-3 rounded-lg px-2 py-2 transition-colors duration-200 hover:bg-white/[0.04]"
-                    >
-                      <span className="mono text-[0.6875rem] text-accent">{r.name}</span>
-                      <span className="mono text-[0.625rem] text-fg-faint">
-                        {r.commits} commits
-                      </span>
-                    </a>
+              <ol className="mt-4 space-y-3">
+                {steps.map((s) => (
+                  <li key={s.n} className="flex gap-3">
+                    <span aria-hidden className="mono text-[0.625rem] text-accent">
+                      {s.n}
+                    </span>
+                    <div className="min-w-0">
+                      <p className="text-[0.8125rem] font-semibold leading-snug">{s.title}</p>
+                      <p className="mono text-[0.625rem] text-fg-faint">{s.when}</p>
+                    </div>
                   </li>
                 ))}
-              </ul>
-              <Link href="/activity" className="link-accent mt-4">
-                Full activity <span aria-hidden>›</span>
+              </ol>
+              <Link href="/process" className="link-accent mt-5">
+                The whole process <span aria-hidden>›</span>
               </Link>
             </div>
           </aside>

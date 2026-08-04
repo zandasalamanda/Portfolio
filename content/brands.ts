@@ -110,11 +110,15 @@ const brands: Record<string, AppBrand> = {
     radius: '1.375rem',
     label: 'Ya Sabo',
   },
-  /* SpanishApp/style.css:347 wordmark Archivo 700; red on-air tally on near-black. */
+  /* SpanishApp/style.css:347 wordmark Archivo 700. The app's own accent is a red
+     on-air tally, but its logo is deep indigo (#180048 / #001848) and it sits
+     beside Ya Sabo's coral in the gallery — red made the card fight its own mark
+     and read as a repeat of its neighbour. The card takes the logo's hue,
+     lightened enough to carry on near-black. */
   verbalist: {
-    primary: '#ff4a3d',
-    ink: '#ff7a70',
-    stage: '#07080a',
+    primary: '#6d5df2',
+    ink: '#a99bff',
+    stage: '#08080f',
     fontClass: appFonts.verbalist,
     weight: 700,
     tracking: '-0.015em',

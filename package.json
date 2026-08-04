@@ -5,7 +5,7 @@
   "scripts": {
     "predev": "node scripts/scan-assets.mjs",
     "dev": "next dev",
-    "prebuild": "node scripts/scan-assets.mjs && node scripts/verify-links.mjs && node scripts/fetch-github.mjs && node scripts/fetch-activity.mjs",
+    "prebuild": "node scripts/scan-assets.mjs && node scripts/verify-links.mjs && node scripts/fetch-github.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",

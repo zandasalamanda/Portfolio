@@ -11,6 +11,11 @@ const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
     "/opengraph-image": ["./content/fonts/*.woff"],
   },
+  // /activity was the GitHub graph; it is now /process. Anything already
+  // linking to the old path lands on the page that replaced it.
+  async redirects() {
+    return [{ source: "/activity", destination: "/process", permanent: true }];
+  },
 };
 
 export default nextConfig;

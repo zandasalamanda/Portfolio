@@ -8,7 +8,7 @@ const NAV = [
   { label: 'About', href: '/about' },
   { label: 'Hire', href: '/hire' },
   { label: 'Projects', href: '/projects' },
-  { label: 'Activity', href: '/activity' },
+  { label: 'Process', href: '/process' },
 ];
 
 export default function SiteFooter() {
