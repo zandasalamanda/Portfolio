@@ -51,10 +51,10 @@ export const projectCards: ProjectCard[] = [
       alt: "ChronoIQ dashboard: today's plan with scheduled study blocks on a timeline",
     },
     cycle: ['chronoiq/shot-calendar.png', 'chronoiq/shot-focus.png'],
-    links: [
-      { label: 'chronoiq.dev', url: 'https://chronoiq.dev' },
-      { label: 'award', url: awardPageUrl },
-    ],
+    /* chronoiq.dev is pulled for now — its live deploy predates the brand
+       restore, so it misrepresents the product. Put the link back when it
+       redeploys. */
+    links: [{ label: 'award', url: awardPageUrl }],
     award: 'Congressional App Challenge winner — NJ-07, 2025',
   },
   {

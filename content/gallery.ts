@@ -14,7 +14,7 @@ export const galleryPhotos: GalleryPhoto[] = [
   {
     rel: 'gallery/01.jpg',
     alt: 'A laptop at night running a code editor, keyboard lit purple',
-    word: 'SHIP',
+    word: 'BUILD',
     caption: 'Most of it gets built after everyone else logs off.',
     rotate: -2.5,
   },

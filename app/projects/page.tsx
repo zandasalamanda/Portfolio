@@ -30,7 +30,7 @@ export default function ProjectsPage() {
             </a>
           </p>
           <h1 className="rise-1 h-display mx-auto mt-4 max-w-[17ch] text-[clamp(1.75rem,3.4vw,2.375rem)]">
-            Things I&rsquo;ve made trying to make my mark
+            Things I&rsquo;ve built trying to make my mark
           </h1>
           <p className="rise-2 mx-auto mt-4 max-w-[56ch] text-[0.9375rem] prose-soft">
             Eight projects — live products, an AI workspace running inside a real
