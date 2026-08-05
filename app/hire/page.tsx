@@ -13,9 +13,6 @@ export const metadata: Metadata = {
     'Web design, full-stack builds, and AI integration by Zander Leon — fixed scope, quoted in 24 hours, built by the person you talk to.',
 };
 
-/* Each service signs in its own colour, like the project cards do. */
-const SVC_ACCENTS = ['#b3a6ff', '#8fa6e8', '#e6b877'];
-
 function SectionHead({
   id,
   children,
@@ -56,25 +53,6 @@ export default function HirePage() {
             scope the work, quote a fixed price within a day, and build it myself.
           </p>
 
-          {/* the three offers, price first, one glance */}
-          <ul className="rise-3 mt-7 flex flex-wrap gap-2">
-            {services.map((s, i) => (
-              <li key={s.name}>
-                <a href="#services" className="chip !gap-2 !py-2">
-                  <span
-                    aria-hidden
-                    className="h-1.5 w-1.5 rounded-full"
-                    style={{ background: SVC_ACCENTS[i] }}
-                  />
-                  {s.name}
-                  <span className="mono text-[0.6875rem]" style={{ color: SVC_ACCENTS[i] }}>
-                    {s.from}
-                  </span>
-                </a>
-              </li>
-            ))}
-          </ul>
-
           <div className="rise-3 mt-7 flex flex-wrap gap-2.5">
             <a href="#contact" className="btn-solid">
               Tell me what you need
@@ -97,13 +75,12 @@ export default function HirePage() {
         </SectionHead>
 
         <div className="mt-7 grid gap-5 lg:grid-cols-3">
-          {services.map((s, i) => (
+          {services.map((s) => (
             <Reveal key={s.name}>
               <article className="card group relative flex h-full flex-col overflow-hidden p-6">
                 <span
                   aria-hidden
-                  className="absolute inset-x-0 top-0 h-[2px] rounded-t-[inherit]"
-                  style={{ background: SVC_ACCENTS[i] }}
+                  className="absolute inset-x-0 top-0 h-[2px] rounded-t-[inherit] bg-accent"
                 />
                 {/* the price is what a buyer scans for — it leads */}
                 <p className="mono text-[0.6875rem] uppercase tracking-[0.14em] text-fg-soft">
