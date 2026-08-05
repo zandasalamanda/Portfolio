@@ -60,7 +60,7 @@ export const steps: Step[] = [
     detail: [
       'Domain and hosting registered to you',
       'Repository and credentials handed over',
-      'No retainer, no lock-in, no ransom',
+      'Cancel any month — no lock-in, no ransom',
     ],
   },
 ];
@@ -81,11 +81,15 @@ export const faqs: Faq[] = [
   },
   {
     q: 'What do you need from me?',
-    a: 'Three things: your words and pictures — text, photos, prices, rough versions are fine; your logo if you have one, and it is fine if you do not; and answers when I ask questions, so nothing stalls waiting on a decision. No retainers, no account managers, no lock-in.',
+    a: 'Three things: your words and pictures — text, photos, prices, rough versions are fine; your logo if you have one, and it is fine if you do not; and answers when I ask questions, so nothing stalls waiting on a decision. No account managers, no lock-in.',
   },
   {
     q: 'I am not technical. Is that a problem?',
     a: 'No — most of the people I build for are not. You describe the problem in plain words and I handle the rest. Nothing I hand back requires you to write code or manage a server.',
+  },
+  {
+    q: 'What happens after it goes live?',
+    a: 'Every build comes with 30 days of fixes, whatever else you decide. After that you can look after the site yourself — it is yours, and it is built so another developer could pick it up cleanly — or put it on the Care Plan at $75 a month and text me when something needs changing. First month is free with any build, and you can cancel any month without losing anything.',
   },
   {
     q: 'What if I do not like it?',

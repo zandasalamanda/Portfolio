@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { services, stack, whyMe } from '@/content/services';
+import { carePlan, services, stack, whyMe } from '@/content/services';
 import ClientProof from '@/components/ClientProof';
 import ContactForm from '@/components/ContactForm';
 import Reveal from '@/components/Reveal';
@@ -123,6 +123,60 @@ export default function HirePage() {
               </article>
             </Reveal>
           ))}
+        </div>
+      </section>
+
+      {/* --------------------------------------------------- the care plan */}
+      <section
+        aria-labelledby="care-h"
+        className="mx-auto w-full max-w-[var(--shell)] px-6 pt-16 md:px-8 md:pt-20"
+      >
+        <SectionHead id="care-h" sub={carePlan.line}>
+          After it launches
+        </SectionHead>
+
+        <Reveal>
+          <article className="card relative mt-7 overflow-hidden p-6 md:p-8">
+            <span
+              aria-hidden
+              className="absolute inset-x-0 top-0 h-[3px] rounded-t-[inherit] bg-accent"
+            />
+            <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 border-b border-line pb-5">
+              <h3 className="h-display text-[1.375rem]">{carePlan.name}</h3>
+              <p className="h-display text-[1.625rem] text-accent">
+                {carePlan.price}
+                <span className="mono text-[0.75rem] text-fg-soft">{carePlan.cadence}</span>
+              </p>
+              <p className="mono ml-auto rounded-full border border-accent/40 px-3 py-1 text-[0.6875rem] text-accent">
+                {carePlan.offer}
+              </p>
+            </div>
+
+            <ul className="mt-6 grid gap-5 md:grid-cols-3 md:gap-8">
+              {carePlan.includes.map((i) => (
+                <li key={i.t}>
+                  <p className="flex gap-2.5 text-[0.9375rem] font-semibold">
+                    <span aria-hidden className="text-accent">
+                      ▸
+                    </span>
+                    {i.t}
+                  </p>
+                  <p className="mt-1.5 pl-5 text-[0.875rem] prose-soft">{i.d}</p>
+                </li>
+              ))}
+            </ul>
+
+            <p className="mt-6 border-t border-line pt-5 text-[0.9375rem] prose-soft">
+              {carePlan.reassurance}
+            </p>
+          </article>
+        </Reveal>
+
+        <div className="mt-5 grid gap-4 md:grid-cols-2">
+          <p className="mono text-[0.6875rem] text-fg-soft">▸ {carePlan.alsoFree}</p>
+          <p className="mono text-[0.6875rem] text-fg-soft">
+            ▸ {carePlan.addOn.name} — {carePlan.addOn.price}. {carePlan.addOn.d}
+          </p>
         </div>
       </section>
 

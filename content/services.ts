@@ -110,3 +110,43 @@ export const whyMe = [
   'If I am not the right fit for the job, I say so instead of taking it.',
 ];
 
+
+/**
+ * What happens after launch. Everything else on this page is a one-time build,
+ * which leaves a buyer looking at a transaction that ends — this is the part
+ * that lasts. Deliberately optional: cancelling leaves the client holding
+ * their own site, which is what keeps "no lock-in" true elsewhere on the site.
+ *
+ * Terms are the client's own (proposal-and-pricing.md, Jul 2026) — nothing
+ * here promises more than he has already committed to in writing.
+ */
+export const carePlan = {
+  name: 'The Care Plan',
+  price: '$75',
+  cadence: '/month',
+  offer: 'First month free with any build',
+  line: 'A site nobody maintains gets old fast — old hours, dead links, an expired domain on the worst possible day. This is the version where that is simply not your problem.',
+  includes: [
+    {
+      t: 'Hosting and domain, handled',
+      d: 'Nothing for you to renew, remember, or get locked out of.',
+    },
+    {
+      t: 'Text me a change, it is done',
+      d: 'New hours, new prices, a new photo, a staff name. No ticket, no portal.',
+    },
+    {
+      t: 'A checkup and backup every month',
+      d: 'So a bad day stays an inconvenience instead of becoming a rebuild.',
+    },
+  ],
+  reassurance:
+    'Cancel any month you like. The site stays yours either way — it always was.',
+  alsoFree:
+    'Every build includes 30 days of fixes after launch, plan or no plan.',
+  addOn: {
+    name: 'Automations',
+    price: '$250 setup, then $50/month each',
+    d: 'Missed-call text-back, review replies, booking reminders, simple intake bots.',
+  },
+} as const;
