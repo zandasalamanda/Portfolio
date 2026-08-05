@@ -7,6 +7,9 @@ import Reveal from '@/components/Reveal';
 import TechIcon from '@/components/TechIcon';
 import { contact } from '@/content/site';
 
+/* One hue, three strengths — the Website offer leads, the others step back. */
+const RAMP = ['#b3a6ff', 'rgba(179, 166, 255, 0.55)', 'rgba(179, 166, 255, 0.3)'];
+
 export const metadata: Metadata = {
   title: 'Hire',
   description:
@@ -75,12 +78,13 @@ export default function HirePage() {
         </SectionHead>
 
         <div className="mt-7 grid gap-5 lg:grid-cols-3">
-          {services.map((s) => (
+          {services.map((s, i) => (
             <Reveal key={s.name}>
               <article className="card group relative flex h-full flex-col overflow-hidden p-6">
                 <span
                   aria-hidden
-                  className="absolute inset-x-0 top-0 h-[2px] rounded-t-[inherit] bg-accent"
+                  className="absolute inset-x-0 top-0 h-[2px] rounded-t-[inherit]"
+                  style={{ background: RAMP[i] }}
                 />
                 {/* the price is what a buyer scans for — it leads */}
                 <p className="mono text-[0.6875rem] uppercase tracking-[0.14em] text-fg-soft">
