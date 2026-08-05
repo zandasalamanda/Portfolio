@@ -18,7 +18,7 @@ export default function Marquee() {
     <div
       className="strip relative overflow-hidden py-2"
       role="img"
-      aria-label="Screenshots of shipped work: ChronoIQ, Solaspace, Atlas Space, Bandr, Everdeck, and Ya Sabo"
+      aria-label="Screenshots of live work: ChronoIQ, Solaspace, Atlas Space, Bandr, Everdeck, and Ya Sabo"
     >
       <div className="strip-track flex w-max gap-5">
         {doubled.map((s, i) => (

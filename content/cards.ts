@@ -148,7 +148,7 @@ id: 'everdeck',
     status: 'open source',
     line: 'An interactive speech coach that flags filler words, brainrot, and jargon as you speak.',
     tags: ['JavaScript', 'Node', 'Speech'],
-    accent: '#b3a6ff',
+    accent: '#9c89fa',
     logo: 'logos/verbalist.png',
     image: {
       rel: 'verbalist/shot-app.png',

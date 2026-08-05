@@ -47,7 +47,7 @@ export default async function OgImage() {
           }}
         >
           <span>student developer</span>
-          <span>shipped work · live receipts</span>
+          <span>live work · real clients</span>
         </div>
         <div
           style={{
@@ -75,7 +75,7 @@ export default async function OgImage() {
               color: 'rgba(250,250,248,0.92)',
             }}
           >
-            I build software that ships.
+            Websites, apps, and AI tools.
           </div>
         </div>
         <div

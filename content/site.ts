@@ -40,8 +40,8 @@ export const identity = {
 
 export const positioning = {
   /** §6.1 exact copy; the ¹ renders as a real footnote fed by the build-time link check */
-  line: 'I build websites, apps, and AI that ship.',
-  title: 'Zander Leon — websites, apps, and AI that ship',
+  line: 'I build websites, apps, and AI tools that actually get finished.',
+  title: 'Zander Leon — websites, apps, and AI tools, finished and live',
   description:
     'Zander Leon builds websites, apps, and AI tools for small businesses, nonprofits, and founders — client work in production at UTR Global, and a Congressional App Challenge win across 4,600+ apps.',
 } as const;
@@ -50,7 +50,7 @@ export const awardPageUrl = 'https://www.congressionalappchallenge.us/25-nj07/';
 
 /** §6.1 proof line — each item is a live link */
 export const proofLine = [
-  { label: '3 products shipped', href: '#work' },
+  { label: '3 products live', href: '#work' },
   { label: "Congressional App Challenge winner '25", href: awardPageUrl },
   { label: 'github/zandasalamanda', href: identity.github },
 ] as const;
@@ -306,7 +306,7 @@ export const proofOfWork = {
 
 /** §12 approved About paragraph — client may edit; do not embellish */
 export const aboutParagraph =
-  "I studied computer science at Morris County School of Technology (class of '26). The products I ship started as problems I actually had — homework that kept sliding to 11 p.m. became ChronoIQ. Building the tool beats complaining about the problem. Away from the keyboard: varsity soccer, FIRST Robotics, and ecological fieldwork in the Peruvian Amazon.";
+  "I studied computer science at Morris County School of Technology (class of '26). The products I build started as problems I actually had — homework that kept sliding to 11 p.m. became ChronoIQ. Building the tool beats complaining about the problem. Away from the keyboard: varsity soccer, FIRST Robotics, and ecological fieldwork in the Peruvian Amazon.";
 
 /**
  * About timeline — dated, verifiable events only.
@@ -380,6 +380,10 @@ export const contact = {
   line: "I'm looking for software internships and interesting collaborations.",
   email: identity.email,
   mailto: `mailto:${identity.email}`,
+  /* Client-supplied Aug 2026. The original brief said no phone number; the
+     client reversed that so buyers who would rather call, can. */
+  phone: '(862) 274-1042',
+  tel: 'tel:+18622741042',
   linkedin: identity.linkedin,
   github: identity.github,
 } as const;

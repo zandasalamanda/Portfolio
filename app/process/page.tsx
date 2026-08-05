@@ -51,8 +51,8 @@ export default function ProcessPage() {
             aria-hidden
             className="step-spine absolute bottom-6 left-[15px] top-4 w-px md:left-[19px]"
             style={{
-              background: 'linear-gradient(to bottom, #b3a6ff, rgba(179,166,255,0.25))',
-              boxShadow: '0 0 12px rgba(179,166,255,0.35)',
+              background: 'linear-gradient(to bottom, #9c89fa, rgba(156,137,250,0.25))',
+              boxShadow: '0 0 12px rgba(156,137,250,0.35)',
             }}
           />
           {steps.map((s) => (

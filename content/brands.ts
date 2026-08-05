@@ -30,8 +30,8 @@ export interface AppBrand {
 }
 
 const fallback: AppBrand = {
-  primary: '#b3a6ff',
-  ink: '#b3a6ff',
+  primary: '#9c89fa',
+  ink: '#9c89fa',
   stage: '#0d0d10',
   fontClass: 'h-display',
   weight: 900,

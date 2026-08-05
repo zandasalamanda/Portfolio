@@ -78,7 +78,7 @@ export default function AboutPage() {
                   className="absolute inset-0 -z-10 rounded-2xl"
                   style={{
                     background:
-                      'radial-gradient(circle at 50% 40%, rgba(179,166,255,0.16), transparent 70%)',
+                      'radial-gradient(circle at 50% 40%, rgba(156,137,250,0.16), transparent 70%)',
                   }}
                 />
                 <Image
@@ -187,7 +187,7 @@ export default function AboutPage() {
                         </span>
                       ) : (
                         <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-line">
-                          <DrawnMark id="atlas" accent="#b3a6ff" className="h-4 w-4" />
+                          <DrawnMark id="atlas" accent="#9c89fa" className="h-4 w-4" />
                         </span>
                       )}
                       <div>

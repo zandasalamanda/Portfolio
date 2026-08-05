@@ -30,11 +30,11 @@ const DRAWN: Record<string, React.ReactNode> = {
   ),
   ai: (
     <>
-      <circle cx="12" cy="12" r="8.4" stroke="#b3a6ff" strokeWidth="1.5" fill="none" />
-      <circle cx="12" cy="12" r="2.6" fill="#b3a6ff" />
+      <circle cx="12" cy="12" r="8.4" stroke="#9c89fa" strokeWidth="1.5" fill="none" />
+      <circle cx="12" cy="12" r="2.6" fill="#9c89fa" />
       <path
         d="M12 3.6v2.4M12 18v2.4M3.6 12H6M18 12h2.4"
-        stroke="#b3a6ff"
+        stroke="#9c89fa"
         strokeWidth="1.5"
         strokeLinecap="round"
       />

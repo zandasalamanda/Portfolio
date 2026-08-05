@@ -8,7 +8,7 @@ import { award, identity } from '@/content/site';
 export const metadata: Metadata = {
   title: 'Projects',
   description:
-    'Every project Zander Leon has built — shipped products, AI systems, apps, and tools, with live links and source.',
+    'Every project Zander Leon has built — live products, AI systems, apps, and tools, with working links and source code.',
 };
 
 export default function ProjectsPage() {
@@ -35,7 +35,7 @@ export default function ProjectsPage() {
           <p className="rise-2 mx-auto mt-4 max-w-[56ch] text-[0.9375rem] prose-soft">
             Eight projects — live products, an AI workspace running inside a real
             company, and a NASA challenge entry built with my team. Designed,
-            built, and shipped — not forked.
+            built, and finished — all of it my own work.
           </p>
           <div className="rise-3 mt-7 flex flex-wrap justify-center gap-2.5">
             <Link href="/hire" className="btn-solid">

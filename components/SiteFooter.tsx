@@ -26,12 +26,14 @@ export default function SiteFooter() {
             <Link href="/hire#contact" className="btn-solid mt-6">
               Tell me what you need
             </Link>
-            <a
-              href={contact.mailto}
-              className="mt-3 block text-[0.8125rem] text-fg-soft underline underline-offset-4 hover:text-fg"
-            >
-              or email {contact.email}
-            </a>
+            <p className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-[0.8125rem] text-fg-soft">
+              <a href={contact.tel} className="underline underline-offset-4 hover:text-fg">
+                {contact.phone}
+              </a>
+              <a href={contact.mailto} className="underline underline-offset-4 hover:text-fg">
+                {contact.email}
+              </a>
+            </p>
             <SocialRow className="mt-7" />
           </div>
 

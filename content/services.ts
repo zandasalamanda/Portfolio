@@ -62,7 +62,7 @@ export const services: Service[] = [
 ];
 
 /**
- * Everything here is in shipped work — and picking up a stack that isn't is
+ * Everything here is in work already delivered — and picking up a stack that isn't is
  * part of the job. Grouped the way a buyer thinks about it.
  */
 export const stack = [
@@ -106,7 +106,7 @@ export const whyMe = [
   'Fixed scope, one written price, and a delivery date before any work starts.',
   'A live preview link from day one — the person you talk to is the person writing the code.',
   'You own the domain, code, and credentials from the start. No lock-in, no ransom.',
-  'AI features ship with deterministic fallbacks, so the product still works when the model is down.',
+  'AI features come with a backup plan, so the product still works when the AI is unavailable.',
   'If I am not the right fit for the job, I say so instead of taking it.',
 ];
 

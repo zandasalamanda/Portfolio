@@ -11,9 +11,9 @@ import { contact } from '@/content/site';
    Intensity climbs with price, so the bigger commitment reads stronger
    without the hues ever drifting far enough apart to clash. */
 const RAMP = [
-  '#919ce3', // Website — $750, the calmest
-  '#c6a8fa', // App build — $3,000, the strongest
-  '#aba0f3', // AI integration — $1,500, between the two
+  '#7886dd', // Website — $750, the calmest
+  '#b38bf9', // App build — $3,000, the strongest
+  '#9384f0', // AI integration — $1,500, between the two
 ];
 
 export const metadata: Metadata = {
@@ -152,19 +152,23 @@ export default function HirePage() {
       >
         <SectionHead
           id="stack-h"
-          sub="Everything here is in shipped work — and picking up a stack that isn't is part of the job."
+          sub="Every one of these is in something I have already built and delivered."
         >
           My tech stack
         </SectionHead>
 
-        <div className="mt-7 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {/* rows, not cards — the same 32 tools in a third of the height */}
+        <dl className="mt-6">
           {stack.map((group) => (
-            <Reveal key={group.title}>
-              <article className="card relative h-full overflow-hidden p-5">
-                <h3 className="border-b border-line pb-2.5 text-[0.9375rem] font-semibold">
-                  {group.title}
-                </h3>
-                <ul className="relative z-10 mt-4 flex flex-wrap gap-1.5">
+            <div
+              key={group.title}
+              className="grid gap-2 border-b border-line py-4 md:grid-cols-[150px_minmax(0,1fr)] md:gap-6"
+            >
+              <dt className="mono pt-1 uppercase tracking-[0.12em] text-fg-soft">
+                {group.title}
+              </dt>
+              <dd>
+                <ul className="flex flex-wrap gap-1.5">
                   {group.items.map((i) => (
                     <li key={i}>
                       <span className="chip">
@@ -174,16 +178,10 @@ export default function HirePage() {
                     </li>
                   ))}
                 </ul>
-                <span
-                  aria-hidden
-                  className="h-display pointer-events-none absolute -bottom-6 -right-3 text-[4rem] leading-none text-white/[0.03]"
-                >
-                  {group.mark}
-                </span>
-              </article>
-            </Reveal>
+              </dd>
+            </div>
           ))}
-        </div>
+        </dl>
       </section>
 
       {/* ------------------------------------------- contact — the close */}
@@ -223,22 +221,45 @@ export default function HirePage() {
                   </li>
                 ))}
               </ul>
-              <div className="mt-6 flex flex-wrap gap-2.5 border-t border-line pt-5">
-                <Link href="/process" className="link-accent">
-                  The whole process <span aria-hidden>›</span>
-                </Link>
+              <div className="mt-6 border-t border-line pt-5">
+                <h3 className="mono uppercase tracking-[0.14em] text-fg-soft">
+                  Or reach me directly
+                </h3>
+                <a
+                  href={contact.tel}
+                  className="mt-3 flex items-center gap-2.5 text-[0.9375rem] font-semibold transition-colors duration-200 hover:text-accent"
+                >
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4 text-accent">
+                    <path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.6a1 1 0 0 1-.25 1l-2.22 2.2Z" />
+                  </svg>
+                  {contact.phone}
+                </a>
+                <a
+                  href={contact.mailto}
+                  className="mt-2.5 flex items-center gap-2.5 text-[0.9375rem] font-semibold transition-colors duration-200 hover:text-accent"
+                >
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4 text-accent">
+                    <path d="M1.5 4.5h21v15h-21v-15Zm1.8 1.8v.6l8.7 5.44 8.7-5.44v-.6H3.3Zm17.4 3.06-7.7 4.82a1.5 1.5 0 0 1-1.6 0L3.7 9.36v8.34h16.6V9.36Z" />
+                  </svg>
+                  {contact.email}
+                </a>
+                <div className="mt-5 flex flex-wrap items-center gap-4">
+                  <a
+                    href={contact.linkedin}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn-ghost"
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor" className="h-3.5 w-3.5">
+                      <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05a3.75 3.75 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.55V9h3.57v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z" />
+                    </svg>
+                    LinkedIn
+                  </a>
+                  <Link href="/process" className="link-accent">
+                    The whole process <span aria-hidden>›</span>
+                  </Link>
+                </div>
               </div>
-              <a
-                href={contact.linkedin}
-                target="_blank"
-                rel="noreferrer"
-                className="btn-ghost mt-4"
-              >
-                <svg viewBox="0 0 24 24" fill="currentColor" className="h-3.5 w-3.5">
-                  <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05a3.75 3.75 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.55V9h3.57v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z" />
-                </svg>
-                LinkedIn
-              </a>
             </aside>
           </div>
         </div>

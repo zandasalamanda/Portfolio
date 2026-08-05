@@ -8,8 +8,8 @@
   --color-fg: #f4f4f5;
   --color-fg-soft: #a1a1aa;
   --color-fg-faint: #8b8b93;
-  --color-accent: #b3a6ff;
-  --color-accent-dim: #8f7fe8;
+  --color-accent: #9c89fa;
+  --color-accent-dim: #7b68dd;
 
   --font-display: var(--font-libre), "Libre Franklin", sans-serif;
   --font-mono: var(--font-jetbrains), "JetBrains Mono", ui-monospace, monospace;
@@ -34,7 +34,7 @@ html {
 body {
   background-color: #0a0a0c;
   background-image: radial-gradient(
-    rgba(179, 166, 255, 0.13) 1.2px,
+    rgba(156, 137, 250, 0.13) 1.2px,
     transparent 1.2px
   );
   background-size: 20px 20px;
@@ -47,12 +47,12 @@ body {
 }
 
 ::selection {
-  background: #b3a6ff;
+  background: #9c89fa;
   color: #0a0a0c;
 }
 
 :focus-visible {
-  outline: 2px solid #b3a6ff;
+  outline: 2px solid #9c89fa;
   outline-offset: 3px;
 }
 
@@ -66,7 +66,7 @@ body {
   pointer-events: none;
   background: radial-gradient(
     circle,
-    rgba(179, 166, 255, 0.06) 0%,
+    rgba(156, 137, 250, 0.06) 0%,
     transparent 62%
   );
 }
@@ -141,12 +141,12 @@ body {
   .btn-ghost:hover,
   .btn-ghost:focus-visible {
     transform: translateY(-1px);
-    border-color: rgba(179, 166, 255, 0.5);
-    background: rgba(179, 166, 255, 0.08);
+    border-color: rgba(156, 137, 250, 0.5);
+    background: rgba(156, 137, 250, 0.08);
   }
 
   .link-accent {
-    color: #b3a6ff;
+    color: #9c89fa;
     font-weight: 600;
     font-size: 0.8125rem;
     display: inline-flex;
@@ -171,7 +171,7 @@ body {
   }
 
   .card:hover {
-    border-color: rgba(179, 166, 255, 0.34);
+    border-color: rgba(156, 137, 250, 0.34);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   }
 
@@ -182,7 +182,7 @@ body {
      are set per card from content/brands.ts.
   -------------------------------------------------------------------- */
   .app-card {
-    --brand: #b3a6ff;
+    --brand: #9c89fa;
     --brand-radius: 0.875rem;
     position: relative;
     border: 1px solid color-mix(in oklab, var(--brand) 20%, transparent);
@@ -263,7 +263,7 @@ body {
 
   .field:focus {
     outline: none;
-    border-color: rgba(179, 166, 255, 0.6);
+    border-color: rgba(156, 137, 250, 0.6);
     background: rgba(255, 255, 255, 0.05);
   }
 
@@ -288,13 +288,13 @@ body {
   }
 
   .budget-chip:hover span {
-    border-color: rgba(179, 166, 255, 0.4);
+    border-color: rgba(156, 137, 250, 0.4);
     color: var(--color-fg);
   }
 
   .budget-chip input:checked + span {
     border-color: var(--color-accent);
-    background: rgba(179, 166, 255, 0.12);
+    background: rgba(156, 137, 250, 0.12);
     color: var(--color-fg);
   }
 
@@ -324,8 +324,8 @@ body {
 
   .chip:hover {
     transform: translateY(-2px);
-    border-color: rgba(179, 166, 255, 0.55);
-    background: rgba(179, 166, 255, 0.1);
+    border-color: rgba(156, 137, 250, 0.55);
+    background: rgba(156, 137, 250, 0.1);
     color: #f4f4f5;
   }
 }
@@ -606,7 +606,7 @@ body {
   to {
     border-color: var(--color-accent);
     color: var(--color-accent);
-    box-shadow: 0 0 18px rgba(179, 166, 255, 0.35);
+    box-shadow: 0 0 18px rgba(156, 137, 250, 0.35);
   }
 }
 

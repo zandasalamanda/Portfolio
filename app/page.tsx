@@ -33,7 +33,7 @@ export default function Home() {
             )}
 
             <h1 className="rise-1 h-display text-[clamp(1.5rem,2.9vw,2rem)]">
-              I build websites, apps, and AI that ship.
+              I build websites, apps, and AI tools that actually get finished.
             </h1>
 
             <div className="rise-2 mt-6 space-y-3.5 text-[1rem] prose-soft">

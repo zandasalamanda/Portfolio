@@ -15,7 +15,7 @@ export function Circled({ children }: { children: React.ReactNode }) {
         <path
           d="M32 8C14 12 4 22 8 31c5 10 34 12 78 12s96-4 106-14c8-8-6-17-30-20C136 6 96 4 68 6"
           fill="none"
-          stroke="#b3a6ff"
+          stroke="#9c89fa"
           strokeWidth="2"
           strokeLinecap="round"
           opacity="0.85"
@@ -38,7 +38,7 @@ export function Underlined({ children }: { children: React.ReactNode }) {
         <path
           d="M3 8c40-5 84-6 124-4 26 1 48 3 70 4"
           fill="none"
-          stroke="#b3a6ff"
+          stroke="#9c89fa"
           strokeWidth="2.5"
           strokeLinecap="round"
           opacity="0.9"

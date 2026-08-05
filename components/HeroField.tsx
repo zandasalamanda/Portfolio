@@ -65,7 +65,7 @@ export default function HeroField() {
               Math.sin(gx / 120 + t * 0.55) *
               Math.cos(gy / 140 - t * 0.42);
           const alpha = Math.min(ambient + glow * 0.55, 0.85);
-          ctx.fillStyle = `rgba(179, 166, 255, ${alpha})`;
+          ctx.fillStyle = `rgba(156, 137, 250, ${alpha})`;
           ctx.fillRect(gx + dx - 0.75, gy + dy - 0.75, 1.5, 1.5);
         }
       }
