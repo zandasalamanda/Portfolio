@@ -7,8 +7,14 @@ import Reveal from '@/components/Reveal';
 import TechIcon from '@/components/TechIcon';
 import { contact } from '@/content/site';
 
-/* One hue, three strengths — the Website offer leads, the others step back. */
-const RAMP = ['#b3a6ff', 'rgba(179, 166, 255, 0.55)', 'rgba(179, 166, 255, 0.3)'];
+/* Three neighbours in one blue→violet family, in the page's own order.
+   Intensity climbs with price, so the bigger commitment reads stronger
+   without the hues ever drifting far enough apart to clash. */
+const RAMP = [
+  '#919ce3', // Website — $750, the calmest
+  '#c6a8fa', // App build — $3,000, the strongest
+  '#aba0f3', // AI integration — $1,500, between the two
+];
 
 export const metadata: Metadata = {
   title: 'Hire',
@@ -83,11 +89,14 @@ export default function HirePage() {
               <article className="card group relative flex h-full flex-col overflow-hidden p-6">
                 <span
                   aria-hidden
-                  className="absolute inset-x-0 top-0 h-[2px] rounded-t-[inherit]"
+                  className="absolute inset-x-0 top-0 h-[3px] rounded-t-[inherit]"
                   style={{ background: RAMP[i] }}
                 />
                 {/* the price is what a buyer scans for — it leads */}
-                <p className="mono text-[0.6875rem] uppercase tracking-[0.14em] text-fg-soft">
+                <p
+                  className="mono text-[0.6875rem] uppercase tracking-[0.14em]"
+                  style={{ color: RAMP[i] }}
+                >
                   {s.name}
                 </p>
                 <p className="h-display mt-2 text-[1.625rem]">{s.from}</p>
