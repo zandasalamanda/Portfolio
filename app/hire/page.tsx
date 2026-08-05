@@ -99,10 +99,7 @@ export default function HirePage() {
         <div className="mt-7 grid gap-5 lg:grid-cols-3">
           {services.map((s, i) => (
             <Reveal key={s.name}>
-              <article
-                className="app-card group flex h-full flex-col p-6"
-                style={{ ['--brand' as string]: SVC_ACCENTS[i] }}
-              >
+              <article className="card group relative flex h-full flex-col overflow-hidden p-6">
                 <span
                   aria-hidden
                   className="absolute inset-x-0 top-0 h-[2px] rounded-t-[inherit]"
@@ -112,12 +109,7 @@ export default function HirePage() {
                 <p className="mono text-[0.6875rem] uppercase tracking-[0.14em] text-fg-soft">
                   {s.name}
                 </p>
-                <p
-                  className="h-display mt-2 text-[1.625rem]"
-                  style={{ color: SVC_ACCENTS[i] }}
-                >
-                  {s.from}
-                </p>
+                <p className="h-display mt-2 text-[1.625rem]">{s.from}</p>
                 <p className="mono mt-1 text-[0.6875rem] text-fg-faint">
                   {s.timeline} · one written price
                 </p>
@@ -128,7 +120,7 @@ export default function HirePage() {
                 <ul className="mt-4 space-y-2">
                   {s.includes.map((item) => (
                     <li key={item} className="flex gap-2.5 text-[0.875rem] prose-soft">
-                      <span aria-hidden style={{ color: SVC_ACCENTS[i] }}>
+                      <span aria-hidden className="text-fg-faint">
                         ▸
                       </span>
                       {item}
@@ -153,7 +145,7 @@ export default function HirePage() {
         <div className="mx-auto w-full max-w-[var(--shell)] px-6 py-16 md:px-8 md:py-20">
           <SectionHead
             id="work-h"
-            sub="Not just my own products — work other people commissioned, paid for, and run on."
+            sub="Work my clients commissioned, paid for, and run on."
           >
             Client work
           </SectionHead>
@@ -252,6 +244,9 @@ export default function HirePage() {
                 rel="noreferrer"
                 className="btn-ghost mt-4"
               >
+                <svg viewBox="0 0 24 24" fill="currentColor" className="h-3.5 w-3.5">
+                  <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05a3.75 3.75 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.55V9h3.57v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z" />
+                </svg>
                 LinkedIn
               </a>
             </aside>

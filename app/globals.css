@@ -307,6 +307,7 @@ body {
   .chip {
     display: inline-flex;
     align-items: center;
+    white-space: nowrap;
     gap: 0.375rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
     background: rgba(255, 255, 255, 0.03);
@@ -671,63 +672,60 @@ body {
 }
 
 /* ---------------------------------------------------------------------------
-   Screen cycles — a card fades through several real captures of the same
-   product. Pure CSS: every frame runs the same keyframes, offset by its
-   delay; under reduced motion only the first frame shows.
+   Screen slides — a card tours its own captures on a gliding track:
+   settle, hold, glide to the next, and rewind at the end. Hover pauses;
+   reduced motion leaves the first frame standing.
 --------------------------------------------------------------------------- */
-.fade-item {
-  opacity: 0;
-  animation-timing-function: linear;
+.slide-track {
+  animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
-  animation-fill-mode: both;
+  will-change: transform;
 }
 
-.fade-n2 .fade-item {
-  animation-name: fade-2;
+.slide-n2 {
+  animation-name: slide-2;
   animation-duration: 10s;
 }
 
-.fade-n3 .fade-item {
-  animation-name: fade-3;
+.slide-n3 {
+  animation-name: slide-3;
   animation-duration: 15s;
 }
 
-.fade-n4 .fade-item {
-  animation-name: fade-4;
+.slide-n4 {
+  animation-name: slide-4;
   animation-duration: 20s;
 }
 
-@keyframes fade-2 {
-  0% { opacity: 0; }
-  5% { opacity: 1; }
-  45% { opacity: 1; }
-  55% { opacity: 0; }
-  100% { opacity: 0; }
+@keyframes slide-2 {
+  0%, 43% { transform: translateX(0); }
+  50%, 93% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
 }
 
-@keyframes fade-3 {
-  0% { opacity: 0; }
-  3.5% { opacity: 1; }
-  30% { opacity: 1; }
-  37% { opacity: 0; }
-  100% { opacity: 0; }
+@keyframes slide-3 {
+  0%, 28.5% { transform: translateX(0); }
+  33.3%, 61.8% { transform: translateX(-33.333%); }
+  66.7%, 95% { transform: translateX(-66.667%); }
+  100% { transform: translateX(0); }
 }
 
-@keyframes fade-4 {
-  0% { opacity: 0; }
-  2.5% { opacity: 1; }
-  22.5% { opacity: 1; }
-  28% { opacity: 0; }
-  100% { opacity: 0; }
+@keyframes slide-4 {
+  0%, 21% { transform: translateX(0); }
+  25%, 46% { transform: translateX(-25%); }
+  50%, 71% { transform: translateX(-50%); }
+  75%, 96% { transform: translateX(-75%); }
+  100% { transform: translateX(0); }
+}
+
+.app-stage:hover .slide-track,
+.slide-stage:hover .slide-track {
+  animation-play-state: paused;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .fade-item {
+  .slide-track {
     animation: none;
-  }
-
-  .fade-item:first-child {
-    opacity: 1;
   }
 }
 
