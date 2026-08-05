@@ -47,10 +47,14 @@ export const projectCards: ProjectCard[] = [
     accent2: spectrum.violet,
     logo: 'chronoiq/logo.png',
     image: {
-      rel: 'chronoiq/shot-dashboard.png',
-      alt: "ChronoIQ dashboard: today's plan with scheduled study blocks on a timeline",
+      rel: 'chronoiq/shot-landing.png',
+      alt: 'The ChronoIQ landing page: “Stress into structure. Chaos into confidence.” with real assignments scattered around the headline',
     },
-    cycle: ['chronoiq/shot-calendar.png', 'chronoiq/shot-focus.png'],
+    cycle: [
+      'chronoiq/shot-dashboard.png',
+      'chronoiq/shot-calendar.png',
+      'chronoiq/shot-focus.png',
+    ],
     /* chronoiq.dev is pulled for now — its live deploy predates the brand
        restore, so it misrepresents the product. Put the link back when it
        redeploys. */

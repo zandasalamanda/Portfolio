@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-05T14:26:47.316Z",
+  "generatedAt": "2026-08-05T15:00:03.240Z",
   "assets": {
     "chronoiq/logo.png": {
       "exists": true,
@@ -141,31 +141,31 @@
       "exists": false,
       "optional": true
     },
-    "gallery/01.jpg": {
+    "gallery/work-01.jpg": {
       "exists": true,
       "optional": false,
       "width": 760,
       "height": 1000
     },
-    "gallery/02.jpg": {
+    "gallery/work-02.jpg": {
       "exists": true,
       "optional": false,
       "width": 760,
       "height": 1000
     },
-    "gallery/03.jpg": {
+    "gallery/work-03.jpg": {
       "exists": true,
       "optional": false,
       "width": 760,
       "height": 1000
     },
-    "gallery/04.jpg": {
+    "gallery/work-04.jpg": {
       "exists": true,
       "optional": false,
       "width": 760,
       "height": 1000
     },
-    "gallery/05.jpg": {
+    "gallery/work-05.jpg": {
       "exists": true,
       "optional": false,
       "width": 760,
@@ -264,6 +264,12 @@
       "optional": true,
       "width": 3456,
       "height": 2160
+    },
+    "chronoiq/shot-landing.png": {
+      "exists": true,
+      "optional": true,
+      "width": 3420,
+      "height": 1902
     },
     "chronoiq/shot-mobile.png": {
       "exists": true,
