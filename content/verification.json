@@ -1,9 +1,15 @@
 {
-  "verifiedAt": "2026-08-05T17:47:04.296Z",
+  "verifiedAt": "2026-08-07T13:40:01.337Z",
   "results": [
     {
       "url": "https://chronoiq.dev",
       "host": "chronoiq.dev",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://comicsforcomfort.com",
+      "host": "comicsforcomfort.com",
       "status": 200,
       "ok": true
     },

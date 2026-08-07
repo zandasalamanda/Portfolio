@@ -17,6 +17,7 @@ const outPath = path.join(root, 'content', 'verification.json');
 // Keep this list in sync with `receiptUrlsToVerify` in content/site.ts.
 const URLS = [
   'https://chronoiq.dev',
+  'https://comicsforcomfort.com',
   'https://solaspace.app',
   'https://everdeck.app',
   'https://www.congressionalappchallenge.us/25-nj07/',

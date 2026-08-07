@@ -102,6 +102,7 @@ export const stack = [
  * seconds. Every claim is checkable on this site.
  */
 export const whyMe = [
+  'You pay when you approve it. No deposit, and nothing owed if you walk away.',
   'Everything on this site is live — click anything and check the work before you pay for it.',
   'Fixed scope, one written price, and a delivery date before any work starts.',
   'A live preview link from day one — the person you talk to is the person writing the code.',
@@ -141,9 +142,7 @@ export const carePlan = {
     },
   ],
   reassurance:
-    'Cancel any month you like. The site stays yours either way — it always was.',
-  alsoFree:
-    'Every build includes 30 days of fixes after launch, plan or no plan.',
+    'Cancel any month you like. The site stays yours either way — it always was. Every build includes 30 days of fixes after launch, plan or no plan.',
   addOn: {
     name: 'Automations',
     price: '$250 setup, then $50/month each',

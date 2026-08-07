@@ -391,6 +391,7 @@ export const contact = {
 /** §10 — URLs the build-time link check must hit */
 export const receiptUrlsToVerify = [
   'https://chronoiq.dev',
+  'https://comicsforcomfort.com',
   'https://solaspace.app',
   'https://everdeck.app',
   awardPageUrl,

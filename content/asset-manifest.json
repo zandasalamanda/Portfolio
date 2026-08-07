@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-05T19:30:29.352Z",
+  "generatedAt": "2026-08-07T13:39:57.146Z",
   "assets": {
     "chronoiq/logo.png": {
       "exists": true,
@@ -277,23 +277,23 @@
       "width": 1170,
       "height": 2532
     },
-    "clients/comics-2.png": {
+    "clients/comics-live-count.png": {
       "exists": true,
       "optional": true,
-      "width": 3420,
-      "height": 1900
+      "width": 3200,
+      "height": 2000
     },
-    "clients/comics-3.png": {
+    "clients/comics-live-hero.png": {
       "exists": true,
       "optional": true,
-      "width": 3420,
-      "height": 1900
+      "width": 3200,
+      "height": 2000
     },
-    "clients/comics-hero.png": {
+    "clients/comics-live-screening.png": {
       "exists": true,
       "optional": true,
-      "width": 3420,
-      "height": 1904
+      "width": 3200,
+      "height": 2000
     },
     "clients/comics-logo.png": {
       "exists": true,

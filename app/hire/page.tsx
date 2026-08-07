@@ -59,7 +59,8 @@ export default function HirePage() {
           <p className="rise-2 mt-5 max-w-[58ch] text-[1rem] prose-soft">
             I take on websites, full-stack apps, and AI integration. You talk to the
             person who builds it — no account managers, no handoff, no agency markup. I
-            scope the work, quote a fixed price within a day, and build it myself.
+            scope the work, quote a fixed price within a day, and build it myself —
+            and you pay when you approve it, not before.
           </p>
 
           <div className="rise-3 mt-7 flex flex-wrap gap-2.5">
@@ -124,60 +125,56 @@ export default function HirePage() {
             </Reveal>
           ))}
         </div>
-      </section>
 
-      {/* --------------------------------------------------- the care plan */}
-      <section
-        aria-labelledby="care-h"
-        className="mx-auto w-full max-w-[var(--shell)] px-6 pt-16 md:px-8 md:pt-20"
-      >
-        <SectionHead id="care-h" sub={carePlan.line}>
-          After it launches
-        </SectionHead>
-
+        {/* the ongoing offer sits with the one-time ones — same section,
+            visibly a different kind of thing */}
         <Reveal>
-          <article className="card relative mt-7 overflow-hidden p-6 md:p-8">
+          <article className="card relative mt-5 overflow-hidden p-6">
             <span
               aria-hidden
               className="absolute inset-x-0 top-0 h-[3px] rounded-t-[inherit] bg-accent"
             />
-            <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 border-b border-line pb-5">
-              <h3 className="h-display text-[1.375rem]">{carePlan.name}</h3>
-              <p className="h-display text-[1.625rem] text-accent">
-                {carePlan.price}
-                <span className="mono text-[0.75rem] text-fg-soft">{carePlan.cadence}</span>
-              </p>
-              <p className="mono ml-auto rounded-full border border-accent/40 px-3 py-1 text-[0.6875rem] text-accent">
-                {carePlan.offer}
-              </p>
-            </div>
+            <div className="grid gap-6 md:grid-cols-[minmax(0,260px)_minmax(0,1fr)] md:gap-10">
+              <div>
+                <p className="mono text-[0.6875rem] uppercase tracking-[0.14em] text-accent">
+                  After it launches
+                </p>
+                <p className="h-display mt-2 text-[1.625rem]">
+                  {carePlan.price}
+                  <span className="mono text-[0.75rem] text-fg-soft">
+                    {carePlan.cadence}
+                  </span>
+                </p>
+                <p className="mono mt-1 text-[0.6875rem] text-fg-faint">
+                  {carePlan.name} · {carePlan.offer.toLowerCase()}
+                </p>
+              </div>
 
-            <ul className="mt-6 grid gap-5 md:grid-cols-3 md:gap-8">
-              {carePlan.includes.map((i) => (
-                <li key={i.t}>
-                  <p className="flex gap-2.5 text-[0.9375rem] font-semibold">
-                    <span aria-hidden className="text-accent">
+              <div className="min-w-0">
+                <p className="text-[0.9375rem] prose-soft">{carePlan.line}</p>
+                <ul className="mt-4 grid gap-x-8 gap-y-2 sm:grid-cols-2">
+                  {carePlan.includes.map((i) => (
+                    <li key={i.t} className="flex gap-2.5 text-[0.875rem] prose-soft">
+                      <span aria-hidden className="shrink-0 text-accent">
+                        ▸
+                      </span>
+                      {i.t}
+                    </li>
+                  ))}
+                  <li className="flex gap-2.5 text-[0.875rem] prose-soft">
+                    <span aria-hidden className="shrink-0 text-accent">
                       ▸
                     </span>
-                    {i.t}
-                  </p>
-                  <p className="mt-1.5 pl-5 text-[0.875rem] prose-soft">{i.d}</p>
-                </li>
-              ))}
-            </ul>
-
-            <p className="mt-6 border-t border-line pt-5 text-[0.9375rem] prose-soft">
-              {carePlan.reassurance}
-            </p>
+                    {carePlan.addOn.name} on request — {carePlan.addOn.price}
+                  </li>
+                </ul>
+                <p className="mono mt-4 border-t border-line pt-3.5 text-[0.6875rem] text-fg-soft">
+                  {carePlan.reassurance}
+                </p>
+              </div>
+            </div>
           </article>
         </Reveal>
-
-        <div className="mt-5 grid gap-4 md:grid-cols-2">
-          <p className="mono text-[0.6875rem] text-fg-soft">▸ {carePlan.alsoFree}</p>
-          <p className="mono text-[0.6875rem] text-fg-soft">
-            ▸ {carePlan.addOn.name} — {carePlan.addOn.price}. {carePlan.addOn.d}
-          </p>
-        </div>
       </section>
 
       {/* --------------------------------------------- client work — a band */}
@@ -197,45 +194,6 @@ export default function HirePage() {
             <ClientProof />
           </div>
         </div>
-      </section>
-
-      {/* ----------------------------------------------------------- stack */}
-      <section
-        aria-labelledby="stack-h"
-        className="mx-auto w-full max-w-[var(--shell)] px-6 pt-16 md:px-8 md:pt-20"
-      >
-        <SectionHead
-          id="stack-h"
-          sub="Every one of these is in something I have already built and delivered."
-        >
-          My tech stack
-        </SectionHead>
-
-        {/* rows, not cards — the same 32 tools in a third of the height */}
-        <dl className="mt-6">
-          {stack.map((group) => (
-            <div
-              key={group.title}
-              className="grid gap-2 border-b border-line py-4 md:grid-cols-[150px_minmax(0,1fr)] md:gap-6"
-            >
-              <dt className="mono pt-1 uppercase tracking-[0.12em] text-fg-soft">
-                {group.title}
-              </dt>
-              <dd>
-                <ul className="flex flex-wrap gap-1.5">
-                  {group.items.map((i) => (
-                    <li key={i}>
-                      <span className="chip">
-                        <TechIcon label={i} />
-                        {i}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </dd>
-            </div>
-          ))}
-        </dl>
       </section>
 
       {/* ------------------------------------------- contact — the close */}
@@ -275,6 +233,22 @@ export default function HirePage() {
                   </li>
                 ))}
               </ul>
+              <div className="mt-6 border-t border-line pt-5">
+                <h3 className="mono uppercase tracking-[0.14em] text-fg-soft">
+                  Built with
+                </h3>
+                <ul className="mt-3 flex flex-wrap gap-1.5">
+                  {stack.flatMap((g) => g.items).map((i) => (
+                    <li key={i}>
+                      <span className="chip !py-1 !text-[0.6875rem]">
+                        <TechIcon label={i} />
+                        {i}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
               <div className="mt-6 border-t border-line pt-5">
                 <h3 className="mono uppercase tracking-[0.14em] text-fg-soft">
                   Or reach me directly
