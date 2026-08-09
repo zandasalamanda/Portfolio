@@ -123,10 +123,12 @@ export const whyMe = [
  */
 export const carePlan = {
   name: 'The Care Plan',
-  price: '$75',
+  price: '$50',
   cadence: '/month',
+  /* the no-subscription route, for owners who will not sign up for one */
+  alt: '$100 per change',
   offer: 'First month free with any build',
-  line: 'A site nobody maintains gets old fast — old hours, dead links, an expired domain on the worst possible day. This is the version where that is simply not your problem.',
+  line: 'A site nobody maintains gets old fast — old hours, dead links, an expired domain on the worst possible day. Keep it on the plan, or skip the monthly entirely and pay per change.',
   includes: [
     {
       t: 'Hosting and domain, handled',

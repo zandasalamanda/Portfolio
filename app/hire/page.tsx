@@ -126,53 +126,36 @@ export default function HirePage() {
           ))}
         </div>
 
-        {/* the ongoing offer sits with the one-time ones — same section,
-            visibly a different kind of thing */}
+        {/* the ongoing offer, kept deliberately slight — it is the footnote
+            to the three builds above, not a fourth one competing with them */}
         <Reveal>
-          <article className="card relative mt-5 overflow-hidden p-6">
+          <article className="card relative mt-5 overflow-hidden px-5 py-4">
             <span
               aria-hidden
-              className="absolute inset-x-0 top-0 h-[3px] rounded-t-[inherit] bg-accent"
+              className="absolute inset-y-0 left-0 w-[3px] bg-accent"
             />
-            <div className="grid gap-6 md:grid-cols-[minmax(0,260px)_minmax(0,1fr)] md:gap-10">
-              <div>
-                <p className="mono text-[0.6875rem] uppercase tracking-[0.14em] text-accent">
-                  After it launches
-                </p>
-                <p className="h-display mt-2 text-[1.625rem]">
-                  {carePlan.price}
-                  <span className="mono text-[0.75rem] text-fg-soft">
-                    {carePlan.cadence}
-                  </span>
-                </p>
-                <p className="mono mt-1 text-[0.6875rem] text-fg-faint">
-                  {carePlan.name} · {carePlan.offer.toLowerCase()}
-                </p>
-              </div>
-
-              <div className="min-w-0">
-                <p className="text-[0.9375rem] prose-soft">{carePlan.line}</p>
-                <ul className="mt-4 grid gap-x-8 gap-y-2 sm:grid-cols-2">
-                  {carePlan.includes.map((i) => (
-                    <li key={i.t} className="flex gap-2.5 text-[0.875rem] prose-soft">
-                      <span aria-hidden className="shrink-0 text-accent">
-                        ▸
-                      </span>
-                      {i.t}
-                    </li>
-                  ))}
-                  <li className="flex gap-2.5 text-[0.875rem] prose-soft">
-                    <span aria-hidden className="shrink-0 text-accent">
-                      ▸
-                    </span>
-                    {carePlan.addOn.name} on request — {carePlan.addOn.price}
-                  </li>
-                </ul>
-                <p className="mono mt-4 border-t border-line pt-3.5 text-[0.6875rem] text-fg-soft">
-                  {carePlan.reassurance}
-                </p>
-              </div>
+            <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+              <p className="mono text-[0.6875rem] uppercase tracking-[0.14em] text-accent">
+                After it launches
+              </p>
+              <p className="text-[0.9375rem] font-semibold">
+                {carePlan.price}
+                <span className="mono text-[0.6875rem] text-fg-soft">
+                  {carePlan.cadence}
+                </span>
+                <span className="mono px-2 text-[0.6875rem] text-fg-faint">or</span>
+                {carePlan.alt}
+              </p>
+              <p className="mono ml-auto text-[0.625rem] text-fg-faint">
+                {carePlan.offer}
+              </p>
             </div>
+
+            <p className="mono mt-2.5 text-[0.6875rem] leading-relaxed text-fg-soft">
+              {carePlan.includes.map((i) => i.t).join(' · ')} ·{' '}
+              {carePlan.addOn.name.toLowerCase()} on request
+            </p>
+            <p className="mt-2 text-[0.875rem] prose-soft">{carePlan.reassurance}</p>
           </article>
         </Reveal>
       </section>
@@ -235,22 +218,6 @@ export default function HirePage() {
               </ul>
               <div className="mt-6 border-t border-line pt-5">
                 <h3 className="mono uppercase tracking-[0.14em] text-fg-soft">
-                  Built with
-                </h3>
-                <ul className="mt-3 flex flex-wrap gap-1.5">
-                  {stack.flatMap((g) => g.items).map((i) => (
-                    <li key={i}>
-                      <span className="chip !py-1 !text-[0.6875rem]">
-                        <TechIcon label={i} />
-                        {i}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="mt-6 border-t border-line pt-5">
-                <h3 className="mono uppercase tracking-[0.14em] text-fg-soft">
                   Or reach me directly
                 </h3>
                 <a
@@ -289,6 +256,34 @@ export default function HirePage() {
                 </div>
               </div>
             </aside>
+          </div>
+
+          {/* the stack reads as capability, not a chapter: full width under
+              the form, grouped so 32 tools scan instead of blur */}
+          <div className="mt-14 border-t border-line pt-8">
+            <h3 className="mono uppercase tracking-[0.14em] text-fg-soft">Built with</h3>
+            <dl className="mt-5 grid gap-x-10 gap-y-5 md:grid-cols-2">
+              {stack.map((group) => (
+                <div key={group.title} className="min-w-0">
+                  <dt className="mono flex items-center gap-2 text-[0.625rem] uppercase tracking-[0.14em] text-accent">
+                    <span aria-hidden className="h-px w-4 bg-accent/50" />
+                    {group.title}
+                  </dt>
+                  <dd className="mt-2.5">
+                    <ul className="flex flex-wrap gap-1.5">
+                      {group.items.map((i) => (
+                        <li key={i}>
+                          <span className="chip !py-1 !text-[0.6875rem]">
+                            <TechIcon label={i} />
+                            {i}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </div>
       </section>

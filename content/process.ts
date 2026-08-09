@@ -89,7 +89,7 @@ export const faqs: Faq[] = [
   },
   {
     q: 'What happens after it goes live?',
-    a: 'Every build comes with 30 days of fixes, whatever else you decide. After that you can look after the site yourself — it is yours, and it is built so another developer could pick it up cleanly — or put it on the Care Plan at $75 a month and text me when something needs changing. First month is free with any build, and you can cancel any month without losing anything.',
+    a: 'Every build comes with 30 days of fixes, whatever else you decide. After that you can look after the site yourself — it is yours, and it is built so another developer could pick it up cleanly — or put it on the Care Plan at $50 a month and text me when something needs changing. If a subscription is not for you, changes are $100 each with no monthly cost. First month of the plan is free with any build, and you can cancel any month without losing anything.',
   },
   {
     q: 'What if I do not like it?',
