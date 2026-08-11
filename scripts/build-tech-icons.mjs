@@ -26,6 +26,8 @@ const MAP = {
   Supabase: ['supabase', 'original'],
   Postgres: ['postgresql', 'original'],
   Vite: ['vitejs', 'original'],
+  Flutter: ['flutter', 'original'],
+  Dart: ['dart', 'original'],
   OpenCV: ['opencv', 'original'],
   Cloudflare: ['cloudflare', 'original'],
   'Cloudflare D1': ['cloudflare', 'original'],

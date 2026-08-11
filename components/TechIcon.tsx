@@ -80,6 +80,8 @@ const DRAWN_FOR: Record<string, string> = {
   'Deterministic fallbacks': 'ai',
   'Google APIs': 'ai',
   'Google Places': 'ai',
+  'Signal processing': 'code',
+  EEG: 'ai',
   'Supabase Edge Functions': 'code',
   'Rule engine': 'code',
   PWA: 'pwa',

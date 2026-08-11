@@ -62,7 +62,15 @@ const DRAWN: Record<string, (c: string) => React.ReactNode> = {
       <path d="M9.3 14.7l2-4.6 4.6-2-2 4.6z" fill={c} />
     </>
   ),
-  // Games — a controller
+  // Neuromaker — a brain in two hemispheres
+  neuro: (c) => (
+    <>
+      <path d="M12 3.2c-2.4 0-4 1.5-4 3.1 -1.7.3-2.8 1.6-2.8 3 0 .9.4 1.7 1.1 2.2 -.6.5-1 1.3-1 2.1 0 1.6 1.4 2.9 3.1 2.9 .3 1.4 1.8 2.3 3.6 2.3z" stroke={c} strokeWidth="1.5" fill="none" strokeLinejoin="round" />
+      <path d="M12 3.2c2.4 0 4 1.5 4 3.1 1.7.3 2.8 1.6 2.8 3 0 .9-.4 1.7-1.1 2.2 .6.5 1 1.3 1 2.1 0 1.6-1.4 2.9-3.1 2.9 -.3 1.4-1.8 2.3-3.6 2.3z" stroke={c} strokeWidth="1.5" fill="none" strokeLinejoin="round" />
+      <path d="M12 3.2v17.6" stroke={c} strokeWidth="1.5" />
+    </>
+  ),
+  // the market terminal — a chart in a frame
   terminal: (c) => (
     <>
       <path d="M4 4h16v16H4z" stroke={c} strokeWidth="1.6" fill="none" />
@@ -70,6 +78,7 @@ const DRAWN: Record<string, (c: string) => React.ReactNode> = {
       <path d="M17 8h-2.6M17 8v2.6" stroke={c} strokeWidth="1.6" fill="none" strokeLinecap="round" />
     </>
   ),
+  // Games — a controller
   game: (c) => (
     <>
       <path

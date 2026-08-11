@@ -125,6 +125,19 @@ const brands: Record<string, AppBrand> = {
     radius: '1rem',
     label: 'Verbalist',
   },
+  /* Neuromaker — a team build with the school's biotech academy; no source of
+     its own to read a face from, so it keeps the site's. Blue from the EEG
+     visualisation, on the near-black the render sits on. */
+  neuromaker: {
+    primary: '#4ea1ff',
+    ink: '#7cbaff',
+    stage: '#050a16',
+    fontClass: 'h-display',
+    weight: 900,
+    tracking: '-0.01em',
+    radius: '0.875rem',
+    label: 'Neuromaker',
+  },
   /* Team Helios — NASA ADC entry. The rocket logo's dark red, plot on white. */
   helios: {
     primary: '#d95848',

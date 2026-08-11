@@ -94,7 +94,7 @@ export default function Home() {
               </article>
             ))}
             <Link href="/projects" className="link-accent">
-              All 8 projects <span aria-hidden>›</span>
+              All 9 projects <span aria-hidden>›</span>
             </Link>
 
             <div className="mt-14 border-t border-line pt-8">

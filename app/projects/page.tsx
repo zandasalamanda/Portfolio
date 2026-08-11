@@ -33,9 +33,9 @@ export default function ProjectsPage() {
             Things I&rsquo;ve built trying to make my mark
           </h1>
           <p className="rise-2 mx-auto mt-4 max-w-[56ch] text-[0.9375rem] prose-soft">
-            Eight projects — live products, an AI workspace running inside a real
-            company, and a NASA challenge entry built with my team. Designed,
-            built, and finished — all of it my own work.
+            Nine projects — live products, an AI workspace running inside a real
+            company, and two built with a team: a NASA challenge entry and a
+            brain-computer interface with my school&rsquo;s biotech academy.
           </p>
           <div className="rise-3 mt-7 flex flex-wrap justify-center gap-2.5">
             <Link href="/hire" className="btn-solid">

@@ -41,6 +41,8 @@ const EXPECTED = [
   { key: 'helios/logo.png', optional: false },
   { key: 'helios/velocity-plot.png', optional: false },
   { key: 'helios/team-photo.jpg', optional: true },
+  { key: 'neuromaker/headset.jpg', optional: false },
+  { key: 'neuromaker/brain.jpg', optional: false },
   { key: 'gallery/work-01.jpg', optional: false },
   { key: 'gallery/work-02.jpg', optional: false },
   { key: 'gallery/work-03.jpg', optional: false },
