@@ -169,11 +169,18 @@ id: 'everdeck',
     tags: ['Flutter', 'Dart', 'EEG', 'Signal processing'],
     accent: '#4ea1ff',
     drawn: 'neuro',
+    /* The three interface frames are the design prototype, not captures of the
+       shipped Flutter build — the alt text says so rather than implying
+       otherwise. The last frame is the real headset it reads from. */
     image: {
-      rel: 'neuromaker/headset.jpg',
-      alt: 'The EEG headset the app reads from, held in two hands',
+      rel: 'neuromaker/proto-flag.jpg',
+      alt: 'The Neuromaker interface prototype flagging a beta spike on both frontal sensors at 3.4 standard deviations over the wearer’s baseline, with the flagged window highlighted on the trace',
     },
-    cycle: ['neuromaker/brain.jpg'],
+    cycle: [
+      'neuromaker/proto-record.jpg',
+      'neuromaker/proto-fit.jpg',
+      'neuromaker/headset.jpg',
+    ],
     links: [
       { label: 'source', url: 'https://github.com/MaxwellBrohm/neuromaker-bci-app' },
     ],

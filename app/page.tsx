@@ -99,7 +99,7 @@ export default function Home() {
 
             <div className="mt-14 border-t border-line pt-8">
               <h2 className="mono uppercase tracking-[0.16em] text-fg-soft">
-                Built for clients
+                Companies and clients
               </h2>
               <ul className="mt-4">
                 {clientJobs.map((j) => (
@@ -126,7 +126,7 @@ export default function Home() {
                 ))}
               </ul>
               <Link href="/hire#work" className="link-accent mt-3">
-                The client work <span aria-hidden>›</span>
+                The work in full <span aria-hidden>›</span>
               </Link>
             </div>
           </div>

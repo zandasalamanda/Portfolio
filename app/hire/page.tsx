@@ -169,9 +169,9 @@ export default function HirePage() {
         <div className="mx-auto w-full max-w-[var(--shell)] px-6 py-16 md:px-8 md:py-20">
           <SectionHead
             id="work-h"
-            sub="Work my clients commissioned, paid for, and run on."
+            sub="Work I have built inside companies and for the people who hired me — in production, in progress, and live."
           >
-            Client work
+            Companies and clients I have worked with
           </SectionHead>
           <div className="mt-7">
             <ClientProof />
